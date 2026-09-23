@@ -56,169 +56,204 @@ print("Prioridad:", type(prioridad))
 print("Activo:", type(ticket_activo))
 print("Técnico responsable:", type(tecnico_responsable))
 
+
 # ============================================================
-# STRINGS
+# VARIABLES
 # ============================================================
 
+print('EJERCICIOS SOBRE VARIABLES')
 
 # ------------------------------------------------------------
-# EJERCICIO 4 - LIMPIAR EL TÍTULO DE UN TICKET
+# VAR-01 - DATOS DE UN USUARIO
 # ------------------------------------------------------------
 #
-# Un usuario ingresó el siguiente título:
+# Crea variables para representar los siguientes datos:
 #
-# titulo = "    ERROR DE CONEXIÓN CON SERVIDOR    "
+# Nombre: "Elliot Alderson"
+# Rol: "Técnico"
+# Edad: 28
+# Usuario activo: True
 #
-# 1. Elimina los espacios sobrantes al inicio y al final.
-# 2. Convierte el texto completo a minúsculas.
-# 3. Guarda el resultado en una variable llamada titulo_limpio.
-# 4. Imprime el título original y el título limpio.
+# Utiliza nombres descriptivos siguiendo la convención snake_case.
+#
+# Imprime cada variable.
 #
 # Tu código aquí:
 
+print('Ejercicio de variables nro 1')
+
+nombre = 'Elliot Alderson'
+rol = 'Tecnico'
+edad = 28
+usuario_activo = True
+
+print(nombre)
+print(rol)
+print(edad)
+print(usuario_activo)
 
 # ------------------------------------------------------------
-# EJERCICIO 5 - COMPROBAR EXTENSIÓN DE UN ARCHIVO
+# VAR-02 - DATOS DE UN TICKET
 # ------------------------------------------------------------
 #
-# Un ticket contiene el siguiente archivo adjunto:
+# Representa mediante variables los siguientes datos:
 #
-# archivo = "captura_error.png"
+# ID: 42
+# Título: "Error al iniciar sesión"
+# Prioridad: "Alta"
+# Estado: "Nuevo"
+# Solicitante: "Homer Simpson"
+# Técnico responsable: todavía ninguno
 #
-# Utiliza un método de strings para comprobar si el archivo
-# termina en ".png".
+# Utiliza nombres descriptivos siguiendo snake_case.
 #
-# Guarda el resultado booleano en:
-#
-# es_imagen_png
-#
-# Imprime el resultado.
+# Imprime todos los valores.
 #
 # Tu código aquí:
 
+print('Ejercicio de variables nro 2')
+
+identificador_ticket = 42
+titulo_ticket = 'Error de inicio de sesión'
+prioridad_ticket = 'Alta'
+estado = 'nuevo'
+solicitante = 'Homer Simpson'
+tecnico_responsable = None
+
+print(identificador_ticket)
+print(titulo_ticket)
+print(prioridad_ticket)
+print(estado)
+print(solicitante)
+print(tecnico_responsable)
+
 
 # ------------------------------------------------------------
-# EJERCICIO 6 - BUSCAR INFORMACIÓN EN UNA DESCRIPCIÓN
+# VAR-03 - REASIGNACIÓN DE ESTADO
 # ------------------------------------------------------------
 #
-# Un usuario llamado Walter White creó el siguiente ticket:
+# Crea una variable llamada estado_ticket cuyo valor inicial
+# sea "Nuevo".
 #
-# descripcion = "El computador presenta un error de red al iniciar sesión"
+# 1. Imprime el estado inicial.
+# 2. Reasigna la variable con el valor "Asignado".
+# 3. Imprime nuevamente el estado.
+# 4. Reasigna la variable con el valor "En progreso".
+# 5. Imprime el estado final.
 #
-# 1. Comprueba si la palabra "red" aparece en la descripción.
-# 2. Guarda el resultado en una variable llamada contiene_red.
-# 3. Busca en qué posición comienza la palabra "error".
-# 4. Guarda esa posición en una variable llamada posicion_error.
-# 5. Imprime ambos resultados.
+# El objetivo es observar cómo una variable puede referenciar
+# distintos valores durante la ejecución.
 #
 # Tu código aquí:
 
+print('Ejercicio de variables nro 3')
+
+estado_ticket = 'Nuevo'
+print(estado_ticket)
+estado_ticket = 'Asignado'
+print(estado_ticket)
+estado_ticket = 'En progreso'
+print(estado_ticket)
 
 # ------------------------------------------------------------
-# EJERCICIO 7 - ACTUALIZAR TEXTO DE ESTADO
+# VAR-04 - ASIGNACIÓN MÚLTIPLE
 # ------------------------------------------------------------
 #
-# Tienes el siguiente mensaje:
+# Utilizando una sola línea de asignación, crea las variables:
 #
-# mensaje = "El ticket #25 actualmente está Nuevo"
+# tecnico
+# grupo
+# disponible
 #
-# Utiliza replace() para cambiar:
+# con los valores:
 #
-# "Nuevo"
+# "Neo"
+# "Infraestructura"
+# True
 #
-# por:
-#
-# "En progreso"
-#
-# Guarda el resultado en una nueva variable.
-# No modifiques directamente el string original.
-#
-# Imprime ambos valores para observar la inmutabilidad.
+# Después imprime las tres variables.
 #
 # Tu código aquí:
 
+print('Ejercicio de variables nro 4')
 
-# ------------------------------------------------------------
-# EJERCICIO 8 - PROCESAR ETIQUETAS
-# ------------------------------------------------------------
-#
-# Un ticket posee sus etiquetas almacenadas temporalmente
-# como un único string:
-#
-# etiquetas = "red,hardware,critico,servidor"
-#
-# 1. Utiliza split() para convertirlo en una lista.
-# 2. Guarda el resultado en lista_etiquetas.
-# 3. Imprime lista_etiquetas.
-# 4. Comprueba utilizando type() qué tipo de dato devolvió split().
-#
-# Tu código aquí:
+tecnico, grupo, disponible = 'neo', 'infraestructura', True
+print(tecnico)
+print(grupo)
+print(disponible)
 
 
 # ------------------------------------------------------------
-# EJERCICIO 9 - MOSTRAR TÉCNICOS ASIGNADOS
-# ------------------------------------------------------------
-#
-# Tienes la siguiente lista:
-#
-# tecnicos = ["Elliot Alderson", "Neo", "Tony Soprano"]
-#
-# Utiliza join() para obtener exactamente un string similar a:
-#
-# "Elliot Alderson | Neo | Tony Soprano"
-#
-# Guarda el resultado en:
-#
-# tecnicos_asignados
-#
-# Imprime el resultado.
-#
-# Tu código aquí:
-
-
-# ------------------------------------------------------------
-# EJERCICIO 10 - GENERAR RESUMEN DE TICKET
-# ------------------------------------------------------------
-#
-# Tienes estas variables:
-#
-# ticket_id = 42
-# solicitante = "Homer Simpson"
-# prioridad = "Alta"
-# estado = "Nuevo"
-#
-# Utiliza una f-string para generar un mensaje con este formato:
-#
-# Ticket #42 | Solicitante: Homer Simpson | Prioridad: Alta | Estado: Nuevo
-#
-# Guarda el resultado en:
-#
-# resumen_ticket
-#
-# Imprime el mensaje.
-#
-# Tu código aquí:
-
-
-# ------------------------------------------------------------
-# DESAFÍO - NORMALIZAR DATOS DE UN TICKET
+# VAR-05 - INTERCAMBIO DE VALORES
 # ------------------------------------------------------------
 #
 # Tienes:
 #
-# titulo = "    FaLLa De RED EN OfiCIna    "
-# solicitante = "   neo   "
+# tecnico_principal = "Walter White"
+# tecnico_secundario = "Jesse Pinkman"
 #
-# Utilizando únicamente operaciones y métodos de strings:
+# Intercambia sus valores sin crear una tercera variable.
 #
-# 1. Elimina los espacios sobrantes de ambos valores.
-# 2. Convierte el título completamente a minúsculas.
-# 3. Convierte el nombre del solicitante a formato título.
-# 4. Construye mediante una f-string el siguiente mensaje:
-#
-# Solicitante: Neo | Ticket: falla de red en oficina
-#
-# No modifiques los valores originales.
+# Después imprime ambos valores para comprobar el resultado.
 #
 # Tu código aquí:
 
+print('Ejercicio de variables nro 5')
+
+tecnico_principal = "Walter White"
+tecnico_secundario = "Jesse Pinkman"
+
+print(tecnico_principal)
+print(tecnico_secundario)
+
+tecnico_principal, tecnico_secundario = (tecnico_secundario, tecnico_principal)
+
+print(tecnico_principal)
+print(tecnico_secundario)
+
+
+# ------------------------------------------------------------
+# DESAFÍO VAR - CICLO BÁSICO DE UN TICKET
+# ------------------------------------------------------------
+#
+# Crea variables para representar:
+#
+# ID del ticket: 100
+# Título: "Impresora sin conexión"
+# Prioridad: "Media"
+# Estado inicial: "Nuevo"
+# Solicitante: "Michael Corleone"
+# Técnico responsable: None
+#
+# Después:
+#
+# 1. Imprime los datos iniciales.
+# 2. Reasigna el estado a "Asignado".
+# 3. Asigna como técnico responsable a "Elliot Alderson".
+# 4. Reasigna nuevamente el estado a "En progreso".
+# 5. Imprime el estado final y el técnico responsable.
+#
+# Utiliza nombres descriptivos y snake_case.
+#
+# Tu código aquí:
+
+print('Ejercicio: Desafio variables')
+
+id_ticket = 100
+titulo_ticket = "Impresora sin conexión"
+prioridad = 'Media'
+estado_ticket = 'Nuevo'
+solicitante_ticket = 'Michael Corleone'
+tecnico_responsable = None
+
+print(id_ticket)
+print(titulo_ticket)
+print(prioridad)
+print(estado_ticket)
+print(solicitante_ticket)
+print(tecnico_responsable)
+
+tecnico_responsable = 'Elliot Alderson'
+estado_ticket = 'En progreso'
+print(estado_ticket)
+print(tecnico_responsable)
