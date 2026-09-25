@@ -257,3 +257,198 @@ tecnico_responsable = 'Elliot Alderson'
 estado_ticket = 'En progreso'
 print(estado_ticket)
 print(tecnico_responsable)
+
+
+# ============================================================
+# STRINGS
+# ============================================================
+
+
+# ------------------------------------------------------------
+# STR-01 - NORMALIZAR DATOS DE UN TICKET
+# ------------------------------------------------------------
+#
+# Un usuario ingresó los siguientes datos:
+#
+# titulo = "   ERROR DE CONEXIÓN CON SERVIDOR   "
+# solicitante = "   elliot alderson   "
+#
+# Realiza lo siguiente:
+#
+# 1. Elimina los espacios sobrantes de titulo.
+# 2. Convierte titulo completamente a minúsculas.
+# 3. Guarda el resultado en titulo_normalizado.
+#
+# 4. Elimina los espacios sobrantes de solicitante.
+# 5. Convierte solicitante a formato título.
+# 6. Guarda el resultado en solicitante_normalizado.
+#
+# 7. Imprime los valores originales y los normalizados.
+#
+# El objetivo es practicar:
+#
+# - strip()
+# - lower()
+# - title()
+# - inmutabilidad de los strings
+#
+# Tu código aquí:
+
+titulo = '   ERROR DE CONEXIÓN CON SERVIDOR   '
+solicitante = '   elliot alderson   '
+print(f'titulo original: {titulo}')
+titulo_normalizado = titulo.lower().strip()
+print(f'titulo normalizado: {titulo_normalizado}')
+
+print(f'solicitante original: {solicitante}')
+solicitante_normalizado = solicitante.title().strip()
+print(f'solicitante normalizado: {solicitante_normalizado}')
+
+# ------------------------------------------------------------
+# STR-02 - ANALIZAR UN CÓDIGO DE TICKET
+# ------------------------------------------------------------
+#
+# Tienes:
+#
+# codigo_ticket = "WD-2026-0042"
+#
+# Utilizando índices, slicing y métodos de strings:
+#
+# 1. Obtén el prefijo "WD".
+# 2. Obtén el año "2026".
+# 3. Obtén el número "0042".
+# 4. Comprueba si el código comienza con "WD".
+# 5. Comprueba si el número contiene únicamente dígitos.
+#
+# Guarda cada resultado en una variable descriptiva.
+#
+# Imprime todos los resultados.
+#
+# El objetivo es practicar:
+#
+# - índices
+# - slicing
+# - startswith()
+# - isdigit()
+#
+# Tu código aquí:
+
+codigo_ticket = "WD-2026-0042"
+
+# 1. Obtén el prefijo "WD" (índices 0 al 2, sin incluir el 2)
+prefijo = codigo_ticket[:2]
+
+# 2. Obtén el año "2026" (índices 3 al 7)
+anio = codigo_ticket[3:7]
+
+# 3. Obtén el número "0042" (índices 8 en adelante)
+numero = codigo_ticket[8:]
+
+# 4. Comprueba si el código comienza con "WD"
+empieza_con_wd = codigo_ticket.startswith("WD")
+
+# 5. Comprueba si el número contiene únicamente dígitos
+numero_es_digito = numero.isdigit()
+
+# Imprimir resultados
+print(f"Prefijo: {prefijo}")
+print(f"Año: {anio}")
+print(f"Número: {numero}")
+print(f"¿Comienza con 'WD'?: {empieza_con_wd}")
+print(f"¿El número es solo dígitos?: {numero_es_digito}")
+
+# ------------------------------------------------------------
+# STR-03 - DESAFÍO: PROCESAR INFORMACIÓN DE UN TICKET
+# ------------------------------------------------------------
+#
+# Tienes:
+#
+# codigo_ticket = "   WD-2026-0100   "
+# titulo = "   FaLLa DE RED EN SERVIDOR   "
+# descripcion = "El usuario reporta un ERROR de RED"
+# archivo = "captura_error.png"
+# tecnico = "   neo   "
+#
+# Utilizando únicamente conceptos estudiados hasta ahora:
+#
+# 1. Limpia codigo_ticket eliminando espacios sobrantes.
+#
+# 2. Normaliza titulo:
+#    - elimina espacios sobrantes
+#    - conviértelo a minúsculas
+#
+# 3. Normaliza tecnico:
+#    - elimina espacios sobrantes
+#    - utiliza title()
+#
+# 4. Comprueba si descripcion contiene la palabra "error"
+#    sin importar las mayúsculas o minúsculas.
+#
+# 5. Comprueba si archivo termina en ".png".
+#
+# 6. Utilizando slicing, extrae desde codigo_ticket:
+#
+#    prefijo
+#    anio
+#    numero
+#
+# 7. Construye una f-string con un resumen similar a:
+#
+# Ticket: WD-2026-0100
+# Técnico: Neo
+# Título: falla de red en servidor
+# Contiene error: True
+# Archivo PNG: True
+#
+# 8. Imprime el resumen.
+#
+# IMPORTANTE:
+#
+# No utilices todavía:
+#
+# - if
+# - for
+# - while
+# - funciones
+#
+# Tu código aquí:
+
+# ------------------------------------------------------------
+# STR-03 - DESAFÍO: PROCESAR INFORMACIÓN DE UN TICKET
+# ------------------------------------------------------------
+
+codigo_ticket = "   WD-2026-0100   "
+titulo = "   FaLLa DE RED EN SERVIDOR   "
+descripcion = "El usuario reporta un ERROR de RED"
+archivo = "captura_error.png"
+tecnico = "   neo   "
+
+# 1. Limpiar codigo_ticket
+codigo_ticket_limpio = codigo_ticket.strip()
+
+# 2. Normalizar titulo (eliminar espacios y convertir a minúsculas)
+titulo_normalizado = titulo.strip().lower()
+
+# 3. Normalizar tecnico (eliminar espacios y aplicar title)
+tecnico_normalizado = tecnico.strip().title()
+
+# 4. Comprobar si descripcion contiene "error" (convertimos a minúsculas para comparar)
+contiene_error = "error" in descripcion.lower()
+
+# 5. Comprobar si archivo termina en ".png"
+es_png = archivo.endswith(".png")
+
+# 6. Extraer partes de codigo_ticket usando slicing
+prefijo = codigo_ticket_limpio[:2]
+anio = codigo_ticket_limpio[3:7]
+numero = codigo_ticket_limpio[8:]
+
+# 7. Construir la f-string con el resumen
+resumen = f"""Ticket: {codigo_ticket_limpio}
+Técnico: {tecnico_normalizado}
+Título: {titulo_normalizado}
+Contiene error: {contiene_error}
+Archivo PNG: {es_png}"""
+
+# 8. Imprimir el resumen
+print(resumen)
