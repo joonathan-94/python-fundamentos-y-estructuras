@@ -1,208 +1,268 @@
-# ==============================================================================
-# 🐍 MASTERCLASS DE PYTHON: SENTENCIAS CONDICIONALES
-# 🎓 Instructor: Tu Sensei de Harvard, el Dios de la Programación.
-# 👨‍🎓 Estudiante: Mi futuro Desarrollador Web y Colega Ingeniero.
-# ==============================================================================
-
-"""
-LA TEORÍA SAGRADA:
-En Python, el flujo de ejecución se controla evaluando expresiones lógicas (True o False).
-Si la condición es verdadera (True), se ejecuta un bloque de código.
-Si es falsa (False), se salta ese bloque o se pasa a otra condición.
-
-⚠️ REGLA DE ORO DE PYTHON: La Indentación.
-Olvídate de las llaves { } de Java o PHP. En Python, los bloques de código se 
-agrupan mediante "sangría" (indentación), que generalmente son 4 espacios.
-Siempre después de declarar una condición (if, elif, else), debes poner dos puntos (:)
-y la siguiente línea debe estar indentada.
-"""
-
-print("--- INICIANDO MASTERCLASS DE CONDICIONALES ---\n")
-
-# ==============================================================================
-# 1. EL CONDICIONAL BÁSICO: if (Si ocurre esto...)
-# ==============================================================================
-print("1. EJEMPLO BÁSICO CON 'if'")
-# Imagina que estamos analizando la edad de un usuario en una base de datos.
-edad_usuario = 31
-
-if edad_usuario >= 18:
-    # Este código solo se ejecuta si la condición de arriba es True
-    print("✅ El usuario es mayor de edad. Puede acceder al sistema.")
-
-# El código que NO tiene indentación se ejecuta siempre, porque está fuera del 'if'.
-print("Continuando con el programa...\n")
+# ============================================================
+# SENTENCIAS CONDICIONALES EN PYTHON
+# ============================================================
+#
+# Las sentencias condicionales permiten ejecutar distintos
+# bloques de código dependiendo de si una condición se evalúa
+# como verdadera o falsa.
+#
+# Las principales estructuras son:
+#
+# if
+# if - else
+# if - elif - else
+#
+# Para construir condiciones utilizaremos conceptos ya
+# estudiados:
+#
+# - operadores de comparación
+# - operadores lógicos
+# - valores booleanos
+#
+# Estas estructuras serán fundamentales para implementar
+# validaciones, permisos, estados y reglas de negocio.
 
 
-# ==============================================================================
-# 2. EL CONDICIONAL DOBLE: if - else (Si ocurre esto, sino...)
-# ==============================================================================
-print("2. EJEMPLO CON 'if - else'")
-# Usemos algo de tu día a día: un ticket de soporte.
-estado_ticket = "Cerrado"
+# ------------------------------------------------------------
+# 1. INDENTACIÓN
+# ------------------------------------------------------------
 
-if estado_ticket == "Abierto":
-    print("🔴 El ticket necesita ser atendido por Soporte TI.")
+# Python utiliza indentación para identificar qué instrucciones
+# pertenecen a un bloque.
+#
+# Por convención se utilizan 4 espacios.
+#
+# Después de if, elif y else se utilizan dos puntos (:).
+
+usuario_activo = True
+
+if usuario_activo:
+    print("El usuario está activo.")
+
+print("El programa continúa.")
+
+
+# En este ejemplo:
+#
+# print("El usuario está activo.")
+#
+# pertenece al bloque del if porque está indentado.
+#
+# print("El programa continúa.")
+#
+# está fuera del bloque y se ejecutará independientemente
+# del resultado de la condición.
+
+
+# ------------------------------------------------------------
+# 2. CONDICIONAL if
+# ------------------------------------------------------------
+
+# if ejecuta un bloque únicamente cuando su condición
+# se evalúa como verdadera.
+
+estado_ticket = "Nuevo"
+
+if estado_ticket == "Nuevo":
+    print("El ticket debe ser revisado.")
+
+
+# Si la condición fuera falsa, simplemente se omitiría
+# el bloque indentado.
+
+
+# ------------------------------------------------------------
+# 3. if - else
+# ------------------------------------------------------------
+
+# else permite definir qué debe ocurrir cuando la condición
+# del if no se cumple.
+
+ticket_cerrado = False
+
+if ticket_cerrado:
+    print("El ticket está cerrado.")
 else:
-    # El 'else' atrapa cualquier cosa que no haya cumplido la condición del 'if'
-    print("🟢 El ticket ya no está abierto. Buen trabajo.")
-print() # Salto de línea por estética en consola
+    print("El ticket todavía está disponible.")
 
 
-# ==============================================================================
-# 3. EL CONDICIONAL MÚLTIPLE: if - elif - else (Si, o si, o si no...)
-# ==============================================================================
-print("3. EJEMPLO CON 'if - elif - else'")
-# 'elif' es la versión en Python de 'else if'. Puedes poner todos los que quieras.
-# Evaluemos la criticidad de un servidor usando un diccionario.
-servidor = {
-    "nombre": "SVR-BD-01",
-    "uso_cpu": 85.5
-}
+# Solo uno de los dos bloques será ejecutado.
 
-carga = servidor["uso_cpu"]
 
-if carga < 50.0:
-    print("El servidor está relajado. Sin problemas.")
-elif carga >= 50.0 and carga < 80.0:
-    print("El servidor está con carga moderada. Todo bajo control.")
-elif carga >= 80.0 and carga < 95.0:
-    print("⚠️ ALERTA: Uso de CPU alto en el servidor. Revisar procesos.")
+# ------------------------------------------------------------
+# 4. if - elif - else
+# ------------------------------------------------------------
+
+# elif permite comprobar condiciones adicionales.
+#
+# Python evalúa las condiciones de arriba hacia abajo.
+#
+# Cuando encuentra la primera condición verdadera,
+# ejecuta ese bloque y deja de evaluar los siguientes.
+
+prioridad = "Alta"
+
+if prioridad == "Crítica":
+    print("Atención inmediata.")
+elif prioridad == "Alta":
+    print("Atención prioritaria.")
+elif prioridad == "Media":
+    print("Atención normal.")
 else:
-    # Si ninguna de las anteriores se cumple (es decir, es 95.0 o mayor)
-    print("🔥 CRÍTICO: Servidor a punto de colapsar. ¡Llamen al ingeniero!")
-print()
+    print("Prioridad baja.")
 
 
-# ==============================================================================
-# 4. CONDICIONALES ANIDADOS (Un if dentro de otro if)
-# ==============================================================================
-print("4. EJEMPLO CON CONDICIONALES ANIDADOS")
-# A veces necesitas verificar una condición solo si otra ya se cumplió.
-# Evaluemos los permisos de un usuario usando Tuplas y Listas.
+# ------------------------------------------------------------
+# 5. COMPARACIONES DENTRO DE CONDICIONALES
+# ------------------------------------------------------------
 
-usuario_db = ["juan_perez", "admin_db", True] # [usuario, rol, cuenta_activa]
+tiempo_resolucion = 3.5
+tiempo_sla = 4.0
 
-if usuario_db[2] == True: # Si la cuenta está activa...
-    print("La cuenta está activa. Verificando permisos...")
-    
-    # Anidamos otro condicional adentro, fíjate en la doble indentación
-    if usuario_db[1] == "admin_db":
-        print("✅ Acceso total a la base de datos concedido.")
+if tiempo_resolucion <= tiempo_sla:
+    print("El ticket fue resuelto dentro del tiempo permitido.")
+else:
+    print("El ticket superó el tiempo permitido.")
+
+
+# Aquí utilizamos el operador <= estudiado anteriormente.
+
+
+# ------------------------------------------------------------
+# 6. OPERADORES LÓGICOS EN CONDICIONES
+# ------------------------------------------------------------
+
+usuario_autenticado = True
+es_tecnico = True
+ticket_cerrado = False
+
+if usuario_autenticado and es_tecnico and not ticket_cerrado:
+    print("El usuario puede gestionar el ticket.")
+else:
+    print("El usuario no puede gestionar el ticket.")
+
+
+# La condición anterior puede leerse como:
+#
+# usuario autenticado
+# Y
+# es técnico
+# Y
+# el ticket NO está cerrado
+
+
+# ------------------------------------------------------------
+# 7. USAR or DENTRO DE UNA CONDICIÓN
+# ------------------------------------------------------------
+
+es_tecnico = False
+es_supervisor = True
+
+if es_tecnico or es_supervisor:
+    print("El usuario tiene permisos de gestión.")
+else:
+    print("El usuario no tiene permisos de gestión.")
+
+
+# Basta con que una de las dos condiciones sea verdadera.
+
+
+# ------------------------------------------------------------
+# 8. CONDICIONALES ANIDADOS
+# ------------------------------------------------------------
+
+# Un condicional puede contener otro condicional.
+#
+# Esto puede ser útil cuando una segunda comprobación
+# solo tiene sentido después de cumplir la primera.
+
+usuario_activo = True
+rol_usuario = "Técnico"
+
+if usuario_activo:
+    print("Usuario activo.")
+
+    if rol_usuario == "Técnico":
+        print("Acceso al área técnica permitido.")
     else:
-        print("❌ Acceso denegado. Se requieren permisos de administrador.")
+        print("El usuario no pertenece al área técnica.")
 else:
-    print("❌ La cuenta está bloqueada. Contacte a Soporte.")
-print()
+    print("Usuario inactivo.")
 
 
-# ==============================================================================
-# 5. CONDICIONALES CON COLECCIONES (Listas, Sets) y Operador 'in'
-# ==============================================================================
-print("5. EJEMPLO CON SETS Y EL OPERADOR 'in'")
-# El operador 'in' es mágico en Python, verifica si un elemento existe en una colección.
-tecnologias_requeridas = {"python", "sql", "html", "css"}
-mis_conocimientos = ["java", "sql", "excel", "python"]
-
-# ¿Conozco Python?
-if "python" in mis_conocimientos:
-    print("¡Genial! Tienes la base principal para este proyecto.")
-
-# Verificando múltiples condiciones lógicas
-if "python" in mis_conocimientos and "sql" in mis_conocimientos:
-    print("Tienes un perfil excelente para el backend o análisis de datos.")
-print()
+# La segunda condición solamente se evalúa si usuario_activo
+# es verdadero.
 
 
-# ==============================================================================
-# 6. OPERADOR TERNARIO (Condicional en una sola línea)
-# ==============================================================================
-print("6. EJEMPLO DE OPERADOR TERNARIO")
-# Es una forma elegante de asignar un valor a una variable dependiendo de una condición.
-# Sintaxis: [valor_si_verdadero] if [condicion] else [valor_si_falso]
+# ------------------------------------------------------------
+# 9. EVITAR COMPARACIONES INNECESARIAS CON True Y False
+# ------------------------------------------------------------
 
-experiencia_anios = 3
-# Asignamos el nivel de desarrollador en una sola línea
-nivel_dev = "Semi-Senior" if experiencia_anios >= 3 else "Junior"
-
-print(f"Con {experiencia_anios} años de experiencia, eres clasificado como: {nivel_dev}")
-print()
+cuenta_activa = True
 
 
-# ==============================================================================
-# 7. MATCH - CASE (El Switch de Python) - ¡Novedad desde Python 3.10!
-# ==============================================================================
-print("7. EJEMPLO DE MATCH - CASE")
-# Como vienes de Java y PHP, conoces el "switch-case". 
-# Python no lo tenía, pero lo agregó en la versión 3.10 como "match-case".
-
-codigo_http = 404
-
-match codigo_http:
-    case 200:
-        print("200: OK - Petición exitosa.")
-    case 404:
-        print("404: Not Found - El recurso web no existe (típico error).")
-    case 500:
-        print("500: Internal Server Error - El servidor de backend falló.")
-    case _: 
-        # El guión bajo '_' es el equivalente a 'default' en Java/PHP
-        print("Código HTTP desconocido.")
+# Aunque esto funciona:
+#
+# if cuenta_activa == True:
+#     print("Cuenta activa")
 
 
-# ==============================================================================
-# 🏋️ EJERCICIOS PARA EL PADAWAN (TU TAREA)
-# ==============================================================================
-"""
-INSTRUCCIONES:
-Aquí te dejo 3 ejercicios básicos usando SOLO lo que hemos aprendido.
-Descomenta las variables y escribe la lógica condicional debajo de cada uno.
+# Normalmente es más claro escribir:
+
+if cuenta_activa:
+    print("Cuenta activa.")
 
 
---- EJERCICIO 1: Validador de Contraseñas ---
-Tienes un diccionario con los datos de un usuario. Crea un condicional que 
-verifique lo siguiente:
-1. Si el largo del password es menor a 8 caracteres (usa la función len()), 
-   imprime "Contraseña insegura".
-2. Si tiene 8 o más, imprime "Contraseña válida".
-"""
+# Para comprobar el caso contrario podemos utilizar not:
 
-print('Ejercicio nro 1')
+cuenta_bloqueada = False
 
-usuario = {"username": "admin", "password": "mipassword123"}
-# ESCRIBE TU CÓDIGO AQUÍ ABAJO:
+if not cuenta_bloqueada:
+    print("La cuenta no está bloqueada.")
 
-if len(usuario["password"]) < 8:
-    print('Contraseña insegura')
+
+# ------------------------------------------------------------
+# 10. ORDEN DE LAS CONDICIONES
+# ------------------------------------------------------------
+
+# El orden de if y elif importa.
+#
+# Debemos comprobar primero los casos más específicos
+# cuando una condición puede incluir a otra.
+
+tiempo_respuesta = 15
+
+if tiempo_respuesta <= 15:
+    print("Respuesta excelente.")
+elif tiempo_respuesta <= 30:
+    print("Respuesta aceptable.")
 else:
-    print('Contraseña valida')
+    print("Respuesta lenta.")
 
 
-
-"""
---- EJERCICIO 2: Descuento en E-commerce ---
-Tienes el total de una compra en una variable.
-1. Si el total es mayor a $100.000, aplica un 15% de descuento al total e imprime 
-   el monto final a pagar.
-2. Si está entre $50.000 y $100.000 (inclusive), aplica un 5% de descuento.
-3. Si es menor a $50.000, no hay descuento, imprime el mismo monto.
-(Tip: Recuerda que puedes usar operadores aritméticos como * y -)
-"""
-total_carrito = 85000
-# ESCRIBE TU CÓDIGO AQUÍ ABAJO:
+# Si tiempo_respuesta vale 15, Python entra en el primer bloque
+# y ya no evalúa los siguientes.
 
 
-
-"""
---- EJERCICIO 3: Clasificador de Hardware (Soporte TI) ---
-Tienes una lista de equipos reportados con fallas. Queremos verificar el estado
-del PRIMER equipo de la lista (índice 0).
-1. Si el equipo es "Impresora", imprime "Llamar al técnico de impresoras".
-2. Si el equipo es "Router", imprime "Escalar a equipo de Redes".
-3. Para cualquier otro equipo, imprime "Revisión estándar en Nivel 1".
-"""
-equipos_con_falla = ["Router", "Notebook", "Monitor", "Impresora"]
-# ESCRIBE TU CÓDIGO AQUÍ ABAJO:
-
-
-print("\n--- FIN DE LA MASTERCLASS ---")
+# ============================================================
+# IDEA PRINCIPAL
+# ============================================================
+#
+# if
+# → ejecuta código si una condición se cumple.
+#
+# else
+# → ejecuta una alternativa cuando el if no se cumple.
+#
+# elif
+# → permite evaluar condiciones adicionales.
+#
+# Python evalúa las condiciones en orden.
+#
+# Los bloques se definen mediante indentación.
+#
+# Los operadores de comparación y operadores lógicos permiten
+# construir condiciones más completas.
+#
+# Estos conceptos serán esenciales posteriormente para trabajar
+# con reglas de negocio, validaciones y estados de tickets.
