@@ -1,170 +1,1048 @@
-# ==============================================================================
-# CLASE MAGISTRAL: MÉTODOS DE SETS (CONJUNTOS) EN PYTHON
-# INSTRUCTOR: Tu Sensei de Programación
-# ALUMNO: Futuro Desarrollador Web y Colega Ingeniero
-# ==============================================================================
-
-# Un 'set' (conjunto) en Python es una colección DESORDENADA de elementos ÚNICOS.
-# A diferencia de las listas o tuplas, los sets no tienen índice (no puedes hacer mi_set[0])
-# y NO permiten elementos duplicados. Son perfectos para limpiar datos.
-
-print("--- INICIANDO LA LECCIÓN DE SETS ---\n")
-
-# 1. CREACIÓN DE SETS
-# ------------------------------------------------------------------------------
-# Se crean usando llaves {} (como los diccionarios, pero sin los dos puntos ':')
-# o usando la función set() si partimos desde una lista o tupla.
-
-tecnologias_web = {"html", "css", "javascript", "python"}
-print("Set original:", tecnologias_web)
-
-# Si intentamos crear un set con duplicados, Python los elimina mágicamente:
-etiquetas_duplicadas = ["frontend", "backend", "frontend", "api", "api"]
-etiquetas_unicas = set(etiquetas_duplicadas)
-print("Lista convertida a Set (adiós duplicados):", etiquetas_unicas)
-print("-" * 50)
-
-
-# ==============================================================================
-# 2. MÉTODOS PARA AGREGAR Y ELIMINAR ELEMENTOS
-# ==============================================================================
-
-mi_perfil = {"html", "css"}
-
-# add(elemento): Agrega un solo elemento al set.
-mi_perfil.add("python")
-print("Después de add('python'):", mi_perfil)
-
-# update(iterable): Agrega múltiples elementos (puedes pasarle una lista, tupla u otro set)
-mi_perfil.update(["git", "github", "sql"])
-print("Después de update(['git', 'github', 'sql']):", mi_perfil)
-
-# remove(elemento): Elimina un elemento específico. 
-# ¡OJO! Si el elemento no existe, el programa arrojará un ERROR (KeyError).
-mi_perfil.remove("css")
-print("Después de remove('css'):", mi_perfil)
-
-# discard(elemento): Elimina un elemento, pero a diferencia de remove(), 
-# si el elemento NO existe, NO hace nada (no rompe tu programa). ¡Muy seguro!
-mi_perfil.discard("java") # No está, pero no da error.
-print("Después de discard('java'):", mi_perfil)
-
-# pop(): Elimina y devuelve un elemento "aleatorio" (recuerda que no hay orden).
-# Útil si solo necesitas vaciar el set elemento por elemento sin importar cuál.
-elemento_eliminado = mi_perfil.pop()
-print("Elemento eliminado con pop():", elemento_eliminado)
-print("Set actual:", mi_perfil)
-
-# clear(): Vacía el set por completo.
-mi_perfil.clear()
-print("Después de clear() (Set vacío):", mi_perfil)
-print("-" * 50)
+# ============================================================
+# SETS EN PYTHON
+# ============================================================
+#
+# Un set (conjunto) es una colección que almacena elementos
+# ÚNICOS.
+#
+# Sus características principales son:
+#
+# - no permite elementos duplicados;
+# - no mantiene posiciones;
+# - no soporta índices;
+# - no soporta slicing;
+# - es mutable;
+# - sus elementos deben ser hashables.
+#
+# Un set es especialmente útil cuando nos importa:
+#
+# - saber si un elemento existe;
+# - eliminar duplicados;
+# - comparar grupos de elementos;
+# - encontrar elementos comunes;
+# - encontrar elementos faltantes;
+# - trabajar con permisos, etiquetas, IDs o categorías.
+#
+# Los sets aparecen con frecuencia en:
+#
+# - backend;
+# - integraciones entre sistemas;
+# - validaciones;
+# - procesamiento de datos;
+# - análisis de datos;
+# - automatizaciones.
+#
+# No debemos pensar en un set como una "lista diferente".
+#
+# Una lista representa normalmente una SECUENCIA.
+# Un set representa normalmente un CONJUNTO de elementos únicos.
 
 
-# ==============================================================================
-# 3. MÉTODOS MATEMÁTICOS (LA MAGIA DE LAS BASES DE DATOS)
-# ==============================================================================
-# Colega, si sabes de bases de datos, esto es pan comido para ti.
-# Piensa en los diagramas de Venn o en las sentencias JOIN de SQL.
+# ------------------------------------------------------------
+# 1. CREACIÓN DE UN SET
+# ------------------------------------------------------------
 
-backend_dev = {"python", "sql", "git", "linux"}
-frontend_dev = {"html", "css", "javascript", "git"}
+tipos_pokemon = {
+    "Agua",
+    "Fuego",
+    "Planta"
+}
 
-# union() o el operador | : Une ambos sets (equivalente a un FULL OUTER JOIN o UNION en SQL)
-# Trae todo de ambos, sin repetir los que tienen en común.
-full_stack = backend_dev.union(frontend_dev)
-# También se puede escribir: full_stack = backend_dev | frontend_dev
-print("UNION (Todos los conocimientos combinados):", full_stack)
-
-# intersection() o el operador & : Encuentra los elementos que están en AMBOS sets.
-# (Equivalente a un INNER JOIN en SQL).
-herramientas_comunes = backend_dev.intersection(frontend_dev)
-# También se puede escribir: herramientas_comunes = backend_dev & frontend_dev
-print("INTERSECTION (Lo que ambos perfiles comparten):", herramientas_comunes)
-
-# difference() o el operador - : Elementos que están en el primero pero NO en el segundo.
-# (Equivalente a un LEFT JOIN donde B es NULL).
-solo_backend = backend_dev.difference(frontend_dev)
-# También se puede escribir: solo_backend = backend_dev - frontend_dev
-print("DIFFERENCE (Solo de Backend, no de Frontend):", solo_backend)
-
-# symmetric_difference() o el operador ^ : Elementos exclusivos de cada set.
-# Es decir, la unión de ambos MENOS su intersección (lo opuesto a intersection).
-exclusivos = backend_dev.symmetric_difference(frontend_dev)
-# También se puede escribir: exclusivos = backend_dev ^ frontend_dev
-print("SYMMETRIC DIFFERENCE (Habilidades que no comparten):", exclusivos)
-print("-" * 50)
+print(tipos_pokemon)
+print(type(tipos_pokemon))
 
 
-# ==============================================================================
-# 4. MÉTODOS DE COMPROBACIÓN (Devuelven True o False / Operadores lógicos)
-# ==============================================================================
-
-habilidades_requeridas = {"python", "sql"}
-candidato_actual = {"python", "sql", "git", "html"}
-
-# issubset() o operador <= : ¿Están TODOS los elementos del set A dentro del set B?
-cumple_requisitos = habilidades_requeridas.issubset(candidato_actual)
-print("¿Las habilidades requeridas son un subconjunto del candidato? (¿Cumple?):", cumple_requisitos)
-
-# issuperset() o operador >= : Al revés, ¿El set A contiene TODOS los elementos del set B?
-candidato_es_superset = candidato_actual.issuperset(habilidades_requeridas)
-print("¿El candidato es superset de los requisitos?:", candidato_es_superset)
-
-# isdisjoint() : ¿Son conjuntos totalmente distintos? (True si NO comparten NINGÚN elemento)
-disenador_grafico = {"photoshop", "illustrator"}
-print("¿El candidato actual no tiene nada en común con el diseñador?:", candidato_actual.isdisjoint(disenador_grafico))
-print("-" * 50)
+# El orden en que se muestran los elementos no debe utilizarse
+# como parte de nuestra lógica.
+#
+# Un set no mantiene posiciones.
 
 
-# ==============================================================================
-# 5. EJERCICIOS PROPUESTOS PARA EL ALUMNO (Nivel: Bases Sólidas)
-# ==============================================================================
-# INSTRUCCIONES: Resuelve esto en tu archivo sin usar if/else ni bucles (for/while), 
-# ya que aún no llegamos ahí. Solo usa variables, tipos de datos, diccionarios, 
-# listas, tuplas, y los métodos de sets que acabamos de ver.
+# ------------------------------------------------------------
+# 2. SET VACÍO
+# ------------------------------------------------------------
 
-print("--- ÁREA DE EJERCICIOS ---")
-print("Imprime los resultados de tus ejercicios aquí abajo.\n")
+# Para crear un set vacío debemos utilizar set().
 
-# EJERCICIO 1: Limpieza de Base de Datos (Deduplicación)
-# Imagina que extrajiste categorías de una base de datos antigua y vienen duplicadas en una lista.
-# Tu misión: Convertir esta lista a un set para eliminar duplicados, y luego crear un 
-# diccionario donde la clave sea "categorias_limpias" y el valor sea el set resultante.
-# Imprime el diccionario.
-datos_crudos = ["electronica", "hogar", "electronica", "jardineria", "hogar", "tecnologia"]
-# TU CÓDIGO AQUÍ:
+permisos_usuario = set()
+
+print(permisos_usuario)
+print(type(permisos_usuario))
 
 
+# IMPORTANTE:
+#
+# {}
+#
+# NO crea un set vacío.
+#
+# Crea un diccionario vacío.
 
-# EJERCICIO 2: Permisos de Usuarios en Aplicación Web
-# Tienes los permisos de un usuario estándar y los permisos que requiere un panel de administración.
-# Utiliza el método adecuado para imprimir un boolean (True/False) que indique si 
-# los permisos_usuario NO TIENEN NINGÚN elemento en común con permisos_admin.
-permisos_usuario = {"leer_posts", "comentar"}
-permisos_admin = {"borrar_usuarios", "editar_roles", "configurar_sistema"}
-# TU CÓDIGO AQUÍ:
+estructura_vacia = {}
 
-
-
-# EJERCICIO 3: Análisis de carritos de compras (Intersección y Diferencia)
-# Tienes dos clientes. Muestra en pantalla:
-# a) Los productos que ambos compraron (intersección).
-# b) Los productos que compró el cliente 1 pero NO el cliente 2 (diferencia).
-cliente_1 = {"notebook", "mouse", "teclado_mecanico", "monitor"}
-cliente_2 = {"monitor", "mouse", "audifonos", "escritorio"}
-# TU CÓDIGO AQUÍ:
+print(type(estructura_vacia))
 
 
+# ------------------------------------------------------------
+# 3. ELEMENTOS ÚNICOS
+# ------------------------------------------------------------
 
-# EJERCICIO 4: Actualización de perfil
-# Tienes un set vacío llamado 'mis_conocimientos'.
-# Agrega "python" con el método para un solo elemento.
-# Luego agrega "git", "github", "sql" con el método para múltiples elementos.
-# Finalmente, intenta remover "java" usando el método seguro (el que no da error si no existe).
-# Imprime el set final.
-mis_conocimientos = set()
-# TU CÓDIGO AQUÍ:
+# Los sets eliminan automáticamente los valores duplicados.
+
+categorias_importadas = {
+    "hardware",
+    "software",
+    "hardware",
+    "redes",
+    "software"
+}
+
+print(categorias_importadas)
 
 
-print("--- FIN DEL SCRIPT ---")
+# El resultado contiene únicamente:
+#
+# hardware
+# software
+# redes
+#
+# sin importar cuántas veces aparecían originalmente.
+
+
+# ------------------------------------------------------------
+# 4. ELIMINAR DUPLICADOS DE OTRA COLECCIÓN
+# ------------------------------------------------------------
+
+# Uno de los usos más frecuentes de set() consiste en
+# eliminar valores repetidos.
+
+etiquetas_importadas = [
+    "python",
+    "backend",
+    "api",
+    "python",
+    "backend",
+    "postgresql"
+]
+
+etiquetas_unicas = set(etiquetas_importadas)
+
+print(etiquetas_unicas)
+
+
+# Esto puede ser útil, por ejemplo, después de:
+#
+# - importar datos desde un CSV;
+# - procesar resultados de una API;
+# - recibir identificadores repetidos;
+# - limpiar categorías duplicadas.
+#
+# IMPORTANTE:
+#
+# Al convertir una lista en set dejamos de trabajar con
+# posiciones y orden.
+#
+# Por eso no debemos utilizar este procedimiento si necesitamos
+# conservar el orden original de los elementos.
+
+
+# ------------------------------------------------------------
+# 5. NO EXISTEN ÍNDICES
+# ------------------------------------------------------------
+
+modelos_clasicos = {
+    "Corvette Stingray",
+    "Camaro 1967",
+    "Chevrolet Bel Air"
+}
+
+
+# Esto NO es válido:
+#
+# modelos_clasicos[0]
+#
+# Los sets no permiten acceder a elementos mediante posiciones.
+
+
+# Tampoco podemos hacer:
+#
+# modelos_clasicos[0:2]
+#
+# porque los sets no soportan slicing.
+
+
+# ------------------------------------------------------------
+# 6. len()
+# ------------------------------------------------------------
+
+# len() devuelve la cantidad de elementos únicos.
+
+periodos_dinosaurios = {
+    "Triásico",
+    "Jurásico",
+    "Cretácico"
+}
+
+cantidad_periodos = len(periodos_dinosaurios)
+
+print("Cantidad:", cantidad_periodos)
+
+
+# ------------------------------------------------------------
+# 7. in Y not in
+# ------------------------------------------------------------
+
+# Una de las grandes utilidades de los sets es comprobar
+# pertenencia.
+
+roles_permitidos = {
+    "Técnico",
+    "Supervisor",
+    "Administrador"
+}
+
+es_rol_valido = "Supervisor" in roles_permitidos
+es_rol_inexistente = "Invitado" in roles_permitidos
+
+print(es_rol_valido)
+print(es_rol_inexistente)
+
+
+# También podemos comprobar ausencia.
+
+sin_rol_auditor = "Auditor" not in roles_permitidos
+
+print(sin_rol_auditor)
+
+
+# Cuando necesitamos realizar comprobaciones de pertenencia
+# repetidamente, un set suele ser una estructura especialmente
+# apropiada.
+
+
+# ------------------------------------------------------------
+# 8. add()
+# ------------------------------------------------------------
+
+# add() agrega UN elemento al set.
+
+estados_habilitados = {
+    "Nuevo",
+    "Asignado"
+}
+
+estados_habilitados.add("En progreso")
+
+print(estados_habilitados)
+
+
+# Si intentamos agregar un elemento que ya existe:
+
+estados_habilitados.add("Nuevo")
+
+
+# no se crea un duplicado.
+
+print(estados_habilitados)
+
+
+# ------------------------------------------------------------
+# 9. update()
+# ------------------------------------------------------------
+
+# update() incorpora múltiples elementos provenientes
+# de otro iterable.
+
+tecnologias_backend = {
+    "Python",
+    "Flask"
+}
+
+tecnologias_adicionales = [
+    "PostgreSQL",
+    "Git",
+    "Docker"
+]
+
+tecnologias_backend.update(tecnologias_adicionales)
+
+print(tecnologias_backend)
+
+
+# A diferencia de add():
+#
+# add()
+# → agrega un elemento.
+#
+# update()
+# → agrega varios elementos provenientes de un iterable.
+
+
+# ------------------------------------------------------------
+# 10. remove()
+# ------------------------------------------------------------
+
+# remove(valor) elimina un elemento.
+
+permisos_tecnico = {
+    "ver_ticket",
+    "editar_ticket",
+    "cerrar_ticket"
+}
+
+permisos_tecnico.remove("cerrar_ticket")
+
+print(permisos_tecnico)
+
+
+# Si intentamos eliminar un valor inexistente:
+#
+# permisos_tecnico.remove("eliminar_ticket")
+#
+# Python produce:
+#
+# KeyError
+
+
+# ------------------------------------------------------------
+# 11. discard()
+# ------------------------------------------------------------
+
+# discard() también elimina un elemento.
+#
+# La diferencia importante es que NO produce KeyError
+# si el elemento no existe.
+
+permisos_supervisor = {
+    "ver_ticket",
+    "editar_ticket",
+    "asignar_ticket"
+}
+
+permisos_supervisor.discard("eliminar_ticket")
+
+print(permisos_supervisor)
+
+
+# No ocurrió ningún error aunque "eliminar_ticket"
+# no existía.
+
+
+# ------------------------------------------------------------
+# 12. remove() VS discard()
+# ------------------------------------------------------------
+
+# remove()
+#
+# Utilízalo cuando consideras que el elemento DEBERÍA existir.
+#
+# Si no existe, recibir un KeyError puede revelar un problema
+# en nuestros datos o en nuestra lógica.
+
+
+# discard()
+#
+# Utilízalo cuando es aceptable que el elemento pueda no existir
+# y simplemente queremos asegurarnos de que ya no esté presente.
+
+
+# No debemos pensar:
+#
+# "discard() es mejor porque no da error".
+#
+# La elección depende de qué comportamiento esperamos.
+
+
+# ------------------------------------------------------------
+# 13. pop()
+# ------------------------------------------------------------
+
+# pop() elimina y devuelve UN elemento arbitrario.
+
+cola_temporal = {
+    "JOB-001",
+    "JOB-002",
+    "JOB-003"
+}
+
+trabajo_extraido = cola_temporal.pop()
+
+print("Extraído:", trabajo_extraido)
+print("Restantes:", cola_temporal)
+
+
+# IMPORTANTE:
+#
+# No debemos decir que pop() selecciona un elemento "aleatorio".
+#
+# La documentación habla de un elemento arbitrario.
+#
+# Tampoco debemos depender de cuál elemento será eliminado.
+
+
+# ------------------------------------------------------------
+# 14. clear()
+# ------------------------------------------------------------
+
+# clear() elimina todos los elementos.
+
+cache_ids = {
+    "USR-001",
+    "USR-002",
+    "USR-003"
+}
+
+cache_ids.clear()
+
+print(cache_ids)
+
+
+# Resultado:
+#
+# set()
+
+
+# ------------------------------------------------------------
+# 15. RECORRER UN SET CON for
+# ------------------------------------------------------------
+
+especies_jurassic_park = {
+    "Tyrannosaurus rex",
+    "Velociraptor",
+    "Triceratops"
+}
+
+for especie in especies_jurassic_park:
+    print(especie)
+
+
+# Podemos recorrer los elementos normalmente.
+#
+# Lo que NO debemos hacer es depender del orden de recorrido.
+
+
+# ============================================================
+# OPERACIONES ENTRE CONJUNTOS
+# ============================================================
+#
+# Esta es una de las características más importantes de set.
+#
+# Podemos comparar colecciones y responder preguntas como:
+#
+# ¿Qué elementos aparecen en ambos sistemas?
+#
+# ¿Qué elementos faltan?
+#
+# ¿Qué elementos existen solo en un sistema?
+#
+# ¿Qué elementos existen en cualquiera de los dos?
+#
+# Estas operaciones son especialmente útiles en:
+#
+# - integraciones;
+# - sincronización de sistemas;
+# - análisis de permisos;
+# - comparación de datos;
+# - inventarios;
+# - procesamiento de IDs.
+
+
+# ------------------------------------------------------------
+# 16. UNION
+# ------------------------------------------------------------
+
+# La unión contiene todos los elementos presentes
+# en cualquiera de los dos sets, sin duplicados.
+
+habilidades_backend = {
+    "Python",
+    "SQL",
+    "Git"
+}
+
+habilidades_automatizacion = {
+    "Python",
+    "Git",
+    "PowerShell"
+}
+
+todas_habilidades = habilidades_backend.union(
+    habilidades_automatizacion
+)
+
+print(todas_habilidades)
+
+
+# También existe el operador:
+
+todas_habilidades_operador = (
+    habilidades_backend
+    | habilidades_automatizacion
+)
+
+print(todas_habilidades_operador)
+
+
+# Los sets originales no son modificados por union().
+
+
+# ------------------------------------------------------------
+# 17. INTERSECTION
+# ------------------------------------------------------------
+
+# La intersección devuelve únicamente los elementos
+# presentes en AMBOS sets.
+
+herramientas_comunes = habilidades_backend.intersection(
+    habilidades_automatizacion
+)
+
+print(herramientas_comunes)
+
+
+# Resultado conceptual:
+#
+# Python
+# Git
+
+
+# También podemos utilizar:
+
+herramientas_comunes_operador = (
+    habilidades_backend
+    & habilidades_automatizacion
+)
+
+print(herramientas_comunes_operador)
+
+
+# ------------------------------------------------------------
+# 18. DIFFERENCE
+# ------------------------------------------------------------
+
+# difference() devuelve los elementos presentes en el primer
+# set pero NO presentes en el segundo.
+
+solo_backend = habilidades_backend.difference(
+    habilidades_automatizacion
+)
+
+print(solo_backend)
+
+
+# También podemos utilizar:
+
+solo_backend_operador = (
+    habilidades_backend
+    - habilidades_automatizacion
+)
+
+print(solo_backend_operador)
+
+
+# IMPORTANTE:
+#
+# La dirección importa.
+#
+# A - B
+#
+# no necesariamente produce lo mismo que:
+#
+# B - A
+
+
+# ------------------------------------------------------------
+# 19. SYMMETRIC DIFFERENCE
+# ------------------------------------------------------------
+
+# La diferencia simétrica devuelve los elementos que aparecen
+# en uno u otro set, pero NO en ambos.
+
+habilidades_exclusivas = (
+    habilidades_backend.symmetric_difference(
+        habilidades_automatizacion
+    )
+)
+
+print(habilidades_exclusivas)
+
+
+# También podemos utilizar:
+
+habilidades_exclusivas_operador = (
+    habilidades_backend
+    ^ habilidades_automatizacion
+)
+
+print(habilidades_exclusivas_operador)
+
+
+# ------------------------------------------------------------
+# 20. EJEMPLO REAL: COMPARAR DOS SISTEMAS
+# ------------------------------------------------------------
+
+# Imaginemos una integración entre un ERP y un WMS.
+#
+# Ambos sistemas deberían compartir determinados IDs de órdenes.
+
+ordenes_erp = {
+    "ORD-1001",
+    "ORD-1002",
+    "ORD-1003",
+    "ORD-1004"
+}
+
+ordenes_wms = {
+    "ORD-1001",
+    "ORD-1003",
+    "ORD-1004",
+    "ORD-1005"
+}
+
+
+# Órdenes presentes en ambos sistemas.
+
+ordenes_sincronizadas = ordenes_erp & ordenes_wms
+
+
+# Órdenes presentes en ERP pero ausentes en WMS.
+
+faltantes_en_wms = ordenes_erp - ordenes_wms
+
+
+# Órdenes presentes en WMS pero ausentes en ERP.
+
+faltantes_en_erp = ordenes_wms - ordenes_erp
+
+
+print("Sincronizadas:", ordenes_sincronizadas)
+print("Faltan en WMS:", faltantes_en_wms)
+print("Faltan en ERP:", faltantes_en_erp)
+
+
+# Este es un caso realista donde un set resulta especialmente
+# útil.
+#
+# No necesitamos posiciones.
+#
+# Necesitamos comparar IDs y determinar:
+#
+# - coincidencias;
+# - faltantes;
+# - diferencias.
+
+
+# ------------------------------------------------------------
+# 21. issubset()
+# ------------------------------------------------------------
+
+# issubset() permite comprobar si TODOS los elementos
+# de un set están contenidos dentro de otro.
+
+permisos_requeridos = {
+    "ver_ticket",
+    "editar_ticket"
+}
+
+permisos_actuales = {
+    "ver_ticket",
+    "editar_ticket",
+    "asignar_ticket",
+    "cerrar_ticket"
+}
+
+cumple_permisos = permisos_requeridos.issubset(
+    permisos_actuales
+)
+
+print(cumple_permisos)
+
+
+# Podemos interpretarlo como:
+#
+# ¿Todos los permisos requeridos están dentro de
+# los permisos actuales?
+
+
+# ------------------------------------------------------------
+# 22. issuperset()
+# ------------------------------------------------------------
+
+# issuperset() realiza la comprobación desde la perspectiva
+# contraria.
+
+contiene_requisitos = permisos_actuales.issuperset(
+    permisos_requeridos
+)
+
+print(contiene_requisitos)
+
+
+# Aquí preguntamos:
+#
+# ¿permisos_actuales contiene TODOS los permisos requeridos?
+
+
+# ------------------------------------------------------------
+# 23. isdisjoint()
+# ------------------------------------------------------------
+
+# isdisjoint() devuelve True cuando los sets NO comparten
+# ningún elemento.
+
+roles_finanzas = {
+    "contador",
+    "analista_financiero"
+}
+
+roles_infraestructura = {
+    "administrador_red",
+    "administrador_servidores"
+}
+
+sin_roles_comunes = roles_finanzas.isdisjoint(
+    roles_infraestructura
+)
+
+print(sin_roles_comunes)
+
+
+# True significa que no existe ningún elemento compartido.
+
+
+# ------------------------------------------------------------
+# 24. LOS ELEMENTOS DEBEN SER HASHABLES
+# ------------------------------------------------------------
+
+# Los elementos almacenados directamente dentro de un set
+# deben ser hashables.
+#
+# Valores habituales que podemos almacenar:
+#
+# strings
+# números
+# tuplas cuyos elementos también sean hashables
+
+
+identificadores = {
+    "USR-001",
+    "USR-002",
+    "USR-003"
+}
+
+coordenadas_egipto = {
+    (29.9792, 31.1342),
+    (25.7402, 32.6014)
+}
+
+print(identificadores)
+print(coordenadas_egipto)
+
+
+# Una lista NO puede ser elemento de un set:
+#
+# ejemplo_invalido = {
+#     ["Pikachu", "Charizard"]
+# }
+#
+# produciría:
+#
+# TypeError
+
+
+# Un diccionario tampoco puede almacenarse directamente
+# dentro de un set.
+
+
+# ------------------------------------------------------------
+# 25. SET VS LISTA
+# ------------------------------------------------------------
+
+# LISTA
+#
+# Tiene sentido cuando:
+#
+# - importa el orden;
+# - necesitamos posiciones;
+# - queremos índices;
+# - queremos slicing;
+# - permitimos duplicados;
+# - queremos representar una secuencia.
+
+
+cola_tickets = [
+    "WD-1001",
+    "WD-1002",
+    "WD-1003"
+]
+
+
+# En esta situación el orden puede importar:
+#
+# primero WD-1001,
+# después WD-1002,
+# después WD-1003.
+
+
+# SET
+#
+# Tiene sentido cuando:
+#
+# - no necesitamos posiciones;
+# - queremos elementos únicos;
+# - comprobamos pertenencia;
+# - queremos comparar grupos;
+# - necesitamos encontrar diferencias.
+
+
+ids_usuarios_activos = {
+    "USR-001",
+    "USR-002",
+    "USR-003"
+}
+
+
+# Aquí lo importante es saber qué usuarios pertenecen
+# al conjunto, no cuál ocupa la posición 0.
+
+
+# ------------------------------------------------------------
+# 26. SET VS TUPLA
+# ------------------------------------------------------------
+
+# TUPLA
+#
+# Es una secuencia ordenada e inmutable.
+#
+# Tiene posiciones y permite índices.
+
+coordenada_piramide = (
+    29.9792,
+    31.1342
+)
+
+
+# SET
+#
+# No representa posiciones.
+# Representa pertenencia a un conjunto.
+
+sitios_egipcios = {
+    "Giza",
+    "Luxor",
+    "Karnak"
+}
+
+
+# ------------------------------------------------------------
+# 27. SET VS DICCIONARIO
+# ------------------------------------------------------------
+
+# DICCIONARIO
+#
+# Relaciona claves con valores.
+
+corvette_1963 = {
+    "modelo": "Corvette Stingray",
+    "anio": 1963,
+    "motor": "V8"
+}
+
+
+# SET
+#
+# Solamente representa elementos únicos.
+
+autos_coleccion = {
+    "Corvette Stingray",
+    "Camaro 1967",
+    "Chevrolet Bel Air"
+}
+
+
+# Si necesitamos algo como:
+#
+# "modelo" -> "Corvette Stingray"
+# "anio"   -> 1963
+#
+# necesitamos un diccionario.
+#
+# Si únicamente necesitamos saber qué modelos pertenecen
+# a una colección, un set puede ser más apropiado.
+
+
+# ------------------------------------------------------------
+# 28. TABLA MENTAL PARA ELEGIR COLECCIÓN
+# ------------------------------------------------------------
+#
+# LISTA
+# ------------------------------------------------------------
+# "Necesito una secuencia que pueda modificar."
+#
+# Orden:          sí
+# Índices:        sí
+# Duplicados:     sí
+# Mutable:        sí
+#
+#
+# TUPLA
+# ------------------------------------------------------------
+# "Necesito una secuencia estable."
+#
+# Orden:          sí
+# Índices:        sí
+# Duplicados:     sí
+# Mutable:        no
+#
+#
+# DICCIONARIO
+# ------------------------------------------------------------
+# "Necesito relacionar claves con valores."
+#
+# Clave -> valor
+# Mutable:        sí
+# Claves únicas:  sí
+#
+#
+# SET
+# ------------------------------------------------------------
+# "Necesito elementos únicos y trabajar con pertenencia
+# o comparación de conjuntos."
+#
+# Posiciones:     no
+# Índices:        no
+# Duplicados:     no
+# Mutable:        sí
+
+
+# ------------------------------------------------------------
+# 29. FROZENSET - REFERENCIA
+# ------------------------------------------------------------
+
+# Python también dispone de frozenset.
+#
+# Conceptualmente es un conjunto inmutable.
+
+tipos_permitidos = frozenset({
+    "hardware",
+    "software",
+    "redes"
+})
+
+print(tipos_permitidos)
+
+
+# No podemos hacer:
+#
+# tipos_permitidos.add("seguridad")
+#
+# porque un frozenset no puede modificarse.
+#
+# Por ahora basta con saber que existe.
+#
+# Trabajaremos con él en profundidad solamente si aparece
+# una necesidad real durante proyectos futuros.
+
+
+# ============================================================
+# CUÁNDO UTILIZAR UN SET
+# ============================================================
+#
+# Una buena pregunta es:
+#
+# "¿Me importa la posición de cada elemento?"
+#
+# Si la respuesta es sí:
+# probablemente necesitas una lista o tupla.
+#
+#
+# "¿Necesito asociar un nombre o clave con un valor?"
+#
+# Si la respuesta es sí:
+# probablemente necesitas un diccionario.
+#
+#
+# "¿Lo importante es saber qué elementos existen,
+# evitar duplicados o comparar grupos?"
+#
+# Si la respuesta es sí:
+# probablemente un set sea una buena opción.
+
+
+# ============================================================
+# IDEA PRINCIPAL
+# ============================================================
+#
+# Un set:
+#
+# - contiene elementos únicos;
+# - no tiene posiciones;
+# - no soporta índices;
+# - es mutable;
+# - requiere elementos hashables.
+#
+#
+# OPERACIONES FUNDAMENTALES
+#
+# set(iterable)
+# → crear un set / eliminar duplicados.
+#
+# add()
+# → agregar un elemento.
+#
+# update()
+# → agregar múltiples elementos.
+#
+# remove()
+# → eliminar y generar error si no existe.
+#
+# discard()
+# → eliminar sin generar error si no existe.
+#
+# in
+# → comprobar pertenencia.
+#
+#
+# OPERACIONES ENTRE CONJUNTOS
+#
+# union()
+# A | B
+# → todos los elementos.
+#
+# intersection()
+# A & B
+# → elementos presentes en ambos.
+#
+# difference()
+# A - B
+# → elementos de A que no están en B.
+#
+# symmetric_difference()
+# A ^ B
+# → elementos exclusivos de A o B.
+#
+#
+# COMPROBACIONES
+#
+# issubset()
+# → comprobar si todos los elementos están contenidos
+#   dentro de otro conjunto.
+#
+# issuperset()
+# → comprobar si contiene completamente otro conjunto.
+#
+# isdisjoint()
+# → comprobar si dos conjuntos no tienen elementos en común.
+#
+#
+# CASOS REALES ESPECIALMENTE BUENOS PARA SET
+#
+# - eliminar duplicados;
+# - comparar identificadores entre sistemas;
+# - permisos;
+# - roles;
+# - categorías;
+# - etiquetas;
+# - detectar registros faltantes;
+# - obtener coincidencias;
+# - validaciones de pertenencia.

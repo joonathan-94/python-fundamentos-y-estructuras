@@ -1,117 +1,524 @@
-# ==============================================================================
-# 🐍 CLASE MAGISTRAL: MÉTODOS Y MANEJO DE TUPLAS EN PYTHON
-# ==============================================================================
-
-print("--- INICIANDO CLASE DE TUPLAS ---\n")
-
-# 1. EL CONCEPTO DE INMUTABILIDAD
-# Las tuplas se crean usando paréntesis ()
-puertos_servidor = (80, 443, 8080, 5432)
-
-print("Tupla original de puertos:", puertos_servidor)
-
-# Si intentaras hacer esto: puertos_servidor[0] = 81
-# Python te arrojaría un error (TypeError), porque la tupla no se puede modificar.
-# Esta es su mayor fortaleza: protegen los datos para que no cambien por accidente.
-
-
-# ==============================================================================
-# 2. LOS DOS MÉTODOS OFICIALES DE LAS TUPLAS
-# Como no podemos modificar (append, remove, pop), solo podemos "consultar".
-# ==============================================================================
-
-# MÉTODO 1: .count(valor)
-# Busca en la tupla el valor que le pases y cuenta cuántas veces aparece.
-# Documentación: Devuelve el número de ocurrencias de un valor.
-
-codigos_estado = (200, 404, 200, 500, 200, 403, 404)
-cantidad_exitos = codigos_estado.count(200)
-cantidad_no_encontrado = codigos_estado.count(404)
-
-print("\n--- MÉTODO .count() ---")
-print("El código 200 (OK) aparece:", cantidad_exitos, "veces.")
-print("El código 404 (Not Found) aparece:", cantidad_no_encontrado, "veces.")
+# ============================================================
+# TUPLAS EN PYTHON
+# ============================================================
+#
+# Una tupla (tuple) es una secuencia ordenada e inmutable.
+#
+# "Ordenada" significa que sus elementos mantienen una posición.
+#
+# "Inmutable" significa que, después de crear una tupla,
+# no podemos:
+#
+# - cambiar directamente sus elementos;
+# - agregar elementos;
+# - eliminar elementos.
+#
+# Las tuplas permiten:
+#
+# - elementos duplicados;
+# - índices;
+# - índices negativos;
+# - slicing;
+# - recorridos con for;
+# - desempaquetado.
+#
+# Son útiles cuando queremos representar un conjunto de valores
+# cuya estructura no debería modificarse accidentalmente.
 
 
-# MÉTODO 2: .index(valor)
-# Busca de izquierda a derecha el valor que le pases y te dice en qué POSICIÓN (índice) está.
-# Recuerda: En programación empezamos a contar desde el cero (0).
-# Si el valor está repetido, solo te da la posición del primero que encuentra.
+# ------------------------------------------------------------
+# 1. CREACIÓN DE TUPLAS
+# ------------------------------------------------------------
 
-tecnologias_web = ("HTML", "CSS", "JavaScript", "Python", "SQL")
-posicion_python = tecnologias_web.index("Python")
+pokemon_iniciales = (
+    "Bulbasaur",
+    "Charmander",
+    "Squirtle"
+)
 
-print("\n--- MÉTODO .index() ---")
-print("La tupla es:", tecnologias_web)
-print("Python se encuentra en el índice:", posicion_python)
-
-
-# ==============================================================================
-# 3. TRUCOS NINJA CON TUPLAS (Usando lo que ya sabes)
-# ==============================================================================
-
-# A. Desempaquetado (Unpacking): 
-# Puedes asignar los elementos de una tupla directamente a variables individuales.
-configuracion_bd = ("localhost", "root", "password123")
-host, usuario, contraseña = configuracion_bd
-
-print("\n--- DESEMPAQUETADO ---")
-print("Host extraído:", host)
-print("Usuario extraído:", usuario)
-
-# B. Transformación (Tupla <-> Lista):
-# Si en algún momento NECESITAS modificar una tupla, el truco es:
-# 1. Convertirla a lista. 2. Modificarla. 3. Volverla a tupla.
-tupla_original = ("Rojo", "Verde", "Azul")
-lista_temporal = list(tupla_original)
-lista_temporal.append("Amarillo")          # Modificamos la lista
-tupla_modificada = tuple(lista_temporal)   # Regresamos a tupla
-
-print("\n--- TRANSFORMACIÓN ---")
-print("Tupla original:", tupla_original)
-print("Tupla modificada:", tupla_modificada)
+print(pokemon_iniciales)
+print(type(pokemon_iniciales))
 
 
-# ==============================================================================
-# 🏋️‍♂️ ZONA DE ENTRENAMIENTO: EJERCICIOS PARA CONSOLIDAR
-# ==============================================================================
-print("\n--- INICIANDO EJERCICIOS (Descomenta el código para resolverlos) ---")
+# También podemos crear una tupla vacía.
 
-# EJERCICIO 1: Análisis de accesos
-# Tienes una tupla con los roles que han accedido a un sistema hoy.
-# Usando el método correspondiente, averigua cuántas veces accedió un "admin" 
-# y cuántas veces accedió un "guest". Imprime los resultados.
+tupla_vacia = ()
 
-accesos = ("guest", "user", "admin", "guest", "guest", "admin", "user")
-
-# Escribe tu solución aquí:
-total_admin = accesos.count('admin')
-total_guest = accesos.count('guest')
-print(total_admin)
-print(total_guest)
+print(tupla_vacia)
 
 
-# EJERCICIO 2: Buscando la configuración
-# Tienes una tupla con las resoluciones de pantalla soportadas por tu futura app.
-# Encuentra en qué índice exacto se encuentra la resolución "1920x1080".
+# ------------------------------------------------------------
+# 2. LA COMA ES IMPORTANTE
+# ------------------------------------------------------------
 
-resoluciones = ("800x600", "1280x720", "1920x1080", "2560x1440")
+# Esta expresión NO crea una tupla:
 
-# Escribe tu solución aquí:
-indice_fullhd = resoluciones.index("1920x1080")
-print("El índice de 1920x1080 es:", indice_fullhd)
+valor = ("Pikachu")
+
+print(valor)
+print(type(valor))
 
 
-# EJERCICIO 3: Operaciones combinadas (Listas, Tuplas y Sets)
-# Tienes una lista de permisos de usuario. 
-# 1. Añade "escribir" a la lista.
-# 2. Convierte esa lista en una tupla para que ya no se pueda modificar.
-# 3. (Opcional usando Sets) Imagina que la lista original tuviera duplicados, 
-#    pásala primero por un set para limpiarla, y luego conviértela a tupla.
+# Resultado:
+#
+# str
 
-permisos_lista = ["leer", "ejecutar", "leer"]
 
-# Escribe tu solución aquí:
-# ...
+# Para crear una tupla con UN solo elemento
+# debemos incluir una coma:
 
-print("\n¡Excelente trabajo! Has dominado las tuplas.")
+pokemon_unico = ("Pikachu",)
+
+print(pokemon_unico)
+print(type(pokemon_unico))
+
+
+# Resultado:
+#
+# tuple
+
+
+# Técnicamente, es la coma la que forma la tupla.
+#
+# Por ejemplo, esto también es una tupla:
+
+coordenadas = 10, 20
+
+print(coordenadas)
+print(type(coordenadas))
+
+
+# Sin embargo, normalmente utilizaremos paréntesis porque
+# mejoran la legibilidad.
+
+
+# ------------------------------------------------------------
+# 3. ACCESO MEDIANTE ÍNDICES
+# ------------------------------------------------------------
+
+estados_ticket = (
+    "Nuevo",
+    "Asignado",
+    "En progreso",
+    "Cerrado"
+)
+
+print(estados_ticket[0])   # Nuevo
+print(estados_ticket[2])   # En progreso
+
+
+# También podemos utilizar índices negativos.
+
+print(estados_ticket[-1])  # Cerrado
+print(estados_ticket[-2])  # En progreso
+
+
+# ------------------------------------------------------------
+# 4. LONGITUD
+# ------------------------------------------------------------
+
+prioridades = (
+    "Baja",
+    "Media",
+    "Alta",
+    "Crítica"
+)
+
+cantidad_prioridades = len(prioridades)
+
+print("Cantidad:", cantidad_prioridades)
+
+
+# ------------------------------------------------------------
+# 5. SLICING
+# ------------------------------------------------------------
+
+generaciones = (
+    "Kanto",
+    "Johto",
+    "Hoenn",
+    "Sinnoh"
+)
+
+primeras_tres = generaciones[:3]
+
+print(primeras_tres)
+
+
+# Resultado:
+#
+# ("Kanto", "Johto", "Hoenn")
+
+
+# El slicing de una tupla produce otra tupla.
+
+
+# ------------------------------------------------------------
+# 6. INMUTABILIDAD
+# ------------------------------------------------------------
+
+estados = (
+    "Nuevo",
+    "Asignado",
+    "Cerrado"
+)
+
+
+# Esto NO es válido:
+#
+# estados[1] = "En progreso"
+#
+# Python produciría:
+#
+# TypeError
+
+
+# Tampoco existen métodos como:
+#
+# estados.append(...)
+# estados.remove(...)
+#
+# porque esos métodos modificarían la estructura.
+
+
+# La inmutabilidad es una diferencia fundamental
+# respecto de las listas.
+
+
+# ------------------------------------------------------------
+# 7. in Y not in
+# ------------------------------------------------------------
+
+tipos_pokemon = (
+    "Agua",
+    "Fuego",
+    "Planta"
+)
+
+tiene_fuego = "Fuego" in tipos_pokemon
+no_tiene_electrico = "Eléctrico" not in tipos_pokemon
+
+print(tiene_fuego)
+print(no_tiene_electrico)
+
+
+# ------------------------------------------------------------
+# 8. count()
+# ------------------------------------------------------------
+
+codigos_http = (
+    200,
+    404,
+    200,
+    500,
+    200,
+    404
+)
+
+cantidad_200 = codigos_http.count(200)
+
+print("Código 200:", cantidad_200)
+
+
+# count() devuelve cuántas veces aparece un valor.
+
+
+# ------------------------------------------------------------
+# 9. index()
+# ------------------------------------------------------------
+
+prioridades = (
+    "Baja",
+    "Media",
+    "Alta",
+    "Crítica"
+)
+
+posicion_alta = prioridades.index("Alta")
+
+print("Índice de Alta:", posicion_alta)
+
+
+# index() devuelve la posición de la PRIMERA aparición.
+#
+# Si el valor no existe:
+#
+# prioridades.index("Urgente")
+#
+# Python produciría:
+#
+# ValueError
+
+
+# ------------------------------------------------------------
+# 10. RECORRER UNA TUPLA
+# ------------------------------------------------------------
+
+regiones = (
+    "Kanto",
+    "Johto",
+    "Hoenn"
+)
+
+for region in regiones:
+    print(region)
+
+
+# Al igual que otras secuencias, una tupla puede recorrerse
+# utilizando for.
+
+
+# ------------------------------------------------------------
+# 11. EMPAQUETADO
+# ------------------------------------------------------------
+
+# Python puede agrupar varios valores dentro de una tupla.
+
+datos_ticket = (
+    "WD-1001",
+    "Alta",
+    "En progreso"
+)
+
+print(datos_ticket)
+
+
+# También podríamos escribir:
+
+datos_ticket = "WD-1001", "Alta", "En progreso"
+
+print(datos_ticket)
+
+
+# Esto se conoce como tuple packing o empaquetado.
+
+
+# ------------------------------------------------------------
+# 12. DESEMPAQUETADO
+# ------------------------------------------------------------
+
+# Podemos extraer los elementos de una tupla
+# asignándolos a varias variables.
+
+datos_ticket = (
+    "WD-1001",
+    "Alta",
+    "En progreso"
+)
+
+id_ticket, prioridad, estado = datos_ticket
+
+print(id_ticket)
+print(prioridad)
+print(estado)
+
+
+# Debe existir la cantidad adecuada de variables
+# para los elementos de la tupla.
+
+
+# También podemos utilizar ejemplos de otros dominios:
+
+pokemon = (
+    "Totodile",
+    "Agua",
+    2
+)
+
+nombre, tipo, generacion = pokemon
+
+print(nombre)
+print(tipo)
+print(generacion)
+
+
+# ------------------------------------------------------------
+# 13. INTERCAMBIO DE VALORES
+# ------------------------------------------------------------
+
+# El intercambio que ya estudiamos en variables:
+
+principal = "Walter White"
+secundario = "Jesse Pinkman"
+
+principal, secundario = secundario, principal
+
+print(principal)
+print(secundario)
+
+
+# Internamente esta sintaxis está relacionada con
+# empaquetado y desempaquetado.
+
+
+# ------------------------------------------------------------
+# 14. CONVERSIÓN ENTRE LISTA Y TUPLA
+# ------------------------------------------------------------
+
+# list() puede crear una lista desde una tupla.
+
+estados_tupla = (
+    "Nuevo",
+    "Asignado",
+    "Cerrado"
+)
+
+estados_lista = list(estados_tupla)
+
+print(estados_lista)
+
+
+# tuple() puede crear una tupla desde otro iterable.
+
+estados_nuevamente_tupla = tuple(estados_lista)
+
+print(estados_nuevamente_tupla)
+
+
+# IMPORTANTE:
+#
+# Convertir una tupla en lista y modificar esa lista
+# NO modifica la tupla original.
+#
+# Estamos creando objetos nuevos.
+
+
+# ------------------------------------------------------------
+# 15. UNA TUPLA PUEDE CONTENER OBJETOS MUTABLES
+# ------------------------------------------------------------
+
+# La tupla misma es inmutable, pero sus elementos pueden
+# ser objetos mutables.
+
+datos = (
+    "WD-1001",
+    ["Neo", "Morpheus"]
+)
+
+
+# No podemos reemplazar directamente:
+
+# datos[1] = ["Trinity"]
+
+
+# Pero la lista interna sí es mutable:
+
+datos[1].append("Trinity")
+
+print(datos)
+
+
+# Esto demuestra una precisión importante:
+#
+# inmutable significa que no podemos cambiar qué objetos
+# ocupan directamente las posiciones de la tupla.
+#
+# No significa necesariamente que todo objeto contenido
+# dentro de ella sea inmutable.
+
+
+# ------------------------------------------------------------
+# 16. LISTA VS TUPLA
+# ------------------------------------------------------------
+
+# En términos generales:
+#
+# LISTA
+# ------------------------------------------------------------
+# Utilízala cuando la colección debe cambiar.
+#
+# Ejemplos:
+#
+# - tickets pendientes;
+# - usuarios encontrados;
+# - resultados que se agregan o eliminan;
+# - equipo Pokémon que puede modificarse.
+
+
+# TUPLA
+# ------------------------------------------------------------
+# Utilízala cuando una secuencia de valores debe permanecer
+# estructuralmente estable.
+#
+# Ejemplos:
+#
+# - coordenadas;
+# - datos agrupados que no deberían alterarse;
+# - conjuntos pequeños de configuración estable;
+# - resultados que conceptualmente forman una unidad fija.
+
+
+# No debemos elegir una tupla únicamente pensando:
+#
+# "es más profesional"
+#
+# o:
+#
+# "es más rápida".
+#
+# La elección principal debe depender del significado
+# y del comportamiento esperado de los datos.
+
+
+# ------------------------------------------------------------
+# 17. EJEMPLO PRÁCTICO: RESUMEN INMUTABLE DE UN TICKET
+# ------------------------------------------------------------
+
+resumen_ticket = (
+    "WD-1050",
+    "Problema de conexión",
+    "Alta",
+    "En progreso"
+)
+
+
+id_ticket, titulo, prioridad, estado = resumen_ticket
+
+
+print("ID:", id_ticket)
+print("Título:", titulo)
+print("Prioridad:", prioridad)
+print("Estado:", estado)
+
+
+# En este ejemplo utilizamos una tupla porque queremos
+# representar un grupo fijo de cuatro valores.
+#
+# En una aplicación real, para representar tickets completos
+# normalmente utilizaremos estructuras más expresivas,
+# como diccionarios, objetos o modelos de base de datos.
+#
+# La tupla aquí se utiliza únicamente para comprender
+# correctamente el concepto.
+
+
+# ============================================================
+# IDEA PRINCIPAL
+# ============================================================
+#
+# Una tupla:
+#
+# - es una secuencia;
+# - mantiene el orden;
+# - es inmutable;
+# - permite duplicados;
+# - permite índices;
+# - permite slicing;
+# - puede recorrerse con for.
+#
+# Métodos principales:
+#
+# count()
+# index()
+#
+# Conceptos especialmente importantes:
+#
+# empaquetado
+# desempaquetado
+# tupla de un elemento -> ("valor",)
+#
+# LISTA:
+# colección que normalmente queremos modificar.
+#
+# TUPLA:
+# secuencia cuya estructura queremos mantener estable.
