@@ -1,188 +1,683 @@
-# ==============================================================================
-# PERGAMINO DE SABIDURÍA: MÉTODOS DE LISTAS EN PYTHON
-# Instruido por: Tu Sensei de Programación (Ing. Harvard / Maestro del Código)
-# ==============================================================================
-# 
-# Aprendiz, ejecuta este script en tu consola. Lee el código y observa 
-# lo que imprime. He diseñado esta clase maestra especialmente para ti.
-# Las listas en Python son colecciones ordenadas, mutables (se pueden cambiar) 
-# y permiten elementos duplicados.
-# ==============================================================================
-
-print("\n" + "="*50)
-print("INICIANDO EL ENTRENAMIENTO DE LISTAS")
-print("="*50 + "\n")
-
-# Nuestra lista base de entrenamiento
-lenguajes = ["HTML", "CSS", "JavaScript"]
-print(f"1. Empezamos con tu base actual de conocimientos: {lenguajes}")
-
-# ------------------------------------------------------------------------------
-# CAPÍTULO 1: AGREGAR ELEMENTOS (Creciendo tu arsenal)
-# ------------------------------------------------------------------------------
-print("\n--- CAPÍTULO 1: AGREGANDO ELEMENTOS ---")
-
-# 1. append(elemento)
-# Agrega un elemento AL FINAL de la lista. 
-lenguajes.append("Python")
-print(f"-> Después de append('Python'): {lenguajes}")
-# Sensei dice: Usa append cuando solo necesites meter un dato rápido al final.
-
-# 2. insert(índice, elemento)
-# Inserta un elemento en una POSICIÓN ESPECÍFICA (recuerda, empezamos a contar desde 0).
-lenguajes.insert(0, "SQL") # Lo ponemos de primerito
-print(f"-> Después de insert(0, 'SQL'): {lenguajes}")
-# Sensei dice: Muy útil cuando el orden de los datos es crítico para tu lógica.
-
-# 3. extend(iterable)
-# Toma otra lista (o cualquier iterable) y une sus elementos al final de la tuya.
-tecnologias_extra = ["Git", "GitHub"]
-lenguajes.extend(tecnologias_extra)
-print(f"-> Después de extend(['Git', 'GitHub']): {lenguajes}")
-# Sensei dice: Ojo, no es lo mismo que append. Si haces append de una lista, 
-# metes una lista DENTRO de la lista. Extend saca los elementos y los une.
+# ============================================================
+# LISTAS EN PYTHON
+# ============================================================
+#
+# Una lista (list) es una colección ordenada y mutable.
+#
+# "Ordenada" significa que los elementos mantienen una posición.
+#
+# "Mutable" significa que podemos modificar la lista después
+# de haberla creado:
+#
+# - cambiar elementos;
+# - agregar elementos;
+# - eliminar elementos;
+# - ordenar elementos.
+#
+# Las listas permiten valores duplicados.
+#
+# Son una de las estructuras de datos más utilizadas en Python.
+#
+# Algunos usos habituales:
+#
+# - lista de tickets;
+# - usuarios;
+# - productos;
+# - resultados de una consulta;
+# - nombres;
+# - estados;
+# - registros que deben procesarse;
+# - elementos obtenidos desde una API.
+#
+# Sintaxis básica:
+#
+# lista = [elemento_1, elemento_2, elemento_3]
 
 
-# ------------------------------------------------------------------------------
-# CAPÍTULO 2: ELIMINAR ELEMENTOS (Limpiando el código)
-# ------------------------------------------------------------------------------
-print("\n--- CAPÍTULO 2: ELIMINANDO ELEMENTOS ---")
+# ------------------------------------------------------------
+# 1. CREACIÓN DE LISTAS
+# ------------------------------------------------------------
 
-# 4. remove(elemento)
-# Busca el PRIMER elemento que coincida con el valor y lo elimina.
-lenguajes.remove("CSS") 
-print(f"-> Después de remove('CSS'): {lenguajes}")
-# Sensei dice: Cuidado, si el elemento no existe, Python te lanzará un error (ValueError).
+pokemon = ["Pikachu", "Charizard", "Totodile"]
 
-# 5. pop(índice)
-# Elimina y TE DEVUELVE el elemento en la posición dada. 
-# Si no le pasas número, elimina el ÚLTIMO.
-ultimo_aprendido = lenguajes.pop()
-print(f"-> Hicimos pop(). El elemento sacado fue: '{ultimo_aprendido}'")
-print(f"-> La lista quedó así: {lenguajes}")
-# Sensei dice: pop() es oro puro cuando necesitas procesar un dato y sacarlo 
-# de la fila al mismo tiempo.
-
-# 6. clear()
-# Vacía la lista por completo. Queda viva, pero sin nada por dentro.
-lista_temporal = ["Bug 1", "Bug 2", "Error fatal"]
-print(f"\nLista de bugs antes de clear: {lista_temporal}")
-lista_temporal.clear()
-print(f"Lista de bugs después de clear: {lista_temporal} (¡Código limpio!)")
+print(pokemon)
+print(type(pokemon))
 
 
-# ------------------------------------------------------------------------------
-# CAPÍTULO 3: BÚSQUEDA Y ANÁLISIS (Conociendo tus datos)
-# ------------------------------------------------------------------------------
-print("\n--- CAPÍTULO 3: BÚSQUEDA Y ANÁLISIS ---")
+# También podemos crear una lista vacía.
 
-# Vamos a crear una nueva lista para esto
-notas_curso = [85, 90, 100, 90, 75, 90, 100]
-print(f"Nuevos datos de notas: {notas_curso}")
+tickets_pendientes = []
 
-# 7. index(elemento)
-# Te dice en qué POSICIÓN (índice) se encuentra la primera aparición del elemento.
-posicion_cien = notas_curso.index(100)
-print(f"-> El primer 100 está en el índice: {posicion_cien}")
-
-# 8. count(elemento)
-# Cuenta CUÁNTAS VECES aparece un elemento en la lista.
-veces_noventa = notas_curso.count(90)
-print(f"-> La nota 90 aparece {veces_noventa} veces.")
+print(tickets_pendientes)
 
 
-# ------------------------------------------------------------------------------
-# CAPÍTULO 4: ORDEN Y ESTRUCTURA (El arte de la elegancia)
-# ------------------------------------------------------------------------------
-print("\n--- CAPÍTULO 4: ORDEN Y ESTRUCTURA ---")
+# Una lista puede contener elementos duplicados.
 
-puntos = [45, 12, 89, 5, 100, 23]
-print(f"Puntos desordenados: {puntos}")
+prioridades = ["Alta", "Media", "Alta", "Baja"]
 
-# 9. sort()
-# Ordena la lista de forma ASCENDENTE por defecto. Modifica la lista original.
-puntos.sort()
-print(f"-> Después de sort() (Menor a mayor): {puntos}")
-
-# Puedes pasarle reverse=True para ordenar de mayor a menor
-puntos.sort(reverse=True)
-print(f"-> Después de sort(reverse=True) (Mayor a menor): {puntos}")
-
-# 10. reverse()
-# Simplemente le da LA VUELTA a la lista actual, sin importar si estaba ordenada o no.
-palabras = ["camino", "el", "es", "Este"]
-palabras.reverse()
-print(f"-> Después de reverse() a ['camino', 'el', 'es', 'Este']: {palabras}")
-
-# 11. copy()
-# Crea una copia superficial de la lista. Fundamental para no dañar la original.
-# Si haces lista_B = lista_A, ambas apuntan a lo mismo y si cambias B, cambias A.
-puntos_respaldo = puntos.copy()
-print(f"-> Copia de seguridad creada: {puntos_respaldo}")
+print(prioridades)
 
 
-# ==============================================================================
-# EL DOJO DE PRÁCTICA: EJERCICIOS PARA EL APRENDIZ
-# ==============================================================================
-print("\n" + "="*50)
-print("EL DOJO: TU TURNO DE ESCRIBIR CÓDIGO")
-print("="*50)
-print("""
-A continuación, tienes 4 ejercicios básicos. 
-Descomenta las líneas debajo de cada instrucción y escribe tu lógica.
-¡Demuéstrame de qué estás hecho!
-""")
+# ------------------------------------------------------------
+# 2. ACCESO MEDIANTE ÍNDICES
+# ------------------------------------------------------------
 
-# --- EJERCICIO 1: El Inventario ---
-# Tienes esta lista:
-inventario = ["Teclado", "Ratón", "Monitor"]
-# Tu misión: 
-# 1. Agrega "Auriculares" al final.
-# 2. Inserta "Alfombrilla" en la primera posición (índice 0).
-# 3. Imprime la lista final.
+# Al igual que los strings, las listas utilizan índices
+# comenzando desde 0.
 
-# ESCRIBE TU CÓDIGO AQUÍ:
-# 
-# 
-# print(inventario)
+equipo = ["Pikachu", "Charizard", "Blastoise"]
+
+#          0          1            2
+
+print(equipo[0])  # Pikachu
+print(equipo[1])  # Charizard
+print(equipo[2])  # Blastoise
 
 
-# --- EJERCICIO 2: Limpieza de Base de Datos ---
-# Tienes esta lista de usuarios:
-usuarios = ["admin", "invitado", "hacker", "usuario_comun"]
-# Tu misión:
-# 1. Elimina al "hacker" usando su nombre.
-# 2. Saca al último usuario de la lista usando pop() y guárdalo en una variable.
-# 3. Imprime la lista resultante y el usuario que sacaste.
+# También podemos utilizar índices negativos.
 
-# ESCRIBE TU CÓDIGO AQUÍ:
-# 
-# 
-# print(usuarios)
+print(equipo[-1])  # Blastoise
+print(equipo[-2])  # Charizard
 
 
-# --- EJERCICIO 3: Estadísticas del Servidor ---
-tiempos_respuesta_ms = [120, 45, 300, 45, 80, 45, 90]
-# Tu misión:
-# 1. Cuenta cuántas veces se repite el tiempo '45' y muéstralo en un print.
-# 2. Encuentra en qué índice ocurre el tiempo '300' y muéstralo en un print.
-
-# ESCRIBE TU CÓDIGO AQUÍ:
-# 
-# 
-# 
+# Si intentamos acceder a una posición inexistente:
+#
+# equipo[10]
+#
+# Python produciría:
+#
+# IndexError
 
 
-# --- EJERCICIO 4: Ordenando Prioridades ---
-tareas = ["Desplegar app", "Revisar logs", "Arreglar bug", "Tomar café"]
-# Tu misión:
-# 1. Ordena la lista alfabéticamente de la A a la Z.
-# 2. Imprime la lista ordenada.
-# 3. Dale la vuelta a la lista (reverse) y vuélvela a imprimir.
+# ------------------------------------------------------------
+# 3. LONGITUD DE UNA LISTA
+# ------------------------------------------------------------
 
-# ESCRIBE TU CÓDIGO AQUÍ:
-# 
-# 
-# 
+# len() devuelve la cantidad de elementos.
 
-print("\n¡Que el código te acompañe! Guarda este script y consúltalo siempre que lo necesites.")
+tickets = ["WD-1001", "WD-1002", "WD-1003"]
+
+cantidad_tickets = len(tickets)
+
+print("Cantidad de tickets:", cantidad_tickets)
+
+
+# ------------------------------------------------------------
+# 4. SLICING
+# ------------------------------------------------------------
+
+# Podemos obtener una parte de una lista utilizando slicing.
+#
+# Sintaxis:
+#
+# lista[inicio:fin]
+#
+# El índice inicial se incluye.
+# El índice final no se incluye.
+
+pokemon = [
+    "Bulbasaur",
+    "Charmander",
+    "Squirtle",
+    "Chikorita",
+    "Cyndaquil",
+    "Totodile"
+]
+
+primera_generacion_iniciales = pokemon[0:3]
+
+print(primera_generacion_iniciales)
+
+
+# También podemos omitir límites.
+
+print(pokemon[:3])
+print(pokemon[3:])
+
+
+# El slicing produce una nueva lista con los elementos
+# seleccionados.
+
+
+# ------------------------------------------------------------
+# 5. MUTABILIDAD
+# ------------------------------------------------------------
+
+# A diferencia de los strings y las tuplas, una lista
+# puede modificarse.
+
+estados_ticket = [
+    "Nuevo",
+    "Asignado",
+    "Cerrado"
+]
+
+print("Antes:", estados_ticket)
+
+
+# Cambiamos el elemento ubicado en el índice 1.
+
+estados_ticket[1] = "En progreso"
+
+print("Después:", estados_ticket)
+
+
+# La lista original fue modificada.
+
+
+# ------------------------------------------------------------
+# 6. OPERADORES in Y not in
+# ------------------------------------------------------------
+
+# in comprueba si un elemento está presente.
+
+equipo = ["Pikachu", "Gengar", "Lapras"]
+
+tiene_gengar = "Gengar" in equipo
+
+print("¿Gengar está en el equipo?:", tiene_gengar)
+
+
+# not in comprueba que un elemento no esté presente.
+
+tiene_mewtwo = "Mewtwo" in equipo
+no_tiene_mewtwo = "Mewtwo" not in equipo
+
+print(tiene_mewtwo)
+print(no_tiene_mewtwo)
+
+
+# ------------------------------------------------------------
+# 7. append()
+# ------------------------------------------------------------
+
+# append() agrega UN elemento al final de la lista.
+
+tickets = ["WD-1001", "WD-1002"]
+
+tickets.append("WD-1003")
+
+print(tickets)
+
+
+# Resultado:
+#
+# ["WD-1001", "WD-1002", "WD-1003"]
+
+
+# ------------------------------------------------------------
+# 8. insert()
+# ------------------------------------------------------------
+
+# insert(indice, elemento) agrega un elemento en una
+# posición determinada.
+
+tickets = ["WD-1001", "WD-1003"]
+
+tickets.insert(1, "WD-1002")
+
+print(tickets)
+
+
+# El elemento que estaba en esa posición y los posteriores
+# se desplazan hacia la derecha.
+
+
+# ------------------------------------------------------------
+# 9. extend()
+# ------------------------------------------------------------
+
+# extend() agrega a una lista todos los elementos provenientes
+# de otro iterable.
+
+equipo_kanto = ["Pikachu", "Charizard"]
+
+nuevos_pokemon = ["Blastoise", "Venusaur"]
+
+equipo_kanto.extend(nuevos_pokemon)
+
+print(equipo_kanto)
+
+
+# Resultado:
+#
+# ["Pikachu", "Charizard", "Blastoise", "Venusaur"]
+
+
+# ------------------------------------------------------------
+# 10. append() VS extend()
+# ------------------------------------------------------------
+
+# Esta diferencia es importante.
+
+
+lista_1 = ["Pikachu", "Charizard"]
+
+lista_1.append(["Totodile", "Cyndaquil"])
+
+print(lista_1)
+
+
+# append() agrega la lista completa como UN elemento:
+#
+# [
+#     "Pikachu",
+#     "Charizard",
+#     ["Totodile", "Cyndaquil"]
+# ]
+
+
+lista_2 = ["Pikachu", "Charizard"]
+
+lista_2.extend(["Totodile", "Cyndaquil"])
+
+print(lista_2)
+
+
+# extend() agrega individualmente los elementos:
+#
+# [
+#     "Pikachu",
+#     "Charizard",
+#     "Totodile",
+#     "Cyndaquil"
+# ]
+
+
+# ------------------------------------------------------------
+# 11. remove()
+# ------------------------------------------------------------
+
+# remove(valor) elimina la PRIMERA aparición
+# de un determinado valor.
+
+estados = [
+    "Nuevo",
+    "Asignado",
+    "Cancelado",
+    "En progreso"
+]
+
+estados.remove("Cancelado")
+
+print(estados)
+
+
+# Si intentamos eliminar un elemento que no existe:
+#
+# estados.remove("Reabierto")
+#
+# Python produciría:
+#
+# ValueError
+
+
+# ------------------------------------------------------------
+# 12. pop()
+# ------------------------------------------------------------
+
+# pop() elimina un elemento Y devuelve el valor eliminado.
+#
+# Sin indicar índice, elimina el último elemento.
+
+cola_tickets = [
+    "WD-1001",
+    "WD-1002",
+    "WD-1003"
+]
+
+ticket_extraido = cola_tickets.pop()
+
+print("Ticket extraído:", ticket_extraido)
+print("Cola restante:", cola_tickets)
+
+
+# También podemos especificar un índice.
+
+ticket_extraido = cola_tickets.pop(0)
+
+print("Ticket extraído:", ticket_extraido)
+print("Cola restante:", cola_tickets)
+
+
+# ------------------------------------------------------------
+# 13. clear()
+# ------------------------------------------------------------
+
+# clear() elimina todos los elementos de una lista.
+
+datos_temporales = [
+    "registro_1",
+    "registro_2",
+    "registro_3"
+]
+
+datos_temporales.clear()
+
+print(datos_temporales)
+
+
+# Resultado:
+#
+# []
+
+
+# ------------------------------------------------------------
+# 14. count()
+# ------------------------------------------------------------
+
+# count(valor) devuelve cuántas veces aparece un elemento.
+
+prioridades = [
+    "Alta",
+    "Media",
+    "Alta",
+    "Baja",
+    "Alta"
+]
+
+cantidad_altas = prioridades.count("Alta")
+
+print("Prioridades altas:", cantidad_altas)
+
+
+# ------------------------------------------------------------
+# 15. index()
+# ------------------------------------------------------------
+
+# index(valor) devuelve el índice de la PRIMERA aparición
+# del elemento.
+
+pokemon = [
+    "Pikachu",
+    "Gengar",
+    "Lapras",
+    "Gengar"
+]
+
+posicion_gengar = pokemon.index("Gengar")
+
+print("Primer Gengar:", posicion_gengar)
+
+
+# Si el valor no existe:
+#
+# pokemon.index("Mew")
+#
+# produce:
+#
+# ValueError
+
+
+# ------------------------------------------------------------
+# 16. sort()
+# ------------------------------------------------------------
+
+# sort() ordena la lista original.
+#
+# La modificación ocurre "in place":
+# no crea otra lista con el resultado.
+
+tiempos_resolucion = [45, 12, 80, 30, 20]
+
+tiempos_resolucion.sort()
+
+print(tiempos_resolucion)
+
+
+# Resultado:
+#
+# [12, 20, 30, 45, 80]
+
+
+# Para ordenar en sentido descendente:
+
+tiempos_resolucion.sort(reverse=True)
+
+print(tiempos_resolucion)
+
+
+# IMPORTANTE:
+#
+# sort() modifica la lista original.
+#
+# No debemos hacer:
+#
+# resultado = tiempos_resolucion.sort()
+#
+# esperando obtener una nueva lista.
+#
+# sort() devuelve None.
+
+
+# ------------------------------------------------------------
+# 17. sorted()
+# ------------------------------------------------------------
+
+# sorted() es una función incorporada de Python.
+#
+# A diferencia de list.sort(), sorted() devuelve
+# una NUEVA lista ordenada.
+
+tiempos_originales = [45, 12, 80, 30]
+
+tiempos_ordenados = sorted(tiempos_originales)
+
+print("Original:", tiempos_originales)
+print("Ordenados:", tiempos_ordenados)
+
+
+# La lista original permanece sin cambios.
+
+
+# ------------------------------------------------------------
+# 18. reverse()
+# ------------------------------------------------------------
+
+# reverse() invierte el orden ACTUAL de la lista.
+#
+# No significa "ordenar de mayor a menor".
+
+pokemon = [
+    "Bulbasaur",
+    "Charmander",
+    "Squirtle"
+]
+
+pokemon.reverse()
+
+print(pokemon)
+
+
+# Resultado:
+#
+# ["Squirtle", "Charmander", "Bulbasaur"]
+
+
+# ------------------------------------------------------------
+# 19. RECORRER UNA LISTA CON for
+# ------------------------------------------------------------
+
+# Una de las operaciones más frecuentes sobre una lista
+# consiste en recorrer sus elementos.
+
+tickets = [
+    "WD-1001",
+    "WD-1002",
+    "WD-1003"
+]
+
+for ticket in tickets:
+    print("Procesando:", ticket)
+
+
+# En cada iteración, la variable ticket referencia
+# uno de los elementos de la lista.
+
+
+# ------------------------------------------------------------
+# 20. enumerate()
+# ------------------------------------------------------------
+
+# Cuando necesitamos tanto el elemento como su posición,
+# podemos utilizar enumerate().
+
+pokemon = [
+    "Pikachu",
+    "Charizard",
+    "Blastoise"
+]
+
+for indice, nombre in enumerate(pokemon):
+    print(indice, nombre)
+
+
+# Resultado aproximado:
+#
+# 0 Pikachu
+# 1 Charizard
+# 2 Blastoise
+
+
+# ------------------------------------------------------------
+# 21. ASIGNACIÓN Y REFERENCIAS
+# ------------------------------------------------------------
+
+# Esta parte es importante.
+#
+# Si hacemos:
+
+lista_original = ["Pikachu", "Gengar"]
+
+otra_lista = lista_original
+
+
+# NO estamos creando automáticamente una lista independiente.
+#
+# Ambos nombres hacen referencia a la misma lista.
+
+otra_lista.append("Lapras")
+
+print("Original:", lista_original)
+print("Otra:", otra_lista)
+
+
+# Ambas mostrarán Lapras.
+
+
+# ------------------------------------------------------------
+# 22. copy()
+# ------------------------------------------------------------
+
+# copy() crea una copia superficial de la lista.
+
+lista_original = [
+    "Pikachu",
+    "Gengar",
+    "Lapras"
+]
+
+lista_copia = lista_original.copy()
+
+lista_copia.append("Charizard")
+
+print("Original:", lista_original)
+print("Copia:", lista_copia)
+
+
+# Ahora agregar Charizard a lista_copia no modifica
+# directamente lista_original.
+
+
+# IMPORTANTE:
+#
+# copy() crea una copia SUPERFICIAL.
+#
+# Si la lista contiene objetos mutables dentro de ella,
+# esos objetos internos pueden seguir estando compartidos.
+#
+# Profundizaremos en este concepto cuando sea necesario.
+
+
+# ------------------------------------------------------------
+# 23. EJEMPLO PRÁCTICO: COLA SIMPLE DE TICKETS
+# ------------------------------------------------------------
+
+tickets_pendientes = [
+    "WD-1001",
+    "WD-1002"
+]
+
+
+# Llega un nuevo ticket.
+
+tickets_pendientes.append("WD-1003")
+
+
+# Un ticket urgente debe quedar al comienzo.
+
+tickets_pendientes.insert(0, "WD-URGENTE")
+
+
+# Comprobamos si un ticket está en la cola.
+
+existe_ticket = "WD-1002" in tickets_pendientes
+
+
+# Obtenemos el primer ticket para procesarlo.
+
+ticket_actual = tickets_pendientes.pop(0)
+
+
+print("Ticket actual:", ticket_actual)
+print("Tickets pendientes:", tickets_pendientes)
+print("¿WD-1002 existe?:", existe_ticket)
+
+
+# Este es un ejemplo sencillo.
+#
+# En una aplicación real podrían utilizarse otras estructuras
+# dependiendo de los requisitos y del volumen de información.
+
+
+# ============================================================
+# IDEA PRINCIPAL
+# ============================================================
+#
+# Una lista:
+#
+# - mantiene el orden de sus elementos;
+# - es mutable;
+# - permite elementos duplicados;
+# - utiliza índices;
+# - permite slicing;
+# - puede recorrerse con for.
+#
+# Operaciones especialmente importantes:
+#
+# append()
+# → agrega un elemento al final.
+#
+# extend()
+# → agrega varios elementos provenientes de otro iterable.
+#
+# remove()
+# → elimina por valor.
+#
+# pop()
+# → elimina por posición y devuelve el elemento.
+#
+# sort()
+# → ordena la lista original.
+#
+# sorted()
+# → devuelve una nueva lista ordenada.
+#
+# copy()
+# → crea una copia superficial.
+#
+# in
+# → permite comprobar pertenencia.
+#
+# Estas operaciones serán utilizadas constantemente cuando
+# trabajemos con datos y aplicaciones reales.

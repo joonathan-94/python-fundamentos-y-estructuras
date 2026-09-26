@@ -1,152 +1,846 @@
-# ==============================================================================
-# CLASE MAGISTRAL: MÉTODOS DE DICCIONARIOS (dict) EN PYTHON
-# Instructor: Tu Sensei de Programación
-# ==============================================================================
+# ============================================================
+# DICCIONARIOS EN PYTHON
+# ============================================================
+#
+# Un diccionario (dict) es una estructura de datos que almacena
+# información mediante pares:
+#
+# clave: valor
+#
+# Ejemplo:
+#
+# pokemon = {
+#     "nombre": "Totodile",
+#     "tipo": "Agua",
+#     "generacion": 2
+# }
+#
+# En este caso:
+#
+# "nombre"      -> clave
+# "Totodile"    -> valor
+#
+# Los diccionarios son:
+#
+# - mutables;
+# - accesibles mediante claves;
+# - capaces de almacenar valores de distintos tipos;
+# - estructuras que conservan el orden de inserción.
+#
+# Son especialmente útiles cuando queremos representar
+# información con atributos identificables.
+#
+# Algunos usos reales:
+#
+# - datos de un ticket;
+# - información de un usuario;
+# - configuración de una aplicación;
+# - respuestas de APIs;
+# - datos JSON;
+# - parámetros;
+# - registros procesados desde archivos;
+# - información proveniente de una base de datos.
+#
+# En desarrollo backend, los diccionarios aparecen
+# constantemente.
 
-# Un diccionario es una estructura de datos mutable, desordenada (hasta Python 3.6) 
-# y que almacena pares de "clave: valor". 
-# REGLA DE ORO: Las claves deben ser inmutables (strings, números, tuplas), 
-# pero los valores pueden ser cualquier cosa (listas, otros diccionarios, sets, etc).
 
-print("--- 1. CREACIÓN DE DICCIONARIOS ---")
-# Imaginemos un ticket de soporte de nivel 1 en una empresa de logística.
+# ------------------------------------------------------------
+# 1. CREACIÓN DE UN DICCIONARIO
+# ------------------------------------------------------------
+
+pokemon_totodile = {
+    "nombre": "Totodile",
+    "tipo": "Agua",
+    "generacion": 2
+}
+
+print(pokemon_totodile)
+print(type(pokemon_totodile))
+
+
+# También podemos crear un diccionario vacío.
+
+ticket_nuevo = {}
+
+print(ticket_nuevo)
+
+
+# ------------------------------------------------------------
+# 2. CLAVES Y VALORES
+# ------------------------------------------------------------
+
+# Cada elemento está formado por:
+#
+# clave: valor
+
+auto_clasico = {
+    "modelo": "Chevrolet Camaro",
+    "anio": 1967,
+    "motor": "V8",
+    "disponible": True
+}
+
+print(auto_clasico)
+
+
+# Las claves son únicas dentro de un mismo diccionario.
+#
+# Si asignamos nuevamente una clave existente,
+# reemplazamos su valor.
+
+auto_clasico["disponible"] = False
+
+print(auto_clasico)
+
+
+# ------------------------------------------------------------
+# 3. QUÉ PUEDE SER UNA CLAVE
+# ------------------------------------------------------------
+
+# Las claves de un diccionario deben ser hashables.
+#
+# Para nuestros fundamentos podemos pensar principalmente
+# en claves como:
+#
+# - strings;
+# - números;
+# - tuplas que contengan elementos hashables.
+#
+# Las claves más habituales en aplicaciones son strings.
+
+faraon = {
+    "nombre": "Tutankamón",
+    "dinastia": 18,
+    "titulo": "Faraón"
+}
+
+print(faraon)
+
+
+# Una lista NO puede utilizarse como clave porque
+# las listas son mutables.
+#
+# Esto produciría TypeError:
+#
+# ejemplo = {
+#     ["nombre"]: "Tutankamón"
+# }
+
+
+# Los valores, en cambio, pueden ser de muchos tipos.
+
+datos_servidor = {
+    "nombre": "SRV-01",
+    "activo": True,
+    "puerto": 5432,
+    "carga": 72.5
+}
+
+print(datos_servidor)
+
+
+# ------------------------------------------------------------
+# 4. ACCEDER A UN VALOR MEDIANTE SU CLAVE
+# ------------------------------------------------------------
+
 ticket_soporte = {
-    "id_ticket": "TK-8475",
-    "usuario": "bodega_central",
-    "problema": "Falla conexión de red",
-    "estado": "Abierto",
-    "prioridad": 1
+    "id": "WD-3001",
+    "titulo": "Problema de conexión",
+    "prioridad": "Alta",
+    "estado": "Nuevo"
 }
-print("Ticket original:", ticket_soporte)
+
+titulo_ticket = ticket_soporte["titulo"]
+estado_ticket = ticket_soporte["estado"]
+
+print("Título:", titulo_ticket)
+print("Estado:", estado_ticket)
 
 
-print("\n--- 2. MÉTODOS DE ACCESO Y CONSULTA ---")
-
-# a) .get(clave, valor_por_defecto)
-# Es la forma más segura de buscar algo. Si buscas una clave que no existe 
-# directamente con corchetes (ej: ticket_soporte["tecnico"]), el programa explotará con un error. 
-# .get() te protege devolviendo 'None' o un valor que tú elijas si no encuentra la clave.
-tecnico_asignado = ticket_soporte.get("tecnico", "No asignado aún")
-estado_actual = ticket_soporte.get("estado")
-
-print("Técnico:", tecnico_asignado) # Imprime: No asignado aún
-print("Estado:", estado_actual)     # Imprime: Abierto
-
-# b) .keys()
-# Devuelve una vista con todas las claves (como si vieras los nombres de las columnas en una BD).
-# Lo convertimos a lista (que ya dominas) para verlo mejor.
-claves_del_ticket = list(ticket_soporte.keys())
-print("Claves disponibles:", claves_del_ticket)
-
-# c) .values()
-# Devuelve todos los valores del diccionario.
-valores_del_ticket = list(ticket_soporte.values())
-print("Valores del ticket:", valores_del_ticket)
-
-# d) .items()
-# Devuelve tuplas de (clave, valor). Excelente para cuando aprendamos bucles más adelante.
-pares_ticket = list(ticket_soporte.items())
-print("Pares Clave-Valor:", pares_ticket)
+# A diferencia de una lista:
+#
+# lista[0]
+#
+# normalmente accedemos a un diccionario mediante una clave:
+#
+# diccionario["clave"]
 
 
-print("\n--- 3. MÉTODOS DE AGREGADO Y MODIFICACIÓN ---")
+# ------------------------------------------------------------
+# 5. KeyError AL ACCEDER A UNA CLAVE INEXISTENTE
+# ------------------------------------------------------------
 
-# a) .update(otro_diccionario)
-# Actualiza el diccionario con nuevos pares clave/valor. 
-# Si la clave ya existe, sobrescribe el valor. Si no existe, la crea.
-actualizacion = {
-    "tecnico": "ingeniero_master", # Nueva clave
-    "estado": "En progreso",       # Clave existente (se sobrescribe)
-    "tiempo_resolucion_hrs": 2.5   # Nueva clave
+# Si utilizamos [] con una clave que no existe:
+
+# ticket_soporte["tecnico"]
+
+# Python produce:
+#
+# KeyError
+
+
+# Esto no significa que utilizar [] sea incorrecto.
+#
+# Es apropiado cuando esperamos que la clave exista.
+#
+# Si la ausencia de esa clave representa un error en nuestros
+# datos, KeyError puede ayudarnos a detectar el problema.
+
+
+# ------------------------------------------------------------
+# 6. get()
+# ------------------------------------------------------------
+
+# get() resulta útil cuando una clave puede no existir.
+#
+# Si encuentra la clave, devuelve su valor.
+
+prioridad_actual = ticket_soporte.get("prioridad")
+
+print(prioridad_actual)
+
+
+# Si la clave no existe, devuelve None por defecto.
+
+tecnico_actual = ticket_soporte.get("tecnico")
+
+print(tecnico_actual)
+
+
+# También podemos proporcionar un valor predeterminado.
+
+tecnico_mostrado = ticket_soporte.get(
+    "tecnico",
+    "Sin técnico asignado"
+)
+
+print(tecnico_mostrado)
+
+
+# IMPORTANTE:
+#
+# [] y get() no son enemigos ni uno reemplaza siempre al otro.
+#
+# diccionario["clave"]
+# → útil cuando la clave debería existir.
+#
+# diccionario.get("clave")
+# → útil cuando la clave podría estar ausente.
+
+
+# ------------------------------------------------------------
+# 7. AGREGAR UNA NUEVA CLAVE
+# ------------------------------------------------------------
+
+# Podemos agregar información utilizando una nueva clave.
+
+ticket_soporte["tecnico"] = "Brock"
+
+print(ticket_soporte)
+
+
+# Antes "tecnico" no existía.
+# Después de la asignación pasa a formar parte del diccionario.
+
+
+# ------------------------------------------------------------
+# 8. MODIFICAR UN VALOR EXISTENTE
+# ------------------------------------------------------------
+
+ticket_soporte["estado"] = "En progreso"
+
+print(ticket_soporte)
+
+
+# Como la clave "estado" ya existía,
+# su valor fue reemplazado.
+
+
+# ------------------------------------------------------------
+# 9. COMPROBAR SI UNA CLAVE EXISTE
+# ------------------------------------------------------------
+
+# El operador in comprueba las CLAVES del diccionario.
+
+tiene_estado = "estado" in ticket_soporte
+tiene_resolucion = "resolucion" in ticket_soporte
+
+print("¿Tiene estado?:", tiene_estado)
+print("¿Tiene resolución?:", tiene_resolucion)
+
+
+# También podemos utilizar not in.
+
+sin_resolucion = "resolucion" not in ticket_soporte
+
+print(sin_resolucion)
+
+
+# ------------------------------------------------------------
+# 10. len()
+# ------------------------------------------------------------
+
+# len() devuelve la cantidad de pares clave-valor.
+
+vehiculo_bel_air = {
+    "marca": "Chevrolet",
+    "modelo": "Bel Air",
+    "anio": 1957
 }
-ticket_soporte.update(actualizacion)
-print("Ticket actualizado con .update():\n", ticket_soporte)
 
-# b) .setdefault(clave, valor_por_defecto)
-# Busca una clave. Si existe, devuelve su valor y NO hace nada más.
-# Si NO existe, la crea y le asigna el valor que le pases.
-# Muy útil para inicializar datos sin pisar los que ya existen.
-nota = ticket_soporte.setdefault("notas_cierre", "Sin observaciones")
-prioridad = ticket_soporte.setdefault("prioridad", 5) # Ya existe como 1, NO la cambiará
+cantidad_campos = len(vehiculo_bel_air)
 
-print("Nota devuelta por setdefault:", nota)
-print("Prioridad después de setdefault:", ticket_soporte["prioridad"]) # Sigue siendo 1
+print("Cantidad de campos:", cantidad_campos)
 
 
-print("\n--- 4. MÉTODOS DE ELIMINACIÓN ---")
+# ------------------------------------------------------------
+# 11. keys()
+# ------------------------------------------------------------
 
-# a) .pop(clave, valor_por_defecto)
-# Extrae y elimina un elemento basado en su clave. Si no existe y no das valor por defecto, da error.
-tiempo = ticket_soporte.pop("tiempo_resolucion_hrs")
-print("Se eliminó y guardó el tiempo:", tiempo)
-print("Ticket sin el tiempo:", ticket_soporte)
+# keys() devuelve una vista de las claves del diccionario.
 
-# b) .popitem()
-# Elimina y devuelve el ÚLTIMO par clave-valor que fue insertado en el diccionario (como una tupla).
-ultimo_elemento_eliminado = ticket_soporte.popitem()
-print("Se eliminó el último elemento:", ultimo_elemento_eliminado)
+claves_ticket = ticket_soporte.keys()
 
-# c) .clear()
-# Vacía el diccionario por completo, lo deja como {}. 
-ticket_respaldo = {"id": 999, "data": "temporal"}
-ticket_respaldo.clear()
-print("Ticket respaldo tras .clear():", ticket_respaldo)
+print(claves_ticket)
 
 
-print("\n--- 5. MÉTODOS DE COPIA ---")
+# No es necesario convertir siempre el resultado a lista.
+#
+# Podemos recorrer directamente esta vista:
 
-# a) .copy()
-# Crea una copia superficial (shallow copy). Si igualas diccionarios con "=" (dict1 = dict2), 
-# ambos apuntarán al mismo espacio en memoria y si modificas uno, se modifica el otro.
-# .copy() crea un diccionario independiente.
-ticket_clon = ticket_soporte.copy()
-
-# Modificamos el clon para demostrar que son independientes
-ticket_clon.update({"estado": "Cerrado"})
-
-print("Estado ticket original:", ticket_soporte["estado"]) # Sigue En progreso
-print("Estado ticket clon:", ticket_clon["estado"])        # Cambió a Cerrado
+for clave_ticket in ticket_soporte.keys():
+    print(clave_ticket)
 
 
-# ==============================================================================
-# ÁREA DE ENTRENAMIENTO: EJERCICIOS PARA EL APRENDIZ
-# ==============================================================================
-# Instrucciones: Debajo de cada enunciado, escribe el código para resolverlo.
-# Recuerda usar SOLAMENTE lo que hemos aprendido (nada de ifs, fors, ni defs).
+# También es posible recorrer directamente el diccionario:
 
-print("\n--- RESOLUCIÓN DE EJERCICIOS ---")
-
-# EJERCICIO 1: Creación y Acceso Seguro
-# Crea un diccionario llamado 'perfil_usuario' con las claves: "nombre", "edad", "rol" (usa datos ficticios).
-# Luego, intenta obtener la clave "telefono" usando el método seguro para que, 
-# si no existe, devuelva el string "Teléfono no registrado". Imprime el resultado.
-
-# [TU CÓDIGO AQUÍ]
+for clave_ticket_actual in ticket_soporte:
+    print(clave_ticket_actual)
 
 
-# EJERCICIO 2: Actualización Masiva
-# Tienes el siguiente registro de un servidor:
-servidor_web = {"ip": "192.168.1.10", "os": "Linux", "estado": "offline"}
-# Usando UN SOLO MÉTODO, cambia el "estado" a "online" y agrega una nueva clave 
-# "ultima_revision" con el valor "hoy". Imprime el diccionario resultante.
-
-# [TU CÓDIGO AQUÍ]
+# Por defecto, iterar un diccionario recorre sus claves.
 
 
-# EJERCICIO 3: Limpieza Quirúrgica
-# Tienes la siguiente configuración de una app web:
-config_app = {"tema": "oscuro", "idioma": "es", "notificaciones": True, "token_sesion": "abc123xyz"}
-# Usando el método correspondiente, extrae (y elimina) el "token_sesion" guardándolo 
-# en una variable llamada 'token_seguro'. Imprime el 'token_seguro' y luego imprime 
-# 'config_app' para comprobar que ya no contiene esa clave.
+# ------------------------------------------------------------
+# 12. values()
+# ------------------------------------------------------------
 
-# [TU CÓDIGO AQUÍ]
+# values() devuelve una vista de los valores.
+
+valores_ticket = ticket_soporte.values()
+
+print(valores_ticket)
 
 
-# EJERCICIO 4: Vistas y Tuplas
-# Utilizando el diccionario 'config_app' resultante del ejercicio anterior:
-# 1. Obtén una lista de solo sus claves e imprímela.
-# 2. Obtén una lista de solo sus valores e imprímela.
-# 3. Obtén la lista de tuplas (clave, valor) e imprímela.
+for valor_ticket in ticket_soporte.values():
+    print(valor_ticket)
 
-# [TU CÓDIGO AQUÍ]
+
+# ------------------------------------------------------------
+# 13. items()
+# ------------------------------------------------------------
+
+# items() devuelve una vista de pares:
+#
+# (clave, valor)
+#
+# Esto es especialmente útil junto con for.
+
+camaro_1967 = {
+    "modelo": "Camaro",
+    "anio": 1967,
+    "motor": "V8"
+}
+
+for campo_auto, valor_auto in camaro_1967.items():
+    print(campo_auto, ":", valor_auto)
+
+
+# Esta estructura:
+#
+# for clave, valor in diccionario.items():
+#
+# aparecerá con mucha frecuencia en código Python.
+
+
+# ------------------------------------------------------------
+# 14. LAS VISTAS NO SON LISTAS
+# ------------------------------------------------------------
+
+# keys(), values() e items() devuelven objetos de vista.
+#
+# Si realmente necesitamos una lista, podemos convertirlos.
+
+lista_claves_auto = list(camaro_1967.keys())
+
+print(lista_claves_auto)
+print(type(lista_claves_auto))
+
+
+# No debemos realizar esta conversión automáticamente
+# si no existe una razón para necesitar una lista.
+
+
+# ------------------------------------------------------------
+# 15. update()
+# ------------------------------------------------------------
+
+# update() permite agregar o actualizar varios pares
+# clave-valor de una sola vez.
+
+triceratops = {
+    "nombre": "Triceratops",
+    "periodo": "Cretácico"
+}
+
+datos_adicionales = {
+    "alimentacion": "Herbívoro",
+    "extinto": True
+}
+
+triceratops.update(datos_adicionales)
+
+print(triceratops)
+
+
+# Si update() recibe una clave existente,
+# reemplaza su valor.
+
+triceratops.update({
+    "periodo": "Cretácico tardío"
+})
+
+print(triceratops)
+
+
+# ------------------------------------------------------------
+# 16. setdefault()
+# ------------------------------------------------------------
+
+# setdefault() busca una clave.
+#
+# Si existe:
+# devuelve el valor existente.
+#
+# Si no existe:
+# crea la clave utilizando el valor predeterminado indicado.
+
+configuracion = {
+    "idioma": "es"
+}
+
+tema_actual = configuracion.setdefault(
+    "tema",
+    "claro"
+)
+
+print(tema_actual)
+print(configuracion)
+
+
+# Si ejecutamos:
+
+configuracion.setdefault("idioma", "en")
+
+
+# "idioma" ya existe, por lo que NO se reemplaza.
+
+print(configuracion)
+
+
+# setdefault() es útil en determinados casos,
+# pero para modificaciones normales suele ser más claro
+# utilizar asignación directa o update().
+
+
+# ------------------------------------------------------------
+# 17. ELIMINAR CON pop()
+# ------------------------------------------------------------
+
+# pop(clave) elimina la clave y devuelve su valor.
+
+usuario_temporal = {
+    "nombre": "Saul Goodman",
+    "rol": "Invitado",
+    "token_temporal": "XYZ123"
+}
+
+token_eliminado = usuario_temporal.pop("token_temporal")
+
+print("Token eliminado:", token_eliminado)
+print(usuario_temporal)
+
+
+# También podemos proporcionar un valor por defecto para evitar
+# KeyError si la clave no existe.
+
+resultado_eliminacion = usuario_temporal.pop(
+    "telefono",
+    None
+)
+
+print(resultado_eliminacion)
+
+
+# ------------------------------------------------------------
+# 18. ELIMINAR CON del
+# ------------------------------------------------------------
+
+# del permite eliminar directamente una clave.
+
+configuracion_app = {
+    "tema": "oscuro",
+    "idioma": "es",
+    "debug": True
+}
+
+del configuracion_app["debug"]
+
+print(configuracion_app)
+
+
+# Si la clave no existe, del produce KeyError.
+
+
+# ------------------------------------------------------------
+# 19. popitem()
+# ------------------------------------------------------------
+
+# popitem() elimina y devuelve el último par clave-valor
+# insertado en el diccionario.
+
+datos_temporales = {
+    "nombre": "Velociraptor",
+    "periodo": "Cretácico",
+    "ubicacion": "Norteamérica"
+}
+
+ultimo_par = datos_temporales.popitem()
+
+print("Eliminado:", ultimo_par)
+print(datos_temporales)
+
+
+# ------------------------------------------------------------
+# 20. clear()
+# ------------------------------------------------------------
+
+# clear() elimina todos los elementos.
+
+cache_temporal = {
+    "dato_1": 100,
+    "dato_2": 200
+}
+
+cache_temporal.clear()
+
+print(cache_temporal)
+
+
+# Resultado:
+#
+# {}
+
+
+# ------------------------------------------------------------
+# 21. DICCIONARIOS ANIDADOS
+# ------------------------------------------------------------
+
+# Un valor puede ser otro diccionario.
+#
+# Esto es habitual cuando representamos información
+# estructurada.
+
+ticket_detallado = {
+    "id": "WD-4001",
+    "titulo": "Error de impresión",
+    "solicitante": {
+        "nombre": "Tony Soprano",
+        "area": "Administración"
+    }
+}
+
+print(ticket_detallado)
+
+
+# Para acceder al nombre:
+
+nombre_solicitante = ticket_detallado["solicitante"]["nombre"]
+
+print(nombre_solicitante)
+
+
+# Este tipo de estructura aparece con frecuencia en datos JSON
+# y respuestas de APIs.
+
+
+# ------------------------------------------------------------
+# 22. LISTAS DENTRO DE DICCIONARIOS
+# ------------------------------------------------------------
+
+# Como ya estudiamos listas, podemos utilizarlas como valores.
+
+pokemon_entrenador = {
+    "entrenador": "Ash",
+    "equipo": [
+        "Pikachu",
+        "Charizard",
+        "Squirtle"
+    ]
+}
+
+print(pokemon_entrenador["equipo"])
+
+
+# Podemos recorrer esa lista normalmente.
+
+for nombre_pokemon in pokemon_entrenador["equipo"]:
+    print(nombre_pokemon)
+
+
+# ------------------------------------------------------------
+# 23. LISTA DE DICCIONARIOS
+# ------------------------------------------------------------
+
+# Esta estructura es extremadamente común.
+#
+# Imaginemos varios tickets:
+
+tickets_soporte = [
+    {
+        "id": "WD-5001",
+        "prioridad": "Alta"
+    },
+    {
+        "id": "WD-5002",
+        "prioridad": "Media"
+    },
+    {
+        "id": "WD-5003",
+        "prioridad": "Crítica"
+    }
+]
+
+
+for registro_ticket in tickets_soporte:
+    print(
+        registro_ticket["id"],
+        registro_ticket["prioridad"]
+    )
+
+
+# Esta estructura puede aparecer cuando:
+#
+# - obtenemos varios registros de una API;
+# - procesamos resultados;
+# - trabajamos con JSON;
+# - construimos datos temporales;
+# - transformamos filas provenientes de una base de datos.
+#
+# Más adelante veremos estos contextos con mayor profundidad.
+
+
+# ------------------------------------------------------------
+# 24. copy()
+# ------------------------------------------------------------
+
+# copy() crea una COPIA SUPERFICIAL del diccionario.
+
+datos_corvette = {
+    "modelo": "Corvette Stingray",
+    "anio": 1963
+}
+
+copia_corvette = datos_corvette.copy()
+
+copia_corvette["anio"] = 1967
+
+print("Original:", datos_corvette)
+print("Copia:", copia_corvette)
+
+
+# Modificar directamente un valor simple en la copia
+# no cambia el mismo campo del diccionario original.
+
+
+# ------------------------------------------------------------
+# 25. CUIDADO CON LAS COPIAS SUPERFICIALES
+# ------------------------------------------------------------
+
+# Si existen objetos mutables dentro del diccionario,
+# esos objetos internos pueden continuar compartidos.
+
+registro_pokemon = {
+    "entrenador": "Misty",
+    "equipo": ["Staryu", "Starmie"]
+}
+
+copia_registro = registro_pokemon.copy()
+
+copia_registro["equipo"].append("Psyduck")
+
+
+print("Original:", registro_pokemon)
+print("Copia:", copia_registro)
+
+
+# Psyduck aparecerá en ambas estructuras porque copy()
+# realizó una copia superficial.
+#
+# No profundizaremos todavía en deepcopy().
+# Lo estudiaremos cuando realmente sea necesario.
+
+
+# ------------------------------------------------------------
+# 26. ASIGNACIÓN NO SIGNIFICA COPIA
+# ------------------------------------------------------------
+
+datos_originales = {
+    "estado": "Nuevo"
+}
+
+misma_referencia = datos_originales
+
+misma_referencia["estado"] = "En progreso"
+
+print(datos_originales)
+print(misma_referencia)
+
+
+# Ambos nombres hacen referencia al mismo diccionario.
+
+
+# ------------------------------------------------------------
+# 27. EJEMPLO REALISTA: PROCESAR UN TICKET
+# ------------------------------------------------------------
+
+ticket_workdesk = {
+    "id": "WD-6001",
+    "titulo": "Usuario sin acceso al sistema",
+    "prioridad": "Alta",
+    "estado": "Nuevo",
+    "tecnico": None
+}
+
+
+# Consultamos un campo obligatorio.
+
+titulo_workdesk = ticket_workdesk["titulo"]
+
+
+# Consultamos un campo que podría no existir.
+
+ubicacion_workdesk = ticket_workdesk.get(
+    "ubicacion",
+    "Sin ubicación registrada"
+)
+
+
+# Asignamos un técnico.
+
+ticket_workdesk["tecnico"] = "Elliot Alderson"
+
+
+# Actualizamos el estado.
+
+ticket_workdesk["estado"] = "Asignado"
+
+
+# Comprobamos una clave.
+
+tiene_prioridad = "prioridad" in ticket_workdesk
+
+
+# Recorremos todos los datos.
+
+for campo_workdesk, valor_workdesk in ticket_workdesk.items():
+    print(f"{campo_workdesk}: {valor_workdesk}")
+
+
+print("Título:", titulo_workdesk)
+print("Ubicación:", ubicacion_workdesk)
+print("¿Tiene prioridad?:", tiene_prioridad)
+
+
+# Este ejemplo sigue siendo educativo.
+#
+# Un ticket real de WorkDesk terminará representándose mediante
+# modelos y registros persistentes, no simplemente con un
+# diccionario escrito manualmente.
+#
+# Sin embargo, comprender dict será fundamental para trabajar
+# posteriormente con esos datos.
+
+
+# ============================================================
+# CUÁNDO UTILIZAR UN DICCIONARIO
+# ============================================================
+#
+# Utiliza un diccionario cuando necesitas relacionar
+# nombres o identificadores con valores.
+#
+# Por ejemplo:
+#
+# {
+#     "nombre": "..."
+#     "edad": ...
+#     "activo": ...
+# }
+#
+# suele ser más expresivo que:
+#
+# ["...", ..., ...]
+#
+# cuando cada posición representa un atributo diferente.
+#
+# Un diccionario es especialmente apropiado cuando queremos
+# consultar información mediante nombres significativos.
+
+
+# ============================================================
+# IDEA PRINCIPAL
+# ============================================================
+#
+# Un diccionario:
+#
+# - almacena pares clave-valor;
+# - es mutable;
+# - conserva el orden de inserción;
+# - requiere claves hashables;
+# - permite valores de diferentes tipos.
+#
+#
+# OPERACIONES FUNDAMENTALES
+#
+# diccionario["clave"]
+# → acceso directo.
+#
+# diccionario["clave"] = valor
+# → agregar o modificar.
+#
+# diccionario.get("clave")
+# → acceso cuando la clave puede no existir.
+#
+# "clave" in diccionario
+# → comprobar existencia de una clave.
+#
+# diccionario.items()
+# → recorrer claves y valores.
+#
+# diccionario.update(...)
+# → actualizar múltiples pares.
+#
+# diccionario.pop(...)
+# → eliminar y recuperar un valor.
+#
+#
+# PATRÓN MUY FRECUENTE
+#
+# for clave, valor in diccionario.items():
+#     ...
+#
+#
+# Los diccionarios serán una estructura fundamental para
+# backend, APIs, automatizaciones, integraciones y procesamiento
+# de datos.
