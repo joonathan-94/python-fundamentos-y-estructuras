@@ -1,127 +1,180 @@
 # Python — Fundamentos y Estructuras de Datos
 
-Repositorio personal de estudio, práctica y consulta de Python.
+Repositorio personal de estudio y práctica de Python.
 
-El objetivo es construir una base sólida del lenguaje, mejorar progresivamente la lógica de programación y comprender los conceptos fundamentales necesarios para desarrollar aplicaciones reales.
+El objetivo es construir fundamentos sólidos del lenguaje mediante un aprendizaje progresivo, combinando teoría, ejemplos, ejercicios breves y aplicación práctica.
 
-El aprendizaje está orientado principalmente a desarrollo backend, pero busca mantener una base general de Python que pueda aplicarse posteriormente en áreas como automatización, integraciones entre sistemas, procesamiento de datos y análisis de datos.
+El recorrido está orientado a desarrollar una base reutilizable para programación general, desarrollo backend, automatización, integraciones, procesamiento de archivos y análisis de datos.
 
-Este repositorio también funciona como registro del aprendizaje práctico de Git y GitHub utilizado durante todo el proceso.
-
----
-
-## Objetivos
-
-- Consolidar los fundamentos esenciales de Python.
-- Comprender cómo funciona el lenguaje y no limitar el aprendizaje a memorizar sintaxis.
-- Mejorar progresivamente la lógica de programación.
-- Aprender a seleccionar estructuras de datos según el problema que se desea resolver.
-- Estudiar las principales colecciones y estructuras de datos de Python.
-- Aprender funciones, módulos, paquetes, excepciones y manejo de archivos.
-- Estudiar programación orientada a objetos.
-- Introducir testing y buenas prácticas de desarrollo.
-- Estudiar estructuras de datos y algoritmos fundamentales.
-- Desarrollar un gestor de tickets por consola como proyecto integrador.
-- Preparar una base técnica para continuar con Flask y PostgreSQL.
-- Construir conocimientos reutilizables en backend, automatizaciones, integraciones y procesamiento de datos.
-- Practicar Git y GitHub mediante ramas, commits, Pull Requests y revisión de cambios.
-
----
-
-## Enfoque de estudio
-
-El repositorio sigue una metodología progresiva orientada a comprender primero los conceptos que tienen mayor utilidad práctica.
-
-El objetivo no es memorizar todas las características disponibles en Python, sino dominar primero los fundamentos que permiten resolver la mayoría de los problemas habituales.
-
-Flujo general de estudio:
-
-```text
-comprender el concepto
-↓
-revisar ejemplos
-↓
-escribir código
-↓
-resolver ejercicios breves
-↓
-revisar resultados
-↓
-versionar con Git
-↓
-continuar al siguiente tema
-```
-
-Los ejercicios iniciales se mantienen deliberadamente simples y enfocados.
-
-La complejidad aumentará progresivamente al combinar conocimientos en módulos posteriores y, especialmente, en el proyecto integrador.
+Git y GitHub se estudian y utilizan en paralelo para aplicar desde el inicio un flujo de trabajo basado en ramas, commits, Pull Requests y revisión de cambios.
 
 ---
 
 ## Estado actual
 
-### Bloques completados
+### Progreso en Python
 
-- [x] 01 - Fundamentos
-- [x] 02 - Operadores
-- [x] 03 - Control de flujo
-- [x] 04 - Colecciones y métodos
+- [x] Fundamentos
+- [x] Operadores
+- [x] Control de flujo
+- [x] Colecciones y métodos
+- [x] Interacción con el usuario
+- [x] Funciones
+- [x] Módulos y paquetes
+- [x] Manejo de excepciones
+- [x] Archivos y datos
+- [ ] Programación orientada a objetos
 
-### Próximo bloque
+### Próximo tema
 
-- [ ] 05 - Interacción con el usuario
+```text
+Programación orientada a objetos (POO)
+```
+
+El bloque de entorno, Git y GitHub se trabaja en paralelo durante todo el proceso.
 
 ---
 
-## Colecciones estudiadas
+## Resumen de aprendizaje
 
-Hasta ahora se han estudiado las principales colecciones incorporadas de Python:
+| Tema | Conceptos principales |
+|---|---|
+| Fundamentos | Tipos de datos, variables, strings y conversión de tipos |
+| Operadores | Operadores aritméticos, de comparación y lógicos |
+| Control de flujo | `if`, `elif`, `else`, ciclos `for` y `while`, `break` y `continue` |
+| Colecciones | Listas, tuplas, diccionarios y sets |
+| Interacción con el usuario | `input()`, recepción de datos y conversión de valores |
+| Funciones | `def`, parámetros, argumentos, `return`, alcance, docstrings y type hints básicos |
+| Módulos y paquetes | `import`, módulos propios, paquetes, `__init__.py` y reutilización entre archivos |
+| Manejo de excepciones | `try`, `except`, `else`, `finally`, `raise` y excepciones comunes |
+| Archivos y datos | Lectura y escritura de TXT, JSON y CSV |
 
-| Colección | Característica principal | Uso habitual |
+El objetivo no es memorizar cada característica del lenguaje, sino comprender los conceptos esenciales y aprender a combinarlos progresivamente.
+
+---
+
+## Conceptos fundamentales
+
+### Colecciones
+
+| Colección | Característica | Uso habitual |
 |---|---|---|
-| `list` | Secuencia mutable y ordenada | Datos que pueden cambiar, agregarse, eliminarse o recorrerse en orden |
-| `tuple` | Secuencia inmutable y ordenada | Datos cuya estructura debería permanecer estable |
-| `dict` | Pares clave-valor | Registros, configuraciones, datos estructurados, APIs y JSON |
-| `set` | Elementos únicos sin posiciones | Eliminar duplicados, comprobar pertenencia y comparar conjuntos |
+| `list` | Secuencia mutable y ordenada | Datos que pueden cambiar durante la ejecución |
+| `tuple` | Secuencia inmutable y ordenada | Datos cuya estructura debería mantenerse estable |
+| `dict` | Pares clave-valor | Registros y datos estructurados |
+| `set` | Elementos únicos | Eliminar duplicados y realizar operaciones entre conjuntos |
 
-Regla rápida:
+Regla práctica:
 
 ```text
-¿Necesito una secuencia modificable?
+Secuencia modificable
 → list
 
-¿Necesito una secuencia estable?
+Secuencia estable
 → tuple
 
-¿Necesito relacionar claves con valores?
+Relación clave-valor
 → dict
 
-¿Necesito elementos únicos o comparar grupos?
+Elementos únicos
 → set
+```
+
+### Organización del código
+
+```text
+función
+↓
+encapsula una tarea reutilizable
+
+módulo
+↓
+archivo .py que organiza código relacionado
+
+paquete
+↓
+agrupa módulos relacionados
+```
+
+### Manejo de errores
+
+```text
+operación que puede fallar
+↓
+try
+
+excepción conocida
+↓
+except
+
+respuesta controlada
+```
+
+También se estudiaron:
+
+```text
+else
+finally
+raise
+```
+
+como herramientas complementarias para controlar el comportamiento ante errores.
+
+### Persistencia básica
+
+Antes:
+
+```text
+programa
+↓
+variables
+↓
+los datos desaparecen al finalizar
+```
+
+Ahora:
+
+```text
+programa
+↓
+archivo
+↓
+los datos pueden conservarse
+```
+
+Formatos trabajados:
+
+```text
+TXT
+→ texto simple
+
+JSON
+→ información estructurada
+
+CSV
+→ información tabular
 ```
 
 ---
 
 ## Roadmap
 
-- [ ] 00 - Entorno y herramientas
+- [ ] 00 - Entorno y herramientas — estudio paralelo
 - [x] 01 - Fundamentos
 - [x] 02 - Operadores
 - [x] 03 - Control de flujo
 - [x] 04 - Colecciones y métodos
-- [ ] 05 - Interacción con el usuario
-- [ ] 06 - Funciones
-- [ ] 07 - Módulos y paquetes
-- [ ] 08 - Manejo de excepciones
-- [ ] 09 - Archivos y datos
+- [x] 05 - Interacción con el usuario
+- [x] 06 - Funciones
+- [x] 07 - Módulos y paquetes
+- [x] 08 - Manejo de excepciones
+- [x] 09 - Archivos y datos
 - [ ] 10 - Programación orientada a objetos
 - [ ] 11 - Python intermedio
 - [ ] 12 - Estructuras de datos
 - [ ] 13 - Algoritmos y complejidad
 - [ ] 14 - Testing
 - [ ] 15 - Proyecto gestor de tickets
-
-> El bloque `00_entorno_y_herramientas` se trabaja en paralelo al estudio de Python e incluye principalmente Git, GitHub y otras herramientas utilizadas durante el desarrollo.
 
 ---
 
@@ -159,10 +212,38 @@ python-fundamentos-y-estructuras/
 │   └── 99_ejercicios.py
 │
 ├── 05_interaccion_usuario/
+│   ├── 01_inputs.py
+│   └── 99_ejercicios.py
+│
 ├── 06_funciones/
+│   ├── 01_funciones_basicas.py
+│   ├── 02_parametros_y_retorno.py
+│   ├── 03_alcance_y_buenas_practicas.py
+│   └── 99_ejercicios.py
+│
 ├── 07_modulos_y_paquetes/
+│   ├── 01_modulos_e_importaciones.py
+│   ├── 02_modulos_propios.py
+│   ├── 03_paquetes.py
+│   ├── operaciones.py
+│   ├── utilidades/
+│   │   ├── __init__.py
+│   │   ├── calculos.py
+│   │   └── texto.py
+│   └── 99_ejercicios.py
+│
 ├── 08_manejo_excepciones/
+│   ├── 01_excepciones_y_try_except.py
+│   ├── 02_else_finally_raise_y_buenas_practicas.py
+│   └── 99_ejercicios.py
+│
 ├── 09_archivos_y_datos/
+│   ├── 01_archivos_texto.py
+│   ├── 02_json.py
+│   ├── 03_csv.py
+│   ├── datos/
+│   └── 99_ejercicios.py
+│
 ├── 10_POO/
 ├── 11_python_intermedio/
 ├── 12_estructuras_de_datos/
@@ -174,21 +255,47 @@ python-fundamentos-y-estructuras/
 └── README.md
 ```
 
-> Git no almacena carpetas vacías de forma independiente. Por esta razón, algunos directorios planificados pueden no aparecer todavía en GitHub hasta que contengan archivos versionados.
+> Git no almacena carpetas vacías de forma independiente. Algunos directorios planificados pueden no aparecer todavía en GitHub hasta contener archivos versionados.
+
+---
+
+## Metodología de estudio
+
+El aprendizaje se desarrolla de forma incremental:
+
+```text
+comprender el concepto
+↓
+revisar ejemplos
+↓
+escribir y ejecutar código
+↓
+resolver ejercicios breves
+↓
+revisar resultados
+↓
+versionar con Git
+↓
+continuar al siguiente tema
+```
+
+La cantidad de ejercicios se mantiene deliberadamente reducida durante los fundamentos.
+
+El objetivo es comprobar la comprensión y mantener un avance constante.
+
+La complejidad aumentará progresivamente al combinar conocimientos y desarrollar programas más completos.
 
 ---
 
 ## Organización de los ejercicios
 
-Los ejercicios de cada módulo se concentran principalmente en:
+Cada bloque concentra principalmente sus ejercicios en:
 
 ```text
 99_ejercicios.py
 ```
 
-Se utilizan identificadores según el tema estudiado.
-
-Ejemplos:
+Se utilizan identificadores según el tema:
 
 ```text
 VAR-01
@@ -200,40 +307,41 @@ LIST-01
 TUP-01
 DICT-01
 SET-01
+INPUT-01
+FUNC-01
+MOD-01
+EXC-01
+ARCH-01
 ```
 
-La cantidad de ejercicios se mantiene reducida durante los fundamentos.
-
-La prioridad es comprobar comprensión y continuar avanzando.
-
-Los ejercicios de mayor complejidad aparecerán posteriormente al integrar diferentes conceptos.
+Esto permite identificar rápidamente qué concepto practica cada ejercicio.
 
 ---
 
 ## Convenciones de código
 
-Se prioriza:
+Durante el estudio se priorizan:
 
-```text
-snake_case
-nombres descriptivos
-código legible
-comentarios útiles
-simplicidad
-consistencia
-```
+- `snake_case` para funciones y variables.
+- Nombres descriptivos.
+- Código simple y legible.
+- Comentarios que aporten contexto.
+- Funciones con responsabilidades claras.
+- Docstrings cuando agregan información útil.
+- Separación progresiva del código en módulos.
+- Manejo explícito de errores previsibles.
+- UTF-8 para archivos de texto.
+- Consistencia de estilo.
 
-Los nombres de archivos y carpetas se mantienen principalmente en español para facilitar la organización del material de estudio.
-
-Los ejemplos buscan representar situaciones cercanas a aplicaciones reales siempre que sea posible.
+Los nombres de archivos y carpetas se mantienen principalmente en español para facilitar la organización y consulta del material.
 
 ---
 
 ## Git y GitHub
 
-Git y GitHub se estudian en paralelo con Python.
+Git y GitHub forman parte del aprendizaje y se utilizan para versionar cada bloque de estudio.
 
-Flujo utilizado actualmente:
+Flujo de trabajo aplicado:
 
 ```text
 main actualizado
@@ -256,7 +364,7 @@ git push
 ↓
 Pull Request
 ↓
-revisión
+revisión de cambios
 ↓
 merge
 ↓
@@ -265,25 +373,42 @@ sincronizar main
 eliminar rama terminada
 ```
 
-Convenciones utilizadas:
+### Convención de ramas
 
 ```text
-study/...      → bloques de estudio
-docs/...       → documentación
-refactor/...   → reorganización o mejora interna
-fix/...        → correcciones
-feature/...    → funcionalidades
+study/...
+→ bloques de estudio
+
+docs/...
+→ documentación
+
+refactor/...
+→ reorganización interna
+
+fix/...
+→ correcciones
+
+feature/...
+→ funcionalidades
 ```
 
-Los mensajes de commit se escriben en inglés y deben describir claramente la intención del cambio.
+### Commits
 
-Ejemplo:
+Los mensajes de commit se escriben en inglés y buscan describir claramente la intención del cambio.
+
+Ejemplos:
 
 ```text
-Expand Python collections study and exercises
+Expand Python functions study and exercises
+
+Expand Python modules and packages study and exercises
+
+Expand Python exception handling study and exercises
+
+Expand Python files and data study and exercises
 ```
 
-La documentación específica de Git y GitHub se encuentra en:
+La documentación específica de Git y GitHub se mantiene en:
 
 ```text
 00_entorno_y_herramientas/01_git_y_github.md
@@ -293,76 +418,59 @@ La documentación específica de Git y GitHub se encuentra en:
 
 ## Proyecto integrador
 
-Después de completar los módulos principales se desarrollará un gestor de tickets por consola.
+El último bloque del recorrido será un gestor de tickets por consola desarrollado dentro de este mismo repositorio.
 
-El proyecto permitirá integrar progresivamente conceptos como:
+Su propósito será integrar progresivamente los conocimientos adquiridos:
 
 ```text
-variables
+fundamentos
++
 operadores
++
+control de flujo
++
 colecciones
-condicionales
-ciclos
++
+interacción con el usuario
++
 funciones
-módulos
-excepciones
-archivos
-POO
++
+módulos y paquetes
++
+manejo de excepciones
++
+archivos y datos
++
+programación orientada a objetos
++
 testing
 ```
 
-La intención no será únicamente lograr que el programa funcione, sino aprender a estructurar código que pueda comprenderse, mantenerse y evolucionar.
+El objetivo no será solamente conseguir que el programa funcione, sino practicar organización, reutilización, mantenibilidad y evolución del código.
 
 ---
 
-## Camino posterior
+## Aplicación de los conocimientos
 
-El recorrido previsto es:
-
-```text
-Python sólido
-↓
-gestor de tickets por consola
-↓
-Flask
-↓
-aplicación web
-↓
-PostgreSQL
-↓
-proyectos reales
-```
-
-Los fundamentos adquiridos también podrán utilizarse posteriormente en:
+Los fundamentos estudiados buscan servir como base para continuar aprendiendo y desarrollar posteriormente soluciones relacionadas con:
 
 ```text
-backend
-automatizaciones
-integraciones
+desarrollo backend
+automatización
 APIs
+integraciones entre sistemas
 procesamiento de archivos
-procesamiento y análisis de datos
+procesamiento de datos
+análisis de datos
 ```
 
----
-
-## Proyectos futuros
-
-Los conocimientos desarrollados en este repositorio servirán como base para proyectos personales de mayor escala.
-
-```text
-WorkDesk
-→ sistema de gestión de tickets y trabajo
-
-MoneyDesk
-→ aplicación de finanzas personales
-```
+El repositorio representa una base de aprendizaje, no una especialización cerrada en una única área.
 
 ---
 
 ## Fuentes de referencia
 
-Se prioriza documentación oficial como fuente técnica.
+Durante el estudio se prioriza documentación oficial.
 
 ### Python
 
@@ -386,20 +494,28 @@ https://docs.github.com/
 
 ---
 
-## Filosofía del repositorio
+## Objetivo del repositorio
+
+Este repositorio busca registrar una evolución progresiva desde los fundamentos de Python hasta la capacidad de construir programas propios con una estructura cada vez más organizada.
+
+El objetivo es desarrollar una base suficiente para:
 
 ```text
-entender
-+
-practicar
-+
-documentar
-+
-versionar
-+
-construir
+leer código
+↓
+comprenderlo
+↓
+escribirlo
+↓
+depurarlo
+↓
+organizarlo
+↓
+reutilizarlo
+↓
+mantenerlo
+↓
+construir soluciones propias
 ```
 
-El objetivo no es convertirse inmediatamente en experto en cada característica de Python.
-
-El objetivo es desarrollar fundamentos suficientemente sólidos para escribir código, comprender código existente, detectar errores, aprender nuevas herramientas y comenzar a construir proyectos reales con criterio técnico.
+No se busca memorizar cada característica del lenguaje, sino adquirir fundamentos que permitan continuar aprendiendo y resolver problemas progresivamente más complejos.
