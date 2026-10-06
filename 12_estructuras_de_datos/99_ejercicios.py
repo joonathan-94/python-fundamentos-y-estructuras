@@ -1,0 +1,119 @@
+# ============================================================
+# ED-01 - PILA
+# ============================================================
+#
+# Crea una lista vacía llamada:
+#
+# historial
+#
+#
+# Agrega utilizando append():
+#
+# "Abrir ticket"
+# "Cambiar estado"
+# "Asignar técnico"
+#
+#
+# Después:
+#
+# 1. Retira la última acción utilizando pop().
+# 2. Guarda el resultado en:
+#
+# ultima_accion
+#
+# 3. Imprime:
+#
+# ultima_accion
+#
+# 4. Imprime el historial restante.
+#
+#
+# Resultado esperado conceptualmente:
+#
+# última acción:
+# "Asignar técnico"
+#
+#
+# historial restante:
+#
+# [
+#     "Abrir ticket",
+#     "Cambiar estado"
+# ]
+
+historial = []
+historial.append("Abrir ticket")
+historial.append("Cambiar estado")
+historial.append("Asignar técnico")
+print(f"Historial inicial: {historial}")
+
+ultima_accion = historial.pop()
+print(f"Ultima accion: {ultima_accion}")
+print(f"Historial restante: {historial}")
+
+# ============================================================
+# ED-02 - COLA
+# ============================================================
+#
+# Importa:
+#
+# deque
+#
+# desde:
+#
+# collections
+#
+#
+# Crea una cola llamada:
+#
+# cola_tickets
+#
+#
+# Agrega utilizando append():
+#
+# "TK-001"
+# "TK-002"
+# "TK-003"
+#
+#
+# Después:
+#
+# 1. Retira el primer ticket utilizando popleft().
+# 2. Guarda el resultado en:
+#
+# ticket_atendido
+#
+# 3. Imprime:
+#
+# ticket_atendido
+#
+# 4. Imprime la cola restante.
+#
+#
+# Resultado esperado conceptualmente:
+#
+# ticket atendido:
+#
+# TK-001
+#
+#
+# cola restante:
+#
+# TK-002
+# TK-003
+
+from collections import deque
+
+cola_tickets = deque()
+
+print(f"Cola tickets inicial: {cola_tickets}")
+
+cola_tickets.append("TK-001")
+cola_tickets.append("TK-002")
+cola_tickets.append("TK-003")
+
+print(f"Cola tickets con datos: {cola_tickets}")
+
+ticket_atendido = cola_tickets.popleft()
+print(f"Ticket atendido: {ticket_atendido}")
+print(f"Cola tickets final: {cola_tickets}")
