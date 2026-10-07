@@ -117,3 +117,137 @@ print(f"Cola tickets con datos: {cola_tickets}")
 ticket_atendido = cola_tickets.popleft()
 print(f"Ticket atendido: {ticket_atendido}")
 print(f"Cola tickets final: {cola_tickets}")
+
+# ============================================================
+# ED-03 - COLA DE PRIORIDAD
+# ============================================================
+#
+# Importa:
+#
+# heapq
+#
+#
+# Crea una lista vacía llamada:
+#
+# cola_prioridad
+#
+#
+# Agrega mediante heapq.heappush():
+#
+# prioridad 3
+# "TK-001"
+#
+# prioridad 1
+# "TK-002"
+#
+# prioridad 2
+# "TK-003"
+#
+#
+# Recuerda:
+#
+# 1 → prioridad más alta
+# 2 → prioridad intermedia
+# 3 → prioridad más baja
+#
+#
+# Después:
+#
+# 1. Retira el primer elemento utilizando:
+#
+# heapq.heappop()
+#
+#
+# 2. Desempaqueta el resultado en:
+#
+# prioridad
+# ticket_atendido
+#
+#
+# 3. Imprime:
+#
+# prioridad
+# ticket_atendido
+#
+#
+# 4. Imprime la cola restante.
+#
+#
+# Resultado esperado:
+#
+# prioridad:
+# 1
+#
+# ticket:
+# TK-002
+#
+#
+# TK-002 debe salir primero aunque
+# no haya sido el primero agregado.
+
+import heapq
+
+
+PRIORIDAD_ALTA = 1
+PRIORIDAD_INTERMEDIA = 2
+PRIORIDAD_BAJA = 3
+
+
+cola_prioridad = []
+
+
+print(
+    f"Cola inicial: {cola_prioridad}"
+)
+
+
+heapq.heappush(
+    cola_prioridad,
+    (
+        PRIORIDAD_BAJA,
+        "TK-001"
+    )
+)
+
+
+heapq.heappush(
+    cola_prioridad,
+    (
+        PRIORIDAD_ALTA,
+        "TK-002"
+    )
+)
+
+
+heapq.heappush(
+    cola_prioridad,
+    (
+        PRIORIDAD_INTERMEDIA,
+        "TK-003"
+    )
+)
+
+
+print(
+    f"Cola con datos: {cola_prioridad}"
+)
+
+
+prioridad, ticket_atendido = (
+    heapq.heappop(
+        cola_prioridad
+    )
+)
+
+
+print(
+    f"Prioridad: {prioridad}"
+)
+
+print(
+    f"Ticket atendido: {ticket_atendido}"
+)
+
+print(
+    f"Cola final: {cola_prioridad}"
+)
