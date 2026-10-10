@@ -251,3 +251,114 @@ print(
 print(
     f"Cola final: {cola_prioridad}"
 )
+
+
+# ============================================================
+# ED-04 - LISTA ENLAZADA
+# ============================================================
+#
+# Crea una clase:
+#
+# Nodo
+#
+#
+# Su __init__ debe recibir:
+#
+# valor
+#
+#
+# y guardar:
+#
+# self.valor
+#
+#
+# También debe crear:
+#
+# self.siguiente = None
+#
+#
+# Después crea tres nodos:
+#
+# "Albert Einstein"
+# "Nikola Tesla"
+# "Alan Turing"
+#
+#
+# Conéctalos para obtener:
+#
+# Albert Einstein
+#       ↓
+# Nikola Tesla
+#       ↓
+# Alan Turing
+#       ↓
+# None
+#
+#
+# Utiliza:
+#
+# nodo_einstein.siguiente = ...
+#
+# nodo_tesla.siguiente = ...
+#
+#
+# Después:
+#
+# 1. Crea una variable:
+#
+# actual
+#
+# que inicialmente apunte al primer nodo.
+#
+#
+# 2. Utiliza un while para recorrer
+# todos los nodos.
+#
+#
+# 3. Imprime el valor de cada nodo.
+#
+#
+# 4. En cada iteración avanza mediante:
+#
+# actual = actual.siguiente
+#
+#
+# Resultado esperado:
+#
+# Albert Einstein
+# Nikola Tesla
+# Alan Turing
+#
+#
+# No crees todavía una clase ListaEnlazada.
+#
+# El objetivo del ejercicio es practicar solamente:
+#
+# nodo
+# referencia
+# siguiente
+# recorrido
+# None
+
+class Nodo:
+    
+    def __init__(self, valor):
+        self.valor = valor
+        self.siguiente = None
+    
+einstein = Nodo("Albert Einstein")
+print(f"Valor de bjeto cabecera: {einstein.valor}")
+tesla = Nodo("Nikola Tesla")
+turing = Nodo("Alan Turing")
+
+
+einstein.siguiente = tesla
+print(f"Siguiente valor: {einstein.siguiente.valor}")
+
+tesla.siguiente = turing
+
+actual = einstein
+
+while actual is not None:
+    print(f"Valor actual: {actual.valor}")
+    actual = actual.siguiente
