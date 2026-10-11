@@ -23,12 +23,14 @@ Git y GitHub se estudian y utilizan en paralelo para aplicar desde el inicio un 
 - [x] Módulos y paquetes
 - [x] Manejo de excepciones
 - [x] Archivos y datos
-- [ ] Programación orientada a objetos
+- [x] Programación orientada a objetos
+- [x] Python intermedio
+- [x] Estructuras de datos
 
 ### Próximo tema
 
 ```text
-Programación orientada a objetos (POO)
+Algoritmos y complejidad
 ```
 
 El bloque de entorno, Git y GitHub se trabaja en paralelo durante todo el proceso.
@@ -48,6 +50,9 @@ El bloque de entorno, Git y GitHub se trabaja en paralelo durante todo el proces
 | Módulos y paquetes | `import`, módulos propios, paquetes, `__init__.py` y reutilización entre archivos |
 | Manejo de excepciones | `try`, `except`, `else`, `finally`, `raise` y excepciones comunes |
 | Archivos y datos | Lectura y escritura de TXT, JSON y CSV |
+| Programación orientada a objetos | Clases, objetos, atributos, métodos, encapsulamiento, propiedades, herencia y polimorfismo |
+| Python intermedio | Comprensiones, utilidades, desempaquetado, `*args`, `**kwargs`, decoradores, generadores, context managers, `pathlib` y `datetime` |
+| Estructuras de datos | Pilas, colas, colas de prioridad, listas enlazadas, árboles y grafos |
 
 El objetivo no es memorizar cada característica del lenguaje, sino comprender los conceptos esenciales y aprender a combinarlos progresivamente.
 
@@ -155,6 +160,95 @@ CSV
 → información tabular
 ```
 
+### Programación orientada a objetos
+
+La programación orientada a objetos permite agrupar datos y comportamiento dentro de objetos.
+
+```text
+clase
+↓
+define estructura y comportamiento
+
+objeto
+↓
+instancia concreta de una clase
+
+atributos
+↓
+representan estado
+
+métodos
+↓
+representan comportamiento
+```
+
+También se estudiaron encapsulamiento mediante convenciones y propiedades, herencia para reutilizar comportamiento y polimorfismo para trabajar con objetos mediante una interfaz compatible.
+
+### Python intermedio
+
+Se incorporaron herramientas frecuentes en código Python real:
+
+```text
+comprensiones
+→ transformar y filtrar colecciones
+
+enumerate / zip
+→ recorrer información con posición o en paralelo
+
+* y **
+→ desempaquetar datos
+
+*args / **kwargs
+→ recibir cantidades variables de argumentos
+
+decoradores
+→ agregar comportamiento alrededor de funciones
+
+generadores
+→ producir valores progresivamente mediante yield
+
+with
+→ administrar recursos mediante context managers
+
+Path / datetime / timedelta
+→ trabajar con rutas, fechas y tiempos
+```
+
+### Estructuras de datos
+
+Además de las colecciones incorporadas de Python, se estudiaron estructuras de datos fundamentales y sus casos de uso principales.
+
+| Estructura | Característica principal | Implementación estudiada |
+|---|---|---|
+| Pila | LIFO: último en entrar, primero en salir | `list`, `append()`, `pop()` |
+| Cola | FIFO: primero en entrar, primero en salir | `collections.deque`, `append()`, `popleft()` |
+| Cola de prioridad | Procesa primero los elementos más prioritarios | `heapq` |
+| Lista enlazada | Nodos conectados mediante referencias | Clase `Nodo` y atributo `siguiente` |
+| Árbol | Representa relaciones jerárquicas | Nodos con colección de hijos |
+| Grafo | Representa relaciones generales entre vértices | `dict` + `set` |
+
+Regla práctica:
+
+```text
+¿Necesito procesar primero lo último agregado?
+→ pila
+
+¿Necesito respetar el orden de llegada?
+→ cola
+
+¿Necesito procesar primero lo más importante?
+→ cola de prioridad
+
+¿Necesito conectar nodos secuencialmente?
+→ lista enlazada
+
+¿Necesito representar una jerarquía?
+→ árbol
+
+¿Necesito representar relaciones generales?
+→ grafo
+```
+
 ---
 
 ## Roadmap
@@ -169,9 +263,9 @@ CSV
 - [x] 07 - Módulos y paquetes
 - [x] 08 - Manejo de excepciones
 - [x] 09 - Archivos y datos
-- [ ] 10 - Programación orientada a objetos
-- [ ] 11 - Python intermedio
-- [ ] 12 - Estructuras de datos
+- [x] 10 - Programación orientada a objetos
+- [x] 11 - Python intermedio
+- [x] 12 - Estructuras de datos
 - [ ] 13 - Algoritmos y complejidad
 - [ ] 14 - Testing
 - [ ] 15 - Proyecto gestor de tickets
@@ -245,8 +339,28 @@ python-fundamentos-y-estructuras/
 │   └── 99_ejercicios.py
 │
 ├── 10_POO/
+│   ├── 01_clases_basicas.py
+│   ├── 02_atributos_y_metodos.py
+│   ├── 03_encapsulamiento_y_propiedades.py
+│   ├── 04_herencia_y_polimorfismo.py
+│   └── 99_ejercicios.py
+│
 ├── 11_python_intermedio/
+│   ├── 01_comprensiones_y_utilidades.py
+│   ├── 02_desempaquetado_args_kwargs.py
+│   ├── 03_decoradores.py
+│   ├── 04_generadores_y_contextos.py
+│   ├── 05_pathlib_y_datetime.py
+│   └── 99_ejercicios.py
+│
 ├── 12_estructuras_de_datos/
+│   ├── 01_pilas_y_colas.py
+│   ├── 02_colas_de_prioridad.py
+│   ├── 03_listas_enlazadas.py
+│   ├── 04_arboles.py
+│   ├── 05_grafos.py
+│   └── 99_ejercicios.py
+│
 ├── 13_algoritmos_y_complejidad/
 ├── 14_testing/
 ├── 15_proyecto_gestor_tickets/
@@ -312,6 +426,9 @@ FUNC-01
 MOD-01
 EXC-01
 ARCH-01
+POO-01
+INT-01
+ED-01
 ```
 
 Esto permite identificar rápidamente qué concepto practica cada ejercicio.
@@ -406,6 +523,10 @@ Expand Python modules and packages study and exercises
 Expand Python exception handling study and exercises
 
 Expand Python files and data study and exercises
+
+Add Python trees study and exercise
+
+Add Python graphs study and exercise
 ```
 
 La documentación específica de Git y GitHub se mantiene en:
@@ -442,6 +563,12 @@ manejo de excepciones
 archivos y datos
 +
 programación orientada a objetos
++
+Python intermedio
++
+estructuras de datos
++
+algoritmos y complejidad
 +
 testing
 ```
