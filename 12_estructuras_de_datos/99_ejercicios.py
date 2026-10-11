@@ -531,3 +531,173 @@ if not relatividad.hijos:
 # hoja
 # jerarquía
 
+
+print("EJERCICIO GRAFOS")
+
+
+# ============================================================
+# ED-06 - GRAFO
+# ============================================================
+
+
+# ------------------------------------------------------------
+# ENUNCIADO
+# ------------------------------------------------------------
+#
+# Representa mediante un diccionario y sets
+# la siguiente red:
+#
+#
+#             Servidor B
+#                 |
+#                 |
+# Servidor C ─ Servidor A
+#                 |
+#                 |
+#             Servidor D
+#
+#
+# Es un grafo NO DIRIGIDO.
+#
+#
+# Debes crear:
+#
+# red_servidores
+#
+#
+# utilizando una estructura similar a:
+#
+# {
+#     "Servidor A": {...},
+#     ...
+# }
+#
+#
+# ------------------------------------------------------------
+#
+# LAS CONEXIONES SON:
+#
+# Servidor A - Servidor B
+#
+# Servidor A - Servidor C
+#
+# Servidor A - Servidor D
+#
+#
+# ------------------------------------------------------------
+#
+# RECUERDA:
+#
+# Como es un grafo no dirigido:
+#
+# si Servidor A está conectado con Servidor B,
+#
+# Servidor B también debe estar conectado
+# con Servidor A.
+#
+#
+# ------------------------------------------------------------
+#
+# DESPUÉS:
+#
+# 1. Imprime todos los vecinos
+#    de Servidor A.
+#
+# 2. Recorre los vecinos de
+#    Servidor A mediante un for.
+#
+# 3. Comprueba utilizando "in"
+#    si Servidor B está conectado
+#    directamente con Servidor A.
+#
+# 4. Imprime:
+#
+# "Servidor B está conectado con Servidor A"
+#
+# si la conexión existe.
+#
+#
+# ------------------------------------------------------------
+#
+# NO necesitas:
+#
+# - crear una clase Grafo;
+# - utilizar BFS;
+# - utilizar DFS;
+# - buscar caminos;
+# - utilizar recursividad;
+# - utilizar pesos.
+#
+#
+# El objetivo es practicar:
+#
+# - vértices;
+# - aristas;
+# - vecinos;
+# - grafo no dirigido;
+# - lista de adyacencia;
+# - dict;
+# - set.
+
+
+# ============================================================
+# SOLUCIÓN
+# ============================================================
+
+
+# Cada clave del diccionario representa un vértice.
+#
+# Cada set contiene los vecinos conectados directamente
+# con ese vértice.
+
+red_servidores = {
+    "Servidor A": {
+        "Servidor B",
+        "Servidor C",
+        "Servidor D"
+    },
+
+    "Servidor B": {
+        "Servidor A"
+    },
+
+    "Servidor C": {
+        "Servidor A"
+    },
+
+    "Servidor D": {
+        "Servidor A"
+    }
+}
+
+
+# ------------------------------------------------------------
+# 1. IMPRIMIR LOS VECINOS DE SERVIDOR A
+# ------------------------------------------------------------
+
+print(
+    f"Vecinos de Servidor A: "
+    f"{red_servidores['Servidor A']}"
+)
+
+
+# ------------------------------------------------------------
+# 2. RECORRER LOS VECINOS DE SERVIDOR A
+# ------------------------------------------------------------
+
+for vecino in red_servidores["Servidor A"]:
+
+    print(
+        f"Servidor A conectado con: {vecino}"
+    )
+
+
+# ------------------------------------------------------------
+# 3. COMPROBAR UNA CONEXIÓN
+# ------------------------------------------------------------
+
+if "Servidor B" in red_servidores["Servidor A"]:
+
+    print(
+        "Servidor B está conectado con Servidor A"
+    )
