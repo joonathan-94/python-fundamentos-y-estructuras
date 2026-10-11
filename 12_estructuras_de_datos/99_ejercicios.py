@@ -362,3 +362,172 @@ actual = einstein
 while actual is not None:
     print(f"Valor actual: {actual.valor}")
     actual = actual.siguiente
+    
+    
+
+print("EJERCICIO ARBOLES")
+# ============================================================
+# ED-05 - ÁRBOL
+# ============================================================
+#
+# Crea una clase:
+#
+# Nodo
+#
+#
+# Su __init__ debe recibir:
+#
+# valor
+#
+#
+# y crear:
+#
+# self.valor
+# self.hijos
+#
+#
+# donde:
+#
+# self.hijos
+#
+# debe comenzar como una lista vacía.
+#
+#
+
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.hijos = []
+
+# ------------------------------------------------------------
+#
+# CREA LOS SIGUIENTES NODOS:
+#
+# Ciencia
+#
+# Física
+# Computación
+#
+# Relatividad
+# Mecánica cuántica
+#
+# Python
+#
+#
+
+ciencia = Nodo("Ciencia")
+
+fisica = Nodo("Física")
+computacion = Nodo("Computación")
+
+relatividad = Nodo("Relatividad")
+mecanica_cuantica = Nodo("Mecánica cuántica")
+
+python = Nodo("Python")
+# ------------------------------------------------------------
+#
+# CONSTRÚYELOS CON ESTA JERARQUÍA:
+#
+#
+#                 Ciencia
+#                /       \
+#           Física       Computación
+#          /     \            |
+# Relatividad   Mecánica      Python
+#               cuántica
+#
+#
+# ------------------------------------------------------------
+#
+# Para conectar nodos puedes utilizar:
+#
+# nodo.hijos.append(...)
+#
+#
+ciencia.hijos.append(fisica)
+ciencia.hijos.append(computacion)
+
+fisica.hijos.append(relatividad)
+fisica.hijos.append(mecanica_cuantica)
+
+computacion.hijos.append(python)
+
+# ------------------------------------------------------------
+#
+# DESPUÉS:
+#
+# 1. Imprime el valor de la raíz.
+#
+# 2. Recorre con un for los hijos directos
+#    de Ciencia.
+#
+# 3. Imprime los hijos directos de Física.
+#
+# 4. Comprueba si Relatividad es una hoja.
+#
+#
+# Puedes comprobarlo utilizando:
+#
+# if not relatividad.hijos:
+#
+#     ...
+#
+#
+
+print(f"Nodo raíz: {ciencia.valor}")
+
+for hijo in ciencia.hijos:
+    print(hijo.valor)
+
+for hijo in fisica.hijos:
+    print(hijo.valor)
+    
+if not relatividad.hijos:
+    print("Relatividad es hoja")
+
+# ------------------------------------------------------------
+#
+# RESULTADO CONCEPTUAL:
+#
+# raíz:
+#
+# Ciencia
+#
+#
+# hijos de Ciencia:
+#
+# Física
+# Computación
+#
+#
+# hijos de Física:
+#
+# Relatividad
+# Mecánica cuántica
+#
+#
+# Relatividad:
+#
+# es una hoja
+#
+#
+# ------------------------------------------------------------
+#
+# NO necesitas todavía:
+#
+# - recorrer automáticamente todo el árbol;
+# - utilizar recursividad;
+# - crear algoritmos;
+# - calcular profundidad;
+# - calcular altura.
+#
+#
+# El objetivo es practicar:
+#
+# nodo
+# raíz
+# padre
+# hijos
+# hoja
+# jerarquía
+
