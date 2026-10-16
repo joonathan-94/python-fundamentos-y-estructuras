@@ -109,3 +109,197 @@ for cientifico_uno in cientificos:
 #
 # El O(n²) Porque por cada elemento se vuelven a recorrer todos
 # los elementos de la colección.
+
+
+# ============================================================
+# ALGO-02 - BÚSQUEDAS
+# ============================================================
+#
+# En este ejercicio practicarás:
+#
+# - búsqueda lineal;
+# - búsqueda binaria;
+# - índices;
+# - enumerate();
+# - while;
+# - división entera //;
+# - return;
+# - None.
+#
+#
+# ============================================================
+# PARTE A - BÚSQUEDA LINEAL
+# ============================================================
+#
+# Tienes la siguiente colección:
+
+cientificos_busqueda = [
+    "Albert Einstein",
+    "Nikola Tesla",
+    "Alan Turing",
+    "Grace Hopper",
+    "Carl Sagan"
+]
+
+
+# Crea una función:
+#
+# buscar_cientifico()
+#
+#
+# Debe recibir:
+#
+# lista
+# científico_buscado
+#
+#
+# Debe recorrer la colección
+# mediante enumerate().
+#
+#
+# Si encuentra el científico:
+#
+# debe devolver su índice.
+#
+#
+# Si NO lo encuentra:
+#
+# debe devolver:
+#
+# None
+#
+#
+# Después prueba buscando:
+#
+# "Alan Turing"
+#
+#
+# Resultado esperado:
+#
+# 2
+
+def buscar_cientifico(lista_cientificos, cientifico_buscado):
+    
+    for indice, valor in enumerate(lista_cientificos):
+        if valor == cientifico_buscado:
+            return indice
+
+    return None
+
+resultado_busqueda = buscar_cientifico(cientificos_busqueda, "Alan Turing")
+
+print(f"Resultado busqueda de cientifico: {resultado_busqueda}") 
+
+
+# ============================================================
+# PARTE B - BÚSQUEDA BINARIA
+# ============================================================
+#
+# Utiliza esta colección YA ORDENADA:
+
+numeros_busqueda = [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90
+]
+
+
+# Crea una función:
+#
+# buscar_numero()
+#
+#
+# Debe recibir:
+#
+# lista
+# objetivo
+#
+#
+# Debes utilizar:
+#
+# inicio
+# fin
+# medio
+#
+#
+# y:
+#
+# while inicio <= fin
+#
+#
+# Calcula medio mediante:
+#
+# (inicio + fin) // 2
+#
+#
+# Si:
+#
+# valor_medio == objetivo
+#
+# devuelve:
+#
+# medio
+#
+#
+# Si:
+#
+# valor_medio < objetivo
+#
+# mueve inicio hacia la derecha.
+#
+#
+# Si:
+#
+# valor_medio > objetivo
+#
+# mueve fin hacia la izquierda.
+#
+#
+# Si termina el while
+# sin encontrar el número:
+#
+# devuelve:
+#
+# None
+#
+#
+# Prueba buscando:
+#
+# 70
+#
+#
+# Resultado esperado:
+#
+# 6
+
+def buscar_numero(lista, objetivo):
+
+    inicio = 0
+    fin = len(lista) - 1
+
+    while inicio <= fin:
+
+        medio = (inicio + fin) // 2
+
+        valor_medio = lista[medio]
+
+        if valor_medio == objetivo:
+            return medio
+
+        if valor_medio < objetivo:
+            inicio = medio +1
+
+        else:
+            fin = medio -1
+
+    return None
+
+indice_buscado = buscar_numero(numeros_busqueda, 70)
+
+print(f"Indice encontrado: {indice_buscado}")
