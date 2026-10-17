@@ -303,3 +303,75 @@ def buscar_numero(lista, objetivo):
 indice_buscado = buscar_numero(numeros_busqueda, 70)
 
 print(f"Indice encontrado: {indice_buscado}")
+
+# ============================================================
+# ALGO-03 - ORDENAMIENTO
+# ============================================================
+#
+# Tienes los siguientes autos clásicos:
+
+autos_clasicos = [
+    {
+        "modelo": "Chevrolet Camaro",
+        "anio": 1967
+    },
+    {
+        "modelo": "Chevrolet Bel Air",
+        "anio": 1957
+    },
+    {
+        "modelo": "Chevrolet Corvette",
+        "anio": 1963
+    }
+]
+
+
+# ------------------------------------------------------------
+# OBJETIVO
+# ------------------------------------------------------------
+#
+# Ordena los autos desde el más antiguo
+# hasta el más nuevo.
+#
+#
+# Debes:
+#
+# 1. Crear una función:
+# obtener_anio(auto)
+#
+# que devuelva:
+# auto["anio"]
+#
+# 2. Utilizar:
+# sorted()
+#
+# 3. Utilizar:
+# key=obtener_anio
+#
+# 4. Guardar el resultado en:
+# autos_ordenados
+#
+#
+# 5. Recorrer autos_ordenados
+# mediante un for.
+#
+#
+# 6. Imprimir:
+#
+# modelo
+# año
+#
+#
+# Resultado esperado:
+#
+# Chevrolet Bel Air - 1957
+# Chevrolet Corvette - 1963
+# Chevrolet Camaro - 1967
+
+def obtener_anio(auto):
+    return auto["anio"]
+
+autos_ordenados = sorted(autos_clasicos, key=obtener_anio)
+
+for auto in autos_ordenados:
+    print(f"{auto['modelo']} - {auto['anio']}")
