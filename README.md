@@ -26,11 +26,12 @@ Git y GitHub se estudian y utilizan en paralelo para aplicar desde el inicio un 
 - [x] Programación orientada a objetos
 - [x] Python intermedio
 - [x] Estructuras de datos
+- [x] Algoritmos y complejidad
 
 ### Próximo tema
 
 ```text
-Algoritmos y complejidad
+Testing
 ```
 
 El bloque de entorno, Git y GitHub se trabaja en paralelo durante todo el proceso.
@@ -53,6 +54,7 @@ El bloque de entorno, Git y GitHub se trabaja en paralelo durante todo el proces
 | Programación orientada a objetos | Clases, objetos, atributos, métodos, encapsulamiento, propiedades, herencia y polimorfismo |
 | Python intermedio | Comprensiones, utilidades, desempaquetado, `*args`, `**kwargs`, decoradores, generadores, context managers, `pathlib` y `datetime` |
 | Estructuras de datos | Pilas, colas, colas de prioridad, listas enlazadas, árboles y grafos |
+| Algoritmos y complejidad | Pensamiento algorítmico, Big O básico, búsquedas, ordenamiento, recursión y recorridos BFS/DFS |
 
 El objetivo no es memorizar cada característica del lenguaje, sino comprender los conceptos esenciales y aprender a combinarlos progresivamente.
 
@@ -249,6 +251,51 @@ Regla práctica:
 → grafo
 ```
 
+### Algoritmos y complejidad
+
+Se estudiaron estrategias básicas para resolver problemas y analizar de forma aproximada cómo crece el trabajo de un programa.
+
+```text
+O(1)
+→ trabajo aproximadamente constante
+
+O(log n)
+→ el problema se reduce considerablemente en cada paso
+
+O(n)
+→ el trabajo crece junto con la cantidad de datos
+
+O(n log n)
+→ comportamiento habitual de algoritmos eficientes de ordenamiento
+
+O(n²)
+→ crecimiento cuadrático, frecuente en procesos con recorridos anidados
+```
+
+También se trabajaron:
+
+```text
+búsqueda lineal
+→ recorrer elementos uno por uno
+
+búsqueda binaria
+→ reducir el espacio de búsqueda sobre datos ordenados
+
+ordenamiento
+→ sorted(), .sort() y key=
+
+recursión
+→ caso base + llamada recursiva
+
+BFS
+→ recorrido por niveles mediante una cola
+
+DFS
+→ recorrido en profundidad mediante una pila o recursión
+```
+
+La complejidad se utiliza como una herramienta para comparar soluciones y comprender cómo pueden comportarse al aumentar la cantidad de datos.
+
 ---
 
 ## Roadmap
@@ -266,7 +313,7 @@ Regla práctica:
 - [x] 10 - Programación orientada a objetos
 - [x] 11 - Python intermedio
 - [x] 12 - Estructuras de datos
-- [ ] 13 - Algoritmos y complejidad
+- [x] 13 - Algoritmos y complejidad
 - [ ] 14 - Testing
 - [ ] 15 - Proyecto gestor de tickets
 
@@ -362,6 +409,13 @@ python-fundamentos-y-estructuras/
 │   └── 99_ejercicios.py
 │
 ├── 13_algoritmos_y_complejidad/
+│   ├── 01_pensamiento_algoritmico_y_big_o.py
+│   ├── 02_busquedas.py
+│   ├── 03_ordenamiento_y_eficiencia.py
+│   ├── 04_recursion.py
+│   ├── 05_recorridos_bfs_y_dfs.py
+│   └── 99_ejercicios.py
+│
 ├── 14_testing/
 ├── 15_proyecto_gestor_tickets/
 │
@@ -429,6 +483,7 @@ ARCH-01
 POO-01
 INT-01
 ED-01
+ALGO-01
 ```
 
 Esto permite identificar rápidamente qué concepto practica cada ejercicio.
