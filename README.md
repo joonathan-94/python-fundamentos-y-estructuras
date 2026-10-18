@@ -27,11 +27,12 @@ Git y GitHub se estudian y utilizan en paralelo para aplicar desde el inicio un 
 - [x] Python intermedio
 - [x] Estructuras de datos
 - [x] Algoritmos y complejidad
+- [x] Testing
 
 ### Próximo tema
 
 ```text
-Testing
+Proyecto gestor de tickets
 ```
 
 El bloque de entorno, Git y GitHub se trabaja en paralelo durante todo el proceso.
@@ -55,6 +56,7 @@ El bloque de entorno, Git y GitHub se trabaja en paralelo durante todo el proces
 | Python intermedio | Comprensiones, utilidades, desempaquetado, `*args`, `**kwargs`, decoradores, generadores, context managers, `pathlib` y `datetime` |
 | Estructuras de datos | Pilas, colas, colas de prioridad, listas enlazadas, árboles y grafos |
 | Algoritmos y complejidad | Pensamiento algorítmico, Big O básico, búsquedas, ordenamiento, recursión y recorridos BFS/DFS |
+| Testing | `assert`, casos de prueba, casos límite, funciones `test_...` y ejecución básica con pytest |
 
 El objetivo no es memorizar cada característica del lenguaje, sino comprender los conceptos esenciales y aprender a combinarlos progresivamente.
 
@@ -296,6 +298,39 @@ DFS
 
 La complejidad se utiliza como una herramienta para comparar soluciones y comprender cómo pueden comportarse al aumentar la cantidad de datos.
 
+### Testing
+
+El testing permite comprobar automáticamente que una parte del programa produce el resultado esperado.
+
+```text
+código
+↓
+ejecutar una prueba
+↓
+comparar resultado obtenido
+con resultado esperado
+↓
+PASSED o FAILED
+```
+
+Se trabajaron:
+
+```text
+assert
+→ comprobar una condición esperada
+
+test_...
+→ identificar funciones de prueba
+
+pytest
+→ descubrir y ejecutar tests automáticamente
+
+casos límite
+→ comprobar valores cercanos a reglas importantes
+```
+
+Los tests ayudan a detectar errores y a comprobar que funcionalidades existentes continúan funcionando después de modificar el código.
+
 ---
 
 ## Roadmap
@@ -314,7 +349,7 @@ La complejidad se utiliza como una herramienta para comparar soluciones y compre
 - [x] 11 - Python intermedio
 - [x] 12 - Estructuras de datos
 - [x] 13 - Algoritmos y complejidad
-- [ ] 14 - Testing
+- [x] 14 - Testing
 - [ ] 15 - Proyecto gestor de tickets
 
 ---
@@ -417,6 +452,10 @@ python-fundamentos-y-estructuras/
 │   └── 99_ejercicios.py
 │
 ├── 14_testing/
+│   ├── 01_introduccion_al_testing.py
+│   ├── 02_pytest_basico.py
+│   └── 99_ejercicios.py
+│
 ├── 15_proyecto_gestor_tickets/
 │
 ├── .gitignore
@@ -484,6 +523,7 @@ POO-01
 INT-01
 ED-01
 ALGO-01
+TEST-01
 ```
 
 Esto permite identificar rápidamente qué concepto practica cada ejercicio.
@@ -582,6 +622,10 @@ Expand Python files and data study and exercises
 Add Python trees study and exercise
 
 Add Python graphs study and exercise
+
+Add Python testing introduction and assert exercise
+
+Add basic pytest study and exercise
 ```
 
 La documentación específica de Git y GitHub se mantiene en:
