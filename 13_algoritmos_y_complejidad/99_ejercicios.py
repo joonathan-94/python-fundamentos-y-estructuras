@@ -375,3 +375,35 @@ autos_ordenados = sorted(autos_clasicos, key=obtener_anio)
 
 for auto in autos_ordenados:
     print(f"{auto['modelo']} - {auto['anio']}")
+    
+
+print("Ejercicio recursion")
+# ============================================================
+# ALGO-04 - RECURSIÓN
+# ============================================================
+#
+# Crea cuenta_regresiva(numero).
+#
+# Requisitos:
+# - Si numero == 0, imprimir "Proceso terminado" y usar return.
+# - En otro caso, imprimir numero.
+# - Llamar nuevamente a la función con numero - 1.
+# - Probar con cuenta_regresiva(3).
+#
+# Resultado:
+# 3
+# 2
+# 1
+# Proceso terminado
+
+def cuenta_regresiva(numero):
+    
+    if numero == 0:
+        print("Proceso terminado")
+        return
+    
+    print(numero)
+    
+    cuenta_regresiva(numero - 1)
+    
+cuenta_regresiva(3)
