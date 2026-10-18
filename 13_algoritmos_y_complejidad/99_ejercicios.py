@@ -407,3 +407,111 @@ def cuenta_regresiva(numero):
     cuenta_regresiva(numero - 1)
     
 cuenta_regresiva(3)
+
+
+
+
+# ============================================================
+# ALGO-05 - BFS Y DFS
+# ============================================================
+#
+# Usa el siguiente grafo.
+# Implementa recorrer_bfs() y recorrer_dfs().
+#
+# BFS:
+# - deque([inicio])
+# - popleft()
+#
+# DFS:
+# - pila = [inicio]
+# - pop()
+#
+# Ambos deben usar un set llamado visitados.
+
+from collections import deque
+
+
+grafo_recorrido = {
+    "A": ["B", "C"],
+    "B": ["D"],
+    "C": ["E"],
+    "D": [],
+    "E": []
+}
+
+
+# BFS esperado:
+# A B C D E
+#
+# DFS esperado:
+# A B D C E
+
+
+def recorrer_bfs(grafo, inicio):
+
+    visitados = set()
+    cola = deque([inicio])
+    resultado = []
+
+    visitados.add(inicio)
+
+    while cola:
+
+        nodo = cola.popleft()
+        resultado.append(nodo)
+
+        for vecino in grafo[nodo]:
+
+            if vecino not in visitados:
+                visitados.add(vecino)
+                cola.append(vecino)
+
+    return resultado
+
+
+def recorrer_dfs(grafo, inicio):
+
+    visitados = set()
+    pila = [inicio]
+    resultado = []
+
+    visitados.add(inicio)
+
+    while pila:
+
+        nodo = pila.pop()
+        resultado.append(nodo)
+
+        # Se agregan en orden inverso para procesar
+        # los vecinos de izquierda a derecha.
+        for vecino in reversed(grafo[nodo]):
+
+            if vecino not in visitados:
+                visitados.add(vecino)
+                pila.append(vecino)
+
+    return resultado
+
+
+print("BFS esperado: A B C D E")
+print(
+    "BFS obtenido:",
+    " ".join(
+        recorrer_bfs(
+            grafo_recorrido,
+            "A"
+        )
+    )
+)
+
+
+print("\nDFS esperado: A B D C E")
+print(
+    "DFS obtenido:",
+    " ".join(
+        recorrer_dfs(
+            grafo_recorrido,
+            "A"
+        )
+    )
+)
