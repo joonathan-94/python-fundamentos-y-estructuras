@@ -18,3 +18,17 @@ def listar_tickets(ticket_list):
         print(f"Prioridad: {ticket.prioridad}")
         print(f"Estado: {ticket.estado}")
         print("-" * 25) # Un separador opcional para que se vea más ordenado
+
+def buscar_ticket(ticket_list, id_buscado):
+    for ticket in ticket_list:
+        if ticket.id_ticket == id_buscado:
+            return ticket
+    return None
+
+def cambiar_estado(ticket_list, id_buscado, nuevo_estado):
+    ticket = buscar_ticket(ticket_list, id_buscado)
+    if ticket is None:
+        return False
+    else:
+        ticket.estado = nuevo_estado
+        return True
