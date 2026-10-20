@@ -1,0 +1,20 @@
+[
+    {
+        "id_ticket": 1,
+        "titulo": "Error al iniciar sesión",
+        "prioridad": "Alta",
+        "estado": "Abierto"
+    },
+    {
+        "id_ticket": 2,
+        "titulo": "Actualizar navegador",
+        "prioridad": "Baja",
+        "estado": "Abierto"
+    },
+    {
+        "id_ticket": 3,
+        "titulo": "Celular malo",
+        "prioridad": "Media",
+        "estado": "Abierto"
+    }
+]
