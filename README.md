@@ -1,41 +1,41 @@
 # Python — Fundamentos y Estructuras de Datos
 
-Repositorio personal de estudio y práctica de Python.
+Repositorio personal de estudio, práctica y consulta de Python.
 
-El objetivo es construir fundamentos sólidos del lenguaje mediante un aprendizaje progresivo, combinando teoría, ejemplos, ejercicios breves y aplicación práctica.
+El objetivo de este repositorio es consolidar una base sólida del lenguaje mediante teoría breve, ejemplos, ejercicios y un proyecto integrador. El recorrido prioriza comprensión, práctica y organización del código por sobre la memorización de sintaxis.
 
-El recorrido está orientado a desarrollar una base reutilizable para programación general, desarrollo backend, automatización, integraciones, procesamiento de archivos y análisis de datos.
-
-Git y GitHub se estudian y utilizan en paralelo para aplicar desde el inicio un flujo de trabajo basado en ramas, commits, Pull Requests y revisión de cambios.
+También se utiliza Git y GitHub durante todo el proceso para practicar un flujo de trabajo real basado en ramas, commits, revisión de cambios y Pull Requests.
 
 ---
 
-## Estado actual
-
-### Progreso en Python
-
-- [x] Fundamentos
-- [x] Operadores
-- [x] Control de flujo
-- [x] Colecciones y métodos
-- [x] Interacción con el usuario
-- [x] Funciones
-- [x] Módulos y paquetes
-- [x] Manejo de excepciones
-- [x] Archivos y datos
-- [x] Programación orientada a objetos
-- [x] Python intermedio
-- [x] Estructuras de datos
-- [x] Algoritmos y complejidad
-- [x] Testing
-
-### Próximo tema
+## Estado del recorrido
 
 ```text
-Proyecto gestor de tickets
+Fundamentos de Python        ✅
+Git y GitHub                 ✅
+Testing básico               ✅
+Proyecto integrador          ✅
 ```
 
-El bloque de entorno, Git y GitHub se trabaja en paralelo durante todo el proceso.
+El recorrido de fundamentos de este repositorio se considera completado.
+
+---
+
+## Objetivos alcanzados
+
+- Comprender los tipos de datos y estructuras fundamentales de Python.
+- Trabajar con operadores, condicionales, ciclos y entrada de usuario.
+- Utilizar listas, tuplas, diccionarios y sets.
+- Crear funciones reutilizables y organizar código en módulos y paquetes.
+- Manejar excepciones y errores previsibles.
+- Leer y escribir información en TXT, JSON y CSV.
+- Aplicar programación orientada a objetos.
+- Conocer herramientas intermedias frecuentes de Python.
+- Comprender estructuras de datos y algoritmos fundamentales.
+- Introducir análisis básico de complejidad con Big O.
+- Crear y ejecutar tests con `assert` y `pytest`.
+- Utilizar Git y GitHub durante el desarrollo.
+- Integrar los conocimientos en un gestor de tickets por consola.
 
 ---
 
@@ -43,22 +43,23 @@ El bloque de entorno, Git y GitHub se trabaja en paralelo durante todo el proces
 
 | Tema | Conceptos principales |
 |---|---|
-| Fundamentos | Tipos de datos, variables, strings y conversión de tipos |
-| Operadores | Operadores aritméticos, de comparación y lógicos |
-| Control de flujo | `if`, `elif`, `else`, ciclos `for` y `while`, `break` y `continue` |
-| Colecciones | Listas, tuplas, diccionarios y sets |
-| Interacción con el usuario | `input()`, recepción de datos y conversión de valores |
-| Funciones | `def`, parámetros, argumentos, `return`, alcance, docstrings y type hints básicos |
-| Módulos y paquetes | `import`, módulos propios, paquetes, `__init__.py` y reutilización entre archivos |
-| Manejo de excepciones | `try`, `except`, `else`, `finally`, `raise` y excepciones comunes |
-| Archivos y datos | Lectura y escritura de TXT, JSON y CSV |
-| Programación orientada a objetos | Clases, objetos, atributos, métodos, encapsulamiento, propiedades, herencia y polimorfismo |
-| Python intermedio | Comprensiones, utilidades, desempaquetado, `*args`, `**kwargs`, decoradores, generadores, context managers, `pathlib` y `datetime` |
+| Fundamentos | Tipos de datos, variables, strings, conversiones y truthiness |
+| Operadores | Aritméticos, comparación y operadores lógicos |
+| Control de flujo | `if`, `elif`, `else`, `for`, `while`, `range`, `break` y `continue` |
+| Colecciones | Listas, tuplas, diccionarios, sets y sus operaciones principales |
+| Interacción con usuario | `input()`, limpieza y conversión de datos |
+| Funciones | Parámetros, argumentos, `return`, valores por defecto, alcance, docstrings y type hints básicos |
+| Módulos y paquetes | `import`, módulos propios, paquetes, `__init__.py` y `__name__` |
+| Excepciones | `try`, `except`, `else`, `finally`, `raise` y excepciones comunes |
+| Archivos y datos | TXT, JSON, CSV, `with` y codificación UTF-8 |
+| POO | Clases, objetos, `self`, atributos, métodos, propiedades, encapsulamiento, herencia y polimorfismo |
+| Python intermedio | Comprensiones, `enumerate`, `zip`, `any`, `all`, `sorted`, desempaquetado, `*args`, `**kwargs`, decoradores, generadores, context managers, `pathlib` y `datetime` |
 | Estructuras de datos | Pilas, colas, colas de prioridad, listas enlazadas, árboles y grafos |
-| Algoritmos y complejidad | Pensamiento algorítmico, Big O básico, búsquedas, ordenamiento, recursión y recorridos BFS/DFS |
-| Testing | `assert`, casos de prueba, casos límite, funciones `test_...` y ejecución básica con pytest |
-
-El objetivo no es memorizar cada característica del lenguaje, sino comprender los conceptos esenciales y aprender a combinarlos progresivamente.
+| Algoritmos | Pensamiento algorítmico, búsquedas, ordenamiento, recursión, BFS y DFS |
+| Complejidad | Introducción a `O(1)`, `O(log n)`, `O(n)`, `O(n log n)` y `O(n²)` |
+| Testing | `assert`, casos de prueba, casos límite, funciones `test_...` y `pytest` |
+| Git y GitHub | Ramas, staging, commits, push, pull, Pull Requests, merge y limpieza de ramas |
+| Proyecto final | Integración de POO, funciones, módulos, búsqueda, excepciones, JSON, `pathlib`, consola y pytest |
 
 ---
 
@@ -66,14 +67,12 @@ El objetivo no es memorizar cada característica del lenguaje, sino comprender l
 
 ### Colecciones
 
-| Colección | Característica | Uso habitual |
+| Colección | Característica principal | Uso habitual |
 |---|---|---|
-| `list` | Secuencia mutable y ordenada | Datos que pueden cambiar durante la ejecución |
-| `tuple` | Secuencia inmutable y ordenada | Datos cuya estructura debería mantenerse estable |
+| `list` | Ordenada y mutable | Datos que cambian durante la ejecución |
+| `tuple` | Ordenada e inmutable | Datos cuya estructura debe mantenerse estable |
 | `dict` | Pares clave-valor | Registros y datos estructurados |
-| `set` | Elementos únicos | Eliminar duplicados y realizar operaciones entre conjuntos |
-
-Regla práctica:
+| `set` | Elementos únicos | Pertenencia, eliminación de duplicados y conjuntos |
 
 ```text
 Secuencia modificable
@@ -89,253 +88,199 @@ Elementos únicos
 → set
 ```
 
-### Organización del código
+### Funciones, módulos y paquetes
 
 ```text
 función
-↓
-encapsula una tarea reutilizable
+→ encapsula una tarea
 
 módulo
-↓
-archivo .py que organiza código relacionado
+→ archivo .py con código relacionado
 
 paquete
-↓
-agrupa módulos relacionados
+→ agrupa módulos relacionados
 ```
 
-### Manejo de errores
+### Excepciones
 
 ```text
 operación que puede fallar
 ↓
 try
-
-excepción conocida
 ↓
-except
-
+except específico
+↓
 respuesta controlada
 ```
 
-También se estudiaron:
+Se prioriza capturar excepciones concretas en lugar de utilizar `Exception` de forma innecesariamente amplia.
 
-```text
-else
-finally
-raise
-```
-
-como herramientas complementarias para controlar el comportamiento ante errores.
-
-### Persistencia básica
-
-Antes:
+### Persistencia
 
 ```text
 programa
 ↓
-variables
-↓
-los datos desaparecen al finalizar
-```
-
-Ahora:
-
-```text
-programa
+datos en memoria
 ↓
 archivo
 ↓
-los datos pueden conservarse
+datos disponibles en una ejecución posterior
 ```
 
-Formatos trabajados:
+Formatos estudiados:
 
 ```text
-TXT
-→ texto simple
-
-JSON
-→ información estructurada
-
-CSV
-→ información tabular
+TXT  → texto
+JSON → datos estructurados
+CSV  → datos tabulares
 ```
 
 ### Programación orientada a objetos
 
-La programación orientada a objetos permite agrupar datos y comportamiento dentro de objetos.
-
 ```text
 clase
-↓
-define estructura y comportamiento
+→ define estructura y comportamiento
 
 objeto
-↓
-instancia concreta de una clase
+→ instancia de una clase
 
 atributos
-↓
-representan estado
+→ estado
 
 métodos
-↓
-representan comportamiento
-```
-
-También se estudiaron encapsulamiento mediante convenciones y propiedades, herencia para reutilizar comportamiento y polimorfismo para trabajar con objetos mediante una interfaz compatible.
-
-### Python intermedio
-
-Se incorporaron herramientas frecuentes en código Python real:
-
-```text
-comprensiones
-→ transformar y filtrar colecciones
-
-enumerate / zip
-→ recorrer información con posición o en paralelo
-
-* y **
-→ desempaquetar datos
-
-*args / **kwargs
-→ recibir cantidades variables de argumentos
-
-decoradores
-→ agregar comportamiento alrededor de funciones
-
-generadores
-→ producir valores progresivamente mediante yield
-
-with
-→ administrar recursos mediante context managers
-
-Path / datetime / timedelta
-→ trabajar con rutas, fechas y tiempos
+→ comportamiento
 ```
 
 ### Estructuras de datos
 
-Además de las colecciones incorporadas de Python, se estudiaron estructuras de datos fundamentales y sus casos de uso principales.
-
-| Estructura | Característica principal | Implementación estudiada |
+| Estructura | Idea principal | Implementación estudiada |
 |---|---|---|
-| Pila | LIFO: último en entrar, primero en salir | `list`, `append()`, `pop()` |
-| Cola | FIFO: primero en entrar, primero en salir | `collections.deque`, `append()`, `popleft()` |
-| Cola de prioridad | Procesa primero los elementos más prioritarios | `heapq` |
-| Lista enlazada | Nodos conectados mediante referencias | Clase `Nodo` y atributo `siguiente` |
-| Árbol | Representa relaciones jerárquicas | Nodos con colección de hijos |
-| Grafo | Representa relaciones generales entre vértices | `dict` + `set` |
-
-Regla práctica:
-
-```text
-¿Necesito procesar primero lo último agregado?
-→ pila
-
-¿Necesito respetar el orden de llegada?
-→ cola
-
-¿Necesito procesar primero lo más importante?
-→ cola de prioridad
-
-¿Necesito conectar nodos secuencialmente?
-→ lista enlazada
-
-¿Necesito representar una jerarquía?
-→ árbol
-
-¿Necesito representar relaciones generales?
-→ grafo
-```
+| Pila | LIFO | `list` |
+| Cola | FIFO | `collections.deque` |
+| Cola de prioridad | Prioridad de procesamiento | `heapq` |
+| Lista enlazada | Nodos conectados | Clase `Nodo` |
+| Árbol | Jerarquías | Nodos con hijos |
+| Grafo | Relaciones generales | `dict` + `set` |
 
 ### Algoritmos y complejidad
 
-Se estudiaron estrategias básicas para resolver problemas y analizar de forma aproximada cómo crece el trabajo de un programa.
-
 ```text
-O(1)
-→ trabajo aproximadamente constante
-
-O(log n)
-→ el problema se reduce considerablemente en cada paso
-
-O(n)
-→ el trabajo crece junto con la cantidad de datos
-
-O(n log n)
-→ comportamiento habitual de algoritmos eficientes de ordenamiento
-
-O(n²)
-→ crecimiento cuadrático, frecuente en procesos con recorridos anidados
+O(1)       → trabajo aproximadamente constante
+O(log n)   → el problema se reduce en cada paso
+O(n)       → crecimiento proporcional a los datos
+O(n log n) → común en ordenamientos eficientes
+O(n²)      → crecimiento cuadrático
 ```
 
-También se trabajaron:
+Algoritmos estudiados:
 
 ```text
 búsqueda lineal
-→ recorrer elementos uno por uno
-
 búsqueda binaria
-→ reducir el espacio de búsqueda sobre datos ordenados
-
 ordenamiento
-→ sorted(), .sort() y key=
-
 recursión
-→ caso base + llamada recursiva
-
 BFS
-→ recorrido por niveles mediante una cola
-
 DFS
-→ recorrido en profundidad mediante una pila o recursión
 ```
 
-La complejidad se utiliza como una herramienta para comparar soluciones y comprender cómo pueden comportarse al aumentar la cantidad de datos.
-
 ### Testing
-
-El testing permite comprobar automáticamente que una parte del programa produce el resultado esperado.
 
 ```text
 código
 ↓
-ejecutar una prueba
+test
 ↓
-comparar resultado obtenido
-con resultado esperado
+assert
 ↓
 PASSED o FAILED
 ```
 
-Se trabajaron:
-
-```text
-assert
-→ comprobar una condición esperada
-
-test_...
-→ identificar funciones de prueba
-
-pytest
-→ descubrir y ejecutar tests automáticamente
-
-casos límite
-→ comprobar valores cercanos a reglas importantes
-```
-
-Los tests ayudan a detectar errores y a comprobar que funcionalidades existentes continúan funcionando después de modificar el código.
+El objetivo del testing introductorio fue aprender a comprobar comportamiento esperado y detectar regresiones básicas.
 
 ---
 
-## Roadmap
+## Proyecto integrador — Gestor de tickets
 
-- [ ] 00 - Entorno y herramientas — estudio paralelo
+Como cierre se desarrolló un gestor de tickets por consola.
+
+### Funcionalidades
+
+```text
+crear tickets
+listar tickets
+buscar tickets por ID
+cambiar estado
+guardar tickets en JSON
+cargar tickets desde JSON
+manejar IDs inválidos
+ejecutar tests automatizados
+```
+
+Cada ticket contiene:
+
+```text
+ID
+Título
+Prioridad
+Estado
+```
+
+Estados utilizados:
+
+```text
+Abierto
+En progreso
+Cerrado
+```
+
+Prioridades utilizadas:
+
+```text
+Alta
+Media
+Baja
+```
+
+### Conceptos integrados
+
+```text
+POO
+listas
+funciones
+módulos
+condicionales
+ciclos
+input
+búsqueda lineal
+excepciones
+JSON
+pathlib
+pytest
+```
+
+El proyecto es deliberadamente pequeño. Su objetivo es integrar fundamentos antes de avanzar hacia aplicaciones web, bases de datos y arquitecturas de mayor tamaño.
+
+---
+
+## Ejecutar el proyecto
+
+Desde la raíz del repositorio:
+
+```bash
+python 15_proyecto_gestor_tickets/main.py
+```
+
+Ejecutar sus tests:
+
+```bash
+python -m pytest 15_proyecto_gestor_tickets/test_gestor.py -q
+```
+
+---
+
+## Roadmap completado
+
+- [x] 00 - Entorno y herramientas
 - [x] 01 - Fundamentos
 - [x] 02 - Operadores
 - [x] 03 - Control de flujo
@@ -350,210 +295,123 @@ Los tests ayudan a detectar errores y a comprobar que funcionalidades existentes
 - [x] 12 - Estructuras de datos
 - [x] 13 - Algoritmos y complejidad
 - [x] 14 - Testing
-- [ ] 15 - Proyecto gestor de tickets
+- [x] 15 - Proyecto gestor de tickets
 
 ---
 
-## Estructura del repositorio
+## Estructura general
 
 ```text
 python-fundamentos-y-estructuras/
 │
 ├── 00_entorno_y_herramientas/
-│   └── 01_git_y_github.md
+│   ├── 01_git_y_github.md
+│   └── 02_entorno_python_y_dependencias.md
 │
 ├── 01_fundamentos/
-│   ├── 01_tipos_datos.py
-│   ├── 02_variables.py
-│   ├── 03_strings.py
-│   ├── 04_conversion_tipos.py
-│   └── 99_ejercicios.py
-│
 ├── 02_operadores/
-│   ├── 01_aritmeticos.py
-│   ├── 02_comparacion.py
-│   ├── 03_logicos.py
-│   └── 99_ejercicios.py
-│
 ├── 03_control_de_flujo/
-│   ├── 01_sentencias_condicionales.py
-│   ├── 02_ciclos.py
-│   └── 99_ejercicios.py
-│
 ├── 04_colecciones_y_metodos/
-│   ├── 01_listas.py
-│   ├── 02_tuplas.py
-│   ├── 03_diccionarios.py
-│   ├── 04_sets.py
-│   └── 99_ejercicios.py
-│
 ├── 05_interaccion_usuario/
-│   ├── 01_inputs.py
-│   └── 99_ejercicios.py
-│
 ├── 06_funciones/
-│   ├── 01_funciones_basicas.py
-│   ├── 02_parametros_y_retorno.py
-│   ├── 03_alcance_y_buenas_practicas.py
-│   └── 99_ejercicios.py
-│
 ├── 07_modulos_y_paquetes/
-│   ├── 01_modulos_e_importaciones.py
-│   ├── 02_modulos_propios.py
-│   ├── 03_paquetes.py
-│   ├── operaciones.py
-│   ├── utilidades/
-│   │   ├── __init__.py
-│   │   ├── calculos.py
-│   │   └── texto.py
-│   └── 99_ejercicios.py
-│
 ├── 08_manejo_excepciones/
-│   ├── 01_excepciones_y_try_except.py
-│   ├── 02_else_finally_raise_y_buenas_practicas.py
-│   └── 99_ejercicios.py
-│
 ├── 09_archivos_y_datos/
-│   ├── 01_archivos_texto.py
-│   ├── 02_json.py
-│   ├── 03_csv.py
-│   ├── datos/
-│   └── 99_ejercicios.py
-│
 ├── 10_POO/
-│   ├── 01_clases_basicas.py
-│   ├── 02_atributos_y_metodos.py
-│   ├── 03_encapsulamiento_y_propiedades.py
-│   ├── 04_herencia_y_polimorfismo.py
-│   └── 99_ejercicios.py
-│
 ├── 11_python_intermedio/
-│   ├── 01_comprensiones_y_utilidades.py
-│   ├── 02_desempaquetado_args_kwargs.py
-│   ├── 03_decoradores.py
-│   ├── 04_generadores_y_contextos.py
-│   ├── 05_pathlib_y_datetime.py
-│   └── 99_ejercicios.py
-│
 ├── 12_estructuras_de_datos/
-│   ├── 01_pilas_y_colas.py
-│   ├── 02_colas_de_prioridad.py
-│   ├── 03_listas_enlazadas.py
-│   ├── 04_arboles.py
-│   ├── 05_grafos.py
-│   └── 99_ejercicios.py
-│
 ├── 13_algoritmos_y_complejidad/
-│   ├── 01_pensamiento_algoritmico_y_big_o.py
-│   ├── 02_busquedas.py
-│   ├── 03_ordenamiento_y_eficiencia.py
-│   ├── 04_recursion.py
-│   ├── 05_recorridos_bfs_y_dfs.py
-│   └── 99_ejercicios.py
-│
 ├── 14_testing/
-│   ├── 01_introduccion_al_testing.py
-│   ├── 02_pytest_basico.py
-│   └── 99_ejercicios.py
 │
 ├── 15_proyecto_gestor_tickets/
+│   ├── datos/
+│   │   └── tickets.json
+│   ├── gestor.py
+│   ├── main.py
+│   ├── persistencia.py
+│   ├── README.md
+│   ├── test_gestor.py
+│   └── ticket.py
 │
 ├── .gitignore
+├── requirements.txt
 └── README.md
 ```
 
-> Git no almacena carpetas vacías de forma independiente. Algunos directorios planificados pueden no aparecer todavía en GitHub hasta contener archivos versionados.
+---
+
+## Entorno y dependencias
+
+El código del curso utiliza principalmente la biblioteca estándar de Python.
+
+La dependencia externa utilizada para testing es:
+
+```text
+pytest
+```
+
+Crear un entorno virtual:
+
+```bash
+python -m venv .venv
+```
+
+Instalar dependencias:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+La explicación completa del entorno se encuentra en:
+
+```text
+00_entorno_y_herramientas/02_entorno_python_y_dependencias.md
+```
 
 ---
 
-## Metodología de estudio
-
-El aprendizaje se desarrolla de forma incremental:
+## Metodología aplicada
 
 ```text
-comprender el concepto
+comprender
 ↓
-revisar ejemplos
+probar
 ↓
-escribir y ejecutar código
+resolver ejercicios
 ↓
-resolver ejercicios breves
+revisar
 ↓
-revisar resultados
+versionar
 ↓
-versionar con Git
-↓
-continuar al siguiente tema
+integrar
 ```
 
-La cantidad de ejercicios se mantiene deliberadamente reducida durante los fundamentos.
-
-El objetivo es comprobar la comprensión y mantener un avance constante.
-
-La complejidad aumentará progresivamente al combinar conocimientos y desarrollar programas más completos.
-
----
-
-## Organización de los ejercicios
-
-Cada bloque concentra principalmente sus ejercicios en:
-
-```text
-99_ejercicios.py
-```
-
-Se utilizan identificadores según el tema:
-
-```text
-VAR-01
-STR-01
-CONV-01
-OP-01
-CF-01
-LIST-01
-TUP-01
-DICT-01
-SET-01
-INPUT-01
-FUNC-01
-MOD-01
-EXC-01
-ARCH-01
-POO-01
-INT-01
-ED-01
-ALGO-01
-TEST-01
-```
-
-Esto permite identificar rápidamente qué concepto practica cada ejercicio.
+Los ejercicios se mantuvieron intencionalmente breves durante los fundamentos. La complejidad aumentó progresivamente hasta llegar al proyecto integrador.
 
 ---
 
 ## Convenciones de código
 
-Durante el estudio se priorizan:
+Durante el recorrido se priorizaron:
 
-- `snake_case` para funciones y variables.
+- `snake_case` para variables y funciones.
 - Nombres descriptivos.
 - Código simple y legible.
-- Comentarios que aporten contexto.
 - Funciones con responsabilidades claras.
+- Comentarios que aporten contexto.
 - Docstrings cuando agregan información útil.
-- Separación progresiva del código en módulos.
-- Manejo explícito de errores previsibles.
+- Separación progresiva en módulos.
+- Excepciones específicas.
 - UTF-8 para archivos de texto.
-- Consistencia de estilo.
-
-Los nombres de archivos y carpetas se mantienen principalmente en español para facilitar la organización y consulta del material.
+- Uso de `pathlib` para rutas cuando resulta apropiado.
 
 ---
 
 ## Git y GitHub
 
-Git y GitHub forman parte del aprendizaje y se utilizan para versionar cada bloque de estudio.
+Git y GitHub se utilizaron durante todo el recorrido.
 
-Flujo de trabajo aplicado:
+Flujo habitual:
 
 ```text
 main actualizado
@@ -576,59 +434,30 @@ git push
 ↓
 Pull Request
 ↓
-revisión de cambios
+revisión
 ↓
 merge
 ↓
-sincronizar main
+git switch main
 ↓
-eliminar rama terminada
+git pull
+↓
+eliminar rama local
+↓
+git fetch --prune
 ```
 
-### Convención de ramas
+Convenciones utilizadas:
 
 ```text
-study/...
-→ bloques de estudio
-
-docs/...
-→ documentación
-
-refactor/...
-→ reorganización interna
-
-fix/...
-→ correcciones
-
-feature/...
-→ funcionalidades
+study/...    → estudio
+docs/...     → documentación
+refactor/... → refactorización
+fix/...      → correcciones
+feature/...  → funcionalidades
 ```
 
-### Commits
-
-Los mensajes de commit se escriben en inglés y buscan describir claramente la intención del cambio.
-
-Ejemplos:
-
-```text
-Expand Python functions study and exercises
-
-Expand Python modules and packages study and exercises
-
-Expand Python exception handling study and exercises
-
-Expand Python files and data study and exercises
-
-Add Python trees study and exercise
-
-Add Python graphs study and exercise
-
-Add Python testing introduction and assert exercise
-
-Add basic pytest study and exercise
-```
-
-La documentación específica de Git y GitHub se mantiene en:
+La guía completa se encuentra en:
 
 ```text
 00_entorno_y_herramientas/01_git_y_github.md
@@ -636,67 +465,44 @@ La documentación específica de Git y GitHub se mantiene en:
 
 ---
 
-## Proyecto integrador
+## Próximo paso
 
-El último bloque del recorrido será un gestor de tickets por consola desarrollado dentro de este mismo repositorio.
+Este repositorio cierra el recorrido de fundamentos.
 
-Su propósito será integrar progresivamente los conocimientos adquiridos:
+Una progresión natural a partir de aquí es:
 
 ```text
-fundamentos
-+
-operadores
-+
-control de flujo
-+
-colecciones
-+
-interacción con el usuario
-+
-funciones
-+
-módulos y paquetes
-+
-manejo de excepciones
-+
-archivos y datos
-+
-programación orientada a objetos
-+
-Python intermedio
-+
-estructuras de datos
-+
-algoritmos y complejidad
-+
-testing
+Python
+↓
+Flask
+↓
+HTTP y aplicaciones web
+↓
+SQL
+↓
+PostgreSQL
+↓
+testing de aplicaciones
+↓
+proyectos backend completos
 ```
 
-El objetivo no será solamente conseguir que el programa funcione, sino practicar organización, reutilización, mantenibilidad y evolución del código.
-
----
-
-## Aplicación de los conocimientos
-
-Los fundamentos estudiados buscan servir como base para continuar aprendiendo y desarrollar posteriormente soluciones relacionadas con:
+Los fundamentos adquiridos también pueden reutilizarse en:
 
 ```text
-desarrollo backend
 automatización
+integraciones
 APIs
-integraciones entre sistemas
 procesamiento de archivos
 procesamiento de datos
 análisis de datos
 ```
 
-El repositorio representa una base de aprendizaje, no una especialización cerrada en una única área.
-
 ---
 
 ## Fuentes de referencia
 
-Durante el estudio se prioriza documentación oficial.
+Se prioriza documentación oficial.
 
 ### Python
 
@@ -704,6 +510,19 @@ Durante el estudio se prioriza documentación oficial.
 https://docs.python.org/
 https://docs.python.org/3/tutorial/
 https://docs.python.org/3/library/
+https://docs.python.org/3/library/venv.html
+```
+
+### pytest
+
+```text
+https://docs.pytest.org/
+```
+
+### pip
+
+```text
+https://pip.pypa.io/
 ```
 
 ### Git
@@ -720,11 +539,9 @@ https://docs.github.com/
 
 ---
 
-## Objetivo del repositorio
+## Cierre
 
-Este repositorio busca registrar una evolución progresiva desde los fundamentos de Python hasta la capacidad de construir programas propios con una estructura cada vez más organizada.
-
-El objetivo es desarrollar una base suficiente para:
+El objetivo de este repositorio no es demostrar dominio absoluto de Python, sino documentar una base práctica sobre la cual continuar construyendo.
 
 ```text
 leer código
@@ -733,15 +550,15 @@ comprenderlo
 ↓
 escribirlo
 ↓
+probarlo
+↓
 depurarlo
 ↓
 organizarlo
 ↓
-reutilizarlo
+versionarlo
 ↓
 mantenerlo
 ↓
 construir soluciones propias
 ```
-
-No se busca memorizar cada característica del lenguaje, sino adquirir fundamentos que permitan continuar aprendiendo y resolver problemas progresivamente más complejos.
